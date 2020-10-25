@@ -58,7 +58,7 @@ owner:
   weibo: #username
   flickr: #username
   codepen: #username
-  scholar: #username
+  scholar: UC9Q3KEAAAAJ #username from a "https://scholar.google.com/citations?hl=en&user=username" link
 
 defaults:
   # _posts

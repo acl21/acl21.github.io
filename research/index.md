@@ -24,8 +24,8 @@ I am currently working towards understanding how deep active learning can be acc
 [An Adaptive Supervision Framework for Active Learning in Object Detection](https://arxiv.org/abs/1908.02454)  
 *British Machine Vision Conference (BMVC), 2019*  
 <sup><sup>&dagger;</sup> Equal Contribution</sup>  
-[<button type="button" class="btn btn-success">Poster</button>](/reports/bmvc19-poster.pdf)
 [<button type="button" class="btn btn-danger">ArXiv</button>](https://arxiv.org/abs/1908.02454)
+[<button type="button" class="btn btn-success">Poster</button>](/reports/bmvc19-poster.pdf)
 <!-- [<button type="button" class="btn btn-info">Code</button>]() -->
 <!-- [<button type="button" class="btn btn-warning">Code</button>]()  -->
 <!-- [<button type="button" class="btn">Video</button>]() -->

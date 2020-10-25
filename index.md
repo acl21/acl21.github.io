@@ -7,7 +7,7 @@ comments: false
 ---
 
 Hi!
-I am a research assistant to [Prof. Vineeth N Balasubramanian](https://www.iith.ac.in/~vineethnb/) at [Indian Institute Of Technology Hyderabad](https://cse.iith.ac.in/), mainly working on deep active learning for image data. My interests are in the intersection of computer vision and learning with limited labeled data. I also collaborated with [Prof. Wei Guo](https://scholar.google.co.jp/citations?user=pnMyJLEAAAAJ&hl=zh-CN) (UTokyo) while working on plant phenotyping tasks.  
+I am a research assistant at [Prof. Vineeth N Balasubramanian](https://www.iith.ac.in/~vineethnb/)'s research group [Lab1055](http://lab1055.github.io/) at [IIT Hyderabad](https://cse.iith.ac.in/), mainly working on deep active learning for image data. My interests are in the intersection of computer vision and learning with limited labeled data. I am also frequently collaborating with [Prof. Wei Guo](https://scholar.google.co.jp/citations?user=pnMyJLEAAAAJ&hl=zh-CN) at [Field Phenomics Lab](http://park.itc.u-tokyo.ac.jp/Field-Phenomics/ninolab/index.html) (UTokyo) while working on plant phenotyping solutions.  
 
 Before joining Dr. Vineeth's group in December 2018, I spent 16 months working on machine learning and data science projects at [GGK Technologies](https://ggktech.com/), a service-based company in Hyderabad. At GGK Technologies, I spent most of my time learning, implementing, and optimizing various machine learning/deep learning pipelines for clients in US health care and retail domains.
 
@@ -23,12 +23,12 @@ I completed my undergraduate from Department of Computer Science and Engineering
     <col width="85%">
     <tr>
         <td valign="top"><strong>[Aug. 2020]</strong></td>
-        <td>Our joint project with <a href="https://scholar.google.co.jp/citations?user=pnMyJLEAAAAJ&hl=zh-CN">Prof. Guo</a>, <a href="https://github.com/lab1055/easy-rfp">EasyRFP: An Easy to Use Edge Computing Toolkit for Real-Time Field Phenotyping</a> is accepted as an extended abstract at Computer Vision Problems in Plant Phenotyping Workshop (<a href="https://www.plant-phenotyping.org/CVPPP2020/">CVPPPW-ECCV</a>) and as an academic demostration at European Conference on Computer Vision, 2020 (<a href="https://eccv2020.eu/">ECCV2020</a>).
+        <td>Our toolkit, <a href="https://github.com/lab1055/easy-rfp">EasyRFP: An Easy-to-Use Edge Computing Toolkit for Real-Time Field Phenotyping</a> is accepted as an extended abstract at Computer Vision Problems in Plant Phenotyping Workshop (<a href="https://www.plant-phenotyping.org/CVPPP2020/">CVPPPW-ECCV</a>) and as an academic demostration at European Conference on Computer Vision, 2020 (<a href="https://eccv2020.eu/">ECCV2020</a>).
         </td>
     </tr>
     <tr>
         <td valign="top"><strong>[Jul. 2020]</strong></td>
-        <td>Served as a subreviewer for Neural Information Processing Systems conference (<a href="https://nips.cc/">NeurIPS2020</a>) and Computer Vision Problems in Plant Phenotyping Workshop (<a href="https://www.plant-phenotyping.org/CVPPP2020/">CVPPPW-ECCV</a>).
+        <td>Served as a subreviewer for Neural Information Processing Systems conference (<a href="https://nips.cc/">NeurIPS2020</a>) and as a reviewer for Computer Vision Problems in Plant Phenotyping Workshop (<a href="https://www.plant-phenotyping.org/CVPPP2020/">CVPPPW-ECCV</a>).
         </td>
     </tr>
     <tr>
