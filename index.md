@@ -22,18 +22,23 @@ I completed my undergraduate from Department of Computer Science and Engineering
     <col width="15%">
     <col width="85%">
     <tr>
+        <td valign="top"><strong>[Nov. 2020]</strong></td>
+        <td>Our work, <a href="reports/17_poster.png" target="_blank">On Initial Pools for Deep Active Learning</a> is accepted at <a href="http://preregister.science/">Pre-registration Workshop</a> at Neural Information Processing Systems conference (<a href="https://nips.cc/Conferences/2020">NeurIPS'20</a>).
+        </td>
+    </tr>
+    <tr>
         <td valign="top"><strong>[Aug. 2020]</strong></td>
-        <td>Our toolkit, <a href="https://github.com/lab1055/easy-rfp">EasyRFP: An Easy-to-Use Edge Computing Toolkit for Real-Time Field Phenotyping</a> is accepted as an extended abstract at Computer Vision Problems in Plant Phenotyping Workshop (<a href="https://www.plant-phenotyping.org/CVPPP2020/">CVPPPW-ECCV</a>) and as an academic demostration at European Conference on Computer Vision, 2020 (<a href="https://eccv2020.eu/">ECCV2020</a>).
+        <td>Our toolkit, <a href="https://github.com/lab1055/easy-rfp">EasyRFP: An Easy-to-Use Edge Computing Toolkit for Real-Time Field Phenotyping</a> is accepted as an extended abstract at Computer Vision Problems in Plant Phenotyping Workshop (<a href="https://www.plant-phenotyping.org/CVPPP2020/">CVPPPW-ECCV</a>) and as an academic demostration at European Conference on Computer Vision, 2020 (<a href="https://eccv2020.eu/">ECCV'20</a>).
         </td>
     </tr>
     <tr>
         <td valign="top"><strong>[Jul. 2020]</strong></td>
-        <td>Served as a subreviewer for Neural Information Processing Systems conference (<a href="https://nips.cc/">NeurIPS2020</a>) and as a reviewer for Computer Vision Problems in Plant Phenotyping Workshop (<a href="https://www.plant-phenotyping.org/CVPPP2020/">CVPPPW-ECCV</a>).
+        <td>Served as a subreviewer for Neural Information Processing Systems conference (<a href="https://nips.cc/">NeurIPS'20</a>) and as a reviewer for Computer Vision Problems in Plant Phenotyping Workshop (<a href="https://www.plant-phenotyping.org/CVPPP2020/">CVPPPW-ECCV</a>).
         </td>
     </tr>
     <tr>
         <td valign="top"><strong>[May. 2020]</strong></td>
-        <td>Served as a subreviewer for European Conference on Computer Vision, 2020 (<a href="https://eccv2020.eu/">ECCV2020</a>).
+        <td>Served as a subreviewer for European Conference on Computer Vision, 2020 (<a href="https://eccv2020.eu/">ECCV'20</a>).
         </td>
     </tr>
 	<tr>
@@ -44,17 +49,17 @@ I completed my undergraduate from Department of Computer Science and Engineering
 	 <tr>
         <td valign="top"><strong>[Feb. 2020]</strong></td>
         <td>Our paper, <a href="https://plantmethods.biomedcentral.com/articles/10.1186/s13007-020-00575-8">Active Learning with Point Supervision for Cost-Effective Panicle Detection in Cereal Crops</a>,
-        has been accepted to <a href="https://plantmethods.biomedcentral.com/">BMC Plant Methods</a> journal. <span style="color:blue;font-size:12px" >[Impact Factor: 4.6]  </span>
+        has been accepted to <a href="https://plantmethods.biomedcentral.com/">BMC Plant Methods</a> journal. <span style="color:blue;font-size:12px" >[Impact Factor: 4.5]  </span>
         </td>
     </tr>
     <tr>
-        <td valign="top"><strong>[Dec. 2019]</strong></td>
+        <td valign="top"><strong>[Dec. 2018]</strong></td>
         <td>Delighted to have received the <a href="https://www.udacity.com/scholarships/intel-edge-ai-scholarship">Intel® Edge AI Scholarship</a> at Udacity.
         </td>
     </tr>
     <tr>
         <td valign="top"><strong>[Oct. 2019]</strong></td>
-        <td>Served as a subreviewer for SIAM International Conference on Data Mining, 2020 (<a href="https://www.siam.org/conferences/cm/conference/sdm20">SDM20</a>).
+        <td>Served as a subreviewer for SIAM International Conference on Data Mining, 2020 (<a href="https://www.siam.org/conferences/cm/conference/sdm20">SDM'20</a>).
         </td>
     </tr>
     <tr>
@@ -65,8 +70,7 @@ I completed my undergraduate from Department of Computer Science and Engineering
     <tr>
         <td valign="top"><strong>[July 2019]</strong></td>
         <td>Our paper, <a href="https://arxiv.org/abs/1908.02454">An Adaptive Supervision for Active Learning in Object Detection</a>,
-        has been accepted to <a href="https://bmvc2019.org">BMVC, 2019</a> as
-        a <b>poster</b> presentation
+        has been accepted to British Machine Vision Conference (<a href="https://bmvc2019.org">BMVC'19</a>) as a <b>poster</b> presentation
         </td>
     </tr>
     <tr>

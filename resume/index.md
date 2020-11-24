@@ -6,5 +6,5 @@ modified: 2014-08-08T20:53:07.573882-04:00
 comments: true
 ---
 
-My latest resume: [One Page](/reports/akshay-resume.pdf) and [Two Page](/reports/akshay-cv.pdf)  
-*Updated: Februrary, 2020*
+My latest resume: [Two Page](/reports/akshay-cv.pdf)  
+*Updated: November, 2020*

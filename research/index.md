@@ -7,38 +7,55 @@ comments: false
 ---
 
 My interests broadly lie in the fields of computer vision, machine learning and learning with limited labeled data (mainly active learning).
-I am currently working towards understanding how deep active learning can be accelerated. 
+I am currently working towards understanding how deep active learning can be made learnable and transferable. 
 
 ### Publications
 
-1. **Akshay L Chandra**, S.V. Desai, Vineeth N Balasubramanian, S. Ninomiya, Wei Guo  
+1. **Akshay L Chandra**<sup>&dagger;</sup>, S.V. Desai<sup>&dagger;</sup>, C. Devaguptapu<sup>&dagger;</sup>, Vineeth N Balasubramanian  
+[On Initial Pools for Deep Active Learning]()  
+*Pre-registration Workshop at NeurIPS 2020*  
+<sup><sup>&dagger;</sup> Equal Contribution</sup>  
+[<button type="button" class="btn btn-danger">Paper</button>](/reports/17_paper.pdf)
+[<button type="button" class="btn btn-success">Poster</button>](/reports/17_poster.png)
+[<button type="button" class="btn btn-info">Code</button>](https://github.com/acl21/init-pools-dal)
+[<button type="button" class="btn btn-warning">Workshop</button>](http://preregister.science/)
+
+
+2. **Akshay L Chandra**, S.V. Desai, Vineeth N Balasubramanian, S. Ninomiya, Wei Guo  
 [Active Learning with Point Supervision for Cost-Effective Panicle Detection in Cereal Crops](https://arxiv.org/abs/1910.01789)  
-*BioMed Central Plant Methods Journal (BMC), 2020*  <span style="color:blue;font-size:12px" >[Impact Factor: 4.6]  
+*BioMed Central Plant Methods Journal (BMC), 2020*  <span style="color:blue;font-size:12px" >[Impact Factor: 4.5]  
 <!-- [<button type="button" class="btn btn-success">Poster</button>]() -->
 [<button type="button" class="btn btn-danger">ArXiv</button>](https://arxiv.org/abs/1910.01789)
 <!-- [<button type="button" class="btn btn-info">Code</button>]() -->
 <!-- [<button type="button" class="btn btn-warning">Code</button>]()  -->
 <!-- [<button type="button" class="btn">Video</button>]() -->
 
-2. **Akshay L Chandra**<sup>&dagger;</sup>, S.V. Desai<sup>&dagger;</sup>, Wei Guo, S. Ninomiya, Vineeth N Balasubramanian  
+3. **Akshay L Chandra**<sup>&dagger;</sup>, S.V. Desai<sup>&dagger;</sup>, Wei Guo, S. Ninomiya, Vineeth N Balasubramanian  
 [An Adaptive Supervision Framework for Active Learning in Object Detection](https://arxiv.org/abs/1908.02454)  
 *British Machine Vision Conference (BMVC), 2019*  
 <sup><sup>&dagger;</sup> Equal Contribution</sup>  
 [<button type="button" class="btn btn-danger">ArXiv</button>](https://arxiv.org/abs/1908.02454)
-[<button type="button" class="btn btn-success">Poster</button>](/reports/bmvc19-poster.pdf)
+[<button type="button" class="btn btn-success">Poster</button>](/reports/bmvc19-poster.png)
 <!-- [<button type="button" class="btn btn-info">Code</button>]() -->
 <!-- [<button type="button" class="btn btn-warning">Code</button>]()  -->
 <!-- [<button type="button" class="btn">Video</button>]() -->
 
+3. **Akshay L Chandra**<sup>&dagger;</sup>, S.V. Desai<sup>&dagger;</sup>, M. Hirafuji, S. Ninomiya, V N Balasubramanian, W. Guo
+[EasyRFP: An Easy to Use Edge Computing Toolkit for Real-Time Field Phenotyping](https://github.com/lab1055/easy-rfp)  
+*Extended Abstract at CVPPP & ECCV Academic Demonstrations, 2020*  
+<sup><sup>&dagger;</sup> Equal Contribution</sup>  
+[<button type="button" class="btn btn-info">Code</button>](https://github.com/lab1055/easy-rfp)
+[<button type="button" class="btn">Video</button>](https://www.youtube.com/watch?v=oAGbpVgPE6U)
+
 ### Other Projects
 
-* **EasyRFP: An Easy to Use Edge Computing Toolkit for Real-Time Field Phenotyping**  
+<!-- * **EasyRFP: An Easy to Use Edge Computing Toolkit for Real-Time Field Phenotyping**  
 *Extended Abstract at CVPPP 2020 and ECCV 2020 Demonstration, August 2020*  
 **Abstract:**  
 Recent advances in deep learning have catalyzed rapid progress in high throughput field phenotyping. Much research has been dedicated towards developing accurate and cost effective deep learning models to capture phenotyping traits such as plant stress, yield and plant growth stages. However, there is a shortage of software tools to promote the usage of such intelligent methods among plant phenotyping practitioners and researchers. To bridge this gap, we developed EasyRFP, a Flask back-end, Angular front-end software toolkit which can be interfaced with any commercial GPU enabled micro computer (such as NVIDIA Jetson) and a digital camera.  
-<!-- [<button type="button" class="btn btn-danger">ArXiv</button>](https://github.com/lab1055/easy-rfp) -->
+[<button type="button" class="btn btn-danger">ArXiv</button>](https://github.com/lab1055/easy-rfp)
 [<button type="button" class="btn btn-info">Code</button>](https://github.com/lab1055/easy-rfp)
-[<button type="button" class="btn">Video</button>](https://www.youtube.com/watch?v=oAGbpVgPE6U)
+[<button type="button" class="btn">Video</button>](https://www.youtube.com/watch?v=oAGbpVgPE6U) -->
 
 * **Computer Vision with Deep Learning for Plant Phenotyping in Agriculture**  
 *A Survey Article Published at Advanced Computing & Communications (ACC) India, March 2020*  

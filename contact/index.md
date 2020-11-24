@@ -23,6 +23,7 @@ comments: false
 Email:
 
 * email [at] [domain]
+* research [at] [domain] (for queries related to my research)
 
 Address:  
 AI Lab, 2nd Floor, D-Block,  
