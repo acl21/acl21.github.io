@@ -23,7 +23,7 @@ I completed my undergraduate from Department of Computer Science and Engineering
     <col width="85%">
     <tr>
         <td valign="top"><strong>[Nov. 2020]</strong></td>
-        <td>Our work, <a href="reports/17_poster.png" target="_blank">On Initial Pools for Deep Active Learning</a> is accepted at <a href="http://preregister.science/">Pre-registration Workshop</a> at Neural Information Processing Systems conference (<a href="https://nips.cc/Conferences/2020">NeurIPS'20</a>).
+        <td>Our work, <a href="reports/17_poster.png" target="_blank">On Initial Pools for Deep Active Learning</a> is accepted at <a href="http://preregister.science/">Preregistration Workshop</a> at Neural Information Processing Systems conference (<a href="https://nips.cc/Conferences/2020">NeurIPS'20</a>).
         </td>
     </tr>
     <tr>

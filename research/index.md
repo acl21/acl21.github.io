@@ -13,7 +13,7 @@ I am currently working towards understanding how deep active learning can be mad
 
 1. **Akshay L Chandra**<sup>&dagger;</sup>, S.V. Desai<sup>&dagger;</sup>, C. Devaguptapu<sup>&dagger;</sup>, Vineeth N Balasubramanian  
 [On Initial Pools for Deep Active Learning]()  
-*Pre-registration Workshop at NeurIPS 2020*  
+*Preregistration Workshop at NeurIPS 2020 (PMLR Proceedings)*  
 <sup><sup>&dagger;</sup> Equal Contribution</sup>  
 [<button type="button" class="btn btn-danger">Paper</button>](/reports/17_paper.pdf)
 [<button type="button" class="btn btn-success">Poster</button>](/reports/17_poster.png)
@@ -48,6 +48,13 @@ I am currently working towards understanding how deep active learning can be mad
 [<button type="button" class="btn">Video</button>](https://www.youtube.com/watch?v=oAGbpVgPE6U)
 
 ### Other Projects
+
+* **Deep Active Learning Toolkit for Image Classification**  
+*A PyTorch toolkit, May 2021*  
+**Abstract:**  
+A PyTorch toolkit with 8 popular deep active learning query methods which include DBAL, VAAL, Coreset, Ensembler Variation-Ratio and more. Our toolkit currently supports CIFAR10/100, MNIST, SVHN, Tiny Imagenet and Long-Tails versions of CIFAR10/100.  
+[<button type="button" class="btn btn-info">Code</button>](https://github.com/acl21/deep-active-learning-pytorch)
+
 
 <!-- * **EasyRFP: An Easy to Use Edge Computing Toolkit for Real-Time Field Phenotyping**  
 *Extended Abstract at CVPPP 2020 and ECCV 2020 Demonstration, August 2020*  
