@@ -22,8 +22,17 @@ I completed my undergraduate from Department of Computer Science and Engineering
     <col width="15%">
     <col width="85%">
     <tr>
+        <td valign="top"><strong>[July 2021]</strong></td>
+        <td>Our final paper with results, <a href="https://arxiv.org/abs/2011.14696" target="_blank">On Initial Pools for Deep Active Learning</a> is accepted to be included in the <a href="http://proceedings.mlr.press/v148/">Proceedings of Machine Learning Research (PMLR)</a>, a sister publication to the Journal of Machine Learning Research (JMLR). This was made possible by the <a href="https://preregister.science/neurips2020.html">NeurIPS 2020 Preregistration Workshop</a> which encourages an alternative publication model for machine learning research.
+        </td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>[June 2021]</strong></td>
+        <td>I married the love of my life. 😊❤️</td>
+    </tr>
+    <tr>
         <td valign="top"><strong>[Nov. 2020]</strong></td>
-        <td>Our work, <a href="reports/17_poster.png" target="_blank">On Initial Pools for Deep Active Learning</a> is accepted at <a href="http://preregister.science/">Preregistration Workshop</a> at Neural Information Processing Systems conference (<a href="https://nips.cc/Conferences/2020">NeurIPS'20</a>).
+        <td>Our proposal, <a href="https://arxiv.org/abs/2011.14696" target="_blank">On Initial Pools for Deep Active Learning</a> is accepted at <a href="http://preregister.science/">Preregistration Workshop</a> at Neural Information Processing Systems conference (<a href="https://nips.cc/Conferences/2020">NeurIPS'20</a>).
         </td>
     </tr>
     <tr>

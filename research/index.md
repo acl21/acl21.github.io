@@ -12,13 +12,13 @@ I am currently working towards understanding how deep active learning can be mad
 ### Publications
 
 1. **Akshay L Chandra**<sup>&dagger;</sup>, S.V. Desai<sup>&dagger;</sup>, C. Devaguptapu<sup>&dagger;</sup>, Vineeth N Balasubramanian  
-[On Initial Pools for Deep Active Learning]()  
-*Preregistration Workshop at NeurIPS 2020 (PMLR Proceedings)*  
+[On Initial Pools for Deep Active Learning](https://arxiv.org/abs/2011.14696)  
+*Preregistration Workshop at NeurIPS 2020 (PMLR Volume 148)*  
 <sup><sup>&dagger;</sup> Equal Contribution</sup>  
-[<button type="button" class="btn btn-danger">Paper</button>](/reports/17_paper.pdf)
-[<button type="button" class="btn btn-success">Poster</button>](/reports/17_poster.png)
+[<button type="button" class="btn btn-danger">ArXiv</button>](https://arxiv.org/abs/2011.14696)
+<!-- [<button type="button" class="btn btn-success">Poster</button>](/reports/17_poster.png) -->
 [<button type="button" class="btn btn-info">Code</button>](https://github.com/acl21/init-pools-dal)
-[<button type="button" class="btn btn-warning">Workshop</button>](http://preregister.science/)
+[<button type="button" class="btn btn-warning">Workshop</button>](https://preregister.science/neurips2020.html)
 
 
 2. **Akshay L Chandra**, S.V. Desai, Vineeth N Balasubramanian, S. Ninomiya, Wei Guo  
@@ -40,7 +40,7 @@ I am currently working towards understanding how deep active learning can be mad
 <!-- [<button type="button" class="btn btn-warning">Code</button>]()  -->
 <!-- [<button type="button" class="btn">Video</button>]() -->
 
-3. **Akshay L Chandra**<sup>&dagger;</sup>, S.V. Desai<sup>&dagger;</sup>, M. Hirafuji, S. Ninomiya, V N Balasubramanian, W. Guo
+4. **Akshay L Chandra**<sup>&dagger;</sup>, S.V. Desai<sup>&dagger;</sup>, M. Hirafuji, S. Ninomiya, V N Balasubramanian, W. Guo
 [EasyRFP: An Easy to Use Edge Computing Toolkit for Real-Time Field Phenotyping](https://github.com/lab1055/easy-rfp)  
 *Extended Abstract at CVPPP & ECCV Academic Demonstrations, 2020*  
 <sup><sup>&dagger;</sup> Equal Contribution</sup>  
@@ -52,7 +52,7 @@ I am currently working towards understanding how deep active learning can be mad
 * **Deep Active Learning Toolkit for Image Classification**  
 *A PyTorch toolkit, May 2021*  
 **Abstract:**  
-A PyTorch toolkit with 8 popular deep active learning query methods which include DBAL, VAAL, Coreset, Ensembler Variation-Ratio and more. Our toolkit currently supports CIFAR10/100, MNIST, SVHN, Tiny Imagenet and Long-Tails versions of CIFAR10/100.  
+A PyTorch toolkit with 8 popular deep active learning query methods which include DBAL, VAAL, Coreset, Ensemble Variation-Ratio and more. Our toolkit currently supports CIFAR10/100, MNIST, SVHN, Tiny Imagenet and Long-Tails versions of CIFAR10/100.  
 [<button type="button" class="btn btn-info">Code</button>](https://github.com/acl21/deep-active-learning-pytorch)
 
 
@@ -68,7 +68,7 @@ Recent advances in deep learning have catalyzed rapid progress in high throughpu
 *A Survey Article Published at Advanced Computing & Communications (ACC) India, March 2020*  
 **Abstract:**  
 In light of growing challenges in agriculture with ever growing food demand across the world, efficient crop management techniques are necessary to increase crop yield. Precision agriculture techniques allow the stakeholders to make effective and customized crop management decisions based on data gathered from monitoring crop environments. Plant phenotyping techniques play a major role in accurate crop monitoring. Advancements in deep learning have made previously difficult phenotyping tasks possible. This survey aims to introduce the reader to the state of the art research in deep plant phenotyping.   
-[<button type="button" class="btn btn-danger">ArXiv</button>](http://arxiv.org/abs/2006.11391)
+<!-- [<button type="button" class="btn btn-danger">ArXiv</button>](http://arxiv.org/abs/2006.11391) -->
 
 * **Image & Bounding Box Annotation Slicer**  
 *An Object Detection Data Transformer, April 2019*  
