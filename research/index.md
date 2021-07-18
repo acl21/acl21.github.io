@@ -11,8 +11,8 @@ I am currently working towards understanding how deep active learning can be mad
 
 ### Publications
 
-1. **Akshay L Chandra**<sup>&dagger;</sup>, S.V. Desai<sup>&dagger;</sup>, C. Devaguptapu<sup>&dagger;</sup>, Vineeth N Balasubramanian  
-[On Initial Pools for Deep Active Learning](https://arxiv.org/abs/2011.14696)  
+* [**On Initial Pools for Deep Active Learning**](https://arxiv.org/abs/2011.14696)  
+**Akshay L Chandra**<sup>&dagger;</sup>, S.V. Desai<sup>&dagger;</sup>, C. Devaguptapu<sup>&dagger;</sup>, Vineeth N Balasubramanian  
 *Preregistration Workshop at NeurIPS 2020 (PMLR Volume 148)*  
 <sup><sup>&dagger;</sup> Equal Contribution</sup>  
 [<button type="button" class="btn btn-danger">ArXiv</button>](https://arxiv.org/abs/2011.14696)
@@ -21,8 +21,8 @@ I am currently working towards understanding how deep active learning can be mad
 [<button type="button" class="btn btn-warning">Workshop</button>](https://preregister.science/neurips2020.html)
 
 
-2. **Akshay L Chandra**, S.V. Desai, Vineeth N Balasubramanian, S. Ninomiya, Wei Guo  
-[Active Learning with Point Supervision for Cost-Effective Panicle Detection in Cereal Crops](https://arxiv.org/abs/1910.01789)  
+* [**Active Learning with Point Supervision for Cost-Effective Panicle Detection in Cereal Crops**](https://arxiv.org/abs/1910.01789)  
+**Akshay L Chandra**, S.V. Desai, Vineeth N Balasubramanian, S. Ninomiya, Wei Guo  
 *BioMed Central Plant Methods Journal (BMC), 2020*  <span style="color:blue;font-size:12px" >[Impact Factor: 4.5]  
 <!-- [<button type="button" class="btn btn-success">Poster</button>]() -->
 [<button type="button" class="btn btn-danger">ArXiv</button>](https://arxiv.org/abs/1910.01789)
@@ -30,8 +30,8 @@ I am currently working towards understanding how deep active learning can be mad
 <!-- [<button type="button" class="btn btn-warning">Code</button>]()  -->
 <!-- [<button type="button" class="btn">Video</button>]() -->
 
-3. **Akshay L Chandra**<sup>&dagger;</sup>, S.V. Desai<sup>&dagger;</sup>, Wei Guo, S. Ninomiya, Vineeth N Balasubramanian  
-[An Adaptive Supervision Framework for Active Learning in Object Detection](https://arxiv.org/abs/1908.02454)  
+* [**An Adaptive Supervision Framework for Active Learning in Object Detection**](https://arxiv.org/abs/1908.02454)  
+**Akshay L Chandra**<sup>&dagger;</sup>, S.V. Desai<sup>&dagger;</sup>, Wei Guo, S. Ninomiya, Vineeth N Balasubramanian  
 *British Machine Vision Conference (BMVC), 2019*  
 <sup><sup>&dagger;</sup> Equal Contribution</sup>  
 [<button type="button" class="btn btn-danger">ArXiv</button>](https://arxiv.org/abs/1908.02454)
@@ -40,8 +40,8 @@ I am currently working towards understanding how deep active learning can be mad
 <!-- [<button type="button" class="btn btn-warning">Code</button>]()  -->
 <!-- [<button type="button" class="btn">Video</button>]() -->
 
-4. **Akshay L Chandra**<sup>&dagger;</sup>, S.V. Desai<sup>&dagger;</sup>, M. Hirafuji, S. Ninomiya, V N Balasubramanian, W. Guo
-[EasyRFP: An Easy to Use Edge Computing Toolkit for Real-Time Field Phenotyping](https://github.com/lab1055/easy-rfp)  
+* [**EasyRFP: An Easy to Use Edge Computing Toolkit for Real-Time Field Phenotyping**](https://github.com/lab1055/easy-rfp)  
+**Akshay L Chandra**<sup>&dagger;</sup>, S.V. Desai<sup>&dagger;</sup>, M. Hirafuji, S. Ninomiya, V N Balasubramanian, W. Guo  
 *Extended Abstract at CVPPP & ECCV Academic Demonstrations, 2020*  
 <sup><sup>&dagger;</sup> Equal Contribution</sup>  
 [<button type="button" class="btn btn-info">Code</button>](https://github.com/lab1055/easy-rfp)

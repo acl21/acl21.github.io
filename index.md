@@ -23,6 +23,11 @@ I completed my undergraduate from Department of Computer Science and Engineering
     <col width="85%">
     <tr>
         <td valign="top"><strong>[July 2021]</strong></td>
+        <td>Served as a subreviewer for Neural Information Processing Systems conference (<a href="https://nips.cc/">NeurIPS'21</a>).
+        </td>
+    </tr>
+    <tr>
+        <td valign="top"><strong>[July 2021]</strong></td>
         <td>Our final paper with results, <a href="https://arxiv.org/abs/2011.14696" target="_blank">On Initial Pools for Deep Active Learning</a> is accepted to be included in the <a href="http://proceedings.mlr.press/v148/">Proceedings of Machine Learning Research (PMLR)</a>, a sister publication to the Journal of Machine Learning Research (JMLR). This was made possible by the <a href="https://preregister.science/neurips2020.html">NeurIPS 2020 Preregistration Workshop</a> which encourages an alternative publication model for machine learning research.
         </td>
     </tr>
