@@ -16,8 +16,8 @@ pagination:
 <div class="post">
 
   <div class="header-bar">
-    <h1>{{ site.blog_name }}</h1>
-    <h2>{{ site.blog_description }}</h2>
+    <h2>{{ site.blog_name }}</h2>
+    <h3>{{ site.blog_description }}</h3>
   </div>
 
   {% if site.display_tags %}
@@ -48,7 +48,7 @@ pagination:
     {% assign categories = post.categories | join: "" %}
 
     <li>
-      <h3>
+      <h4>
         {% if post.redirect == blank %}
           <a class="post-title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         {% else %}
@@ -61,7 +61,7 @@ pagination:
             <a class="post-title" href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
           {% endif %}
         {% endif %}
-      </h3>
+      </h4>
       <p>{{ post.description }}</p>
       <p class="post-meta">
         {{ read_time }} min read &nbsp; &middot; &nbsp;
