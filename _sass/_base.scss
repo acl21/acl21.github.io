@@ -54,6 +54,16 @@ img {
   max-width: 90vw;
 }
 
+figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  img {
+    max-width: 100%;
+  }
+}
+
 blockquote {
   background: var(--global-bg-color);
   border-left: 2px solid var(--global-theme-color);
