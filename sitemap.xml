@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://akshaychandra.com/blog/2023/quat-rot-op1/</loc>
+<lastmod>2023-10-16T00:00:00+00:00</lastmod>
+</url>
+<url>
+<loc>https://akshaychandra.com/blog/2023/quat-rot-op2/</loc>
+<lastmod>2023-10-16T00:00:00+00:00</lastmod>
+</url>
+<url>
+<loc>https://akshaychandra.com/blog/2023/quaternion-basics/</loc>
+<lastmod>2023-10-16T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>https://akshaychandra.com/blog/2019/learning-parameters-part-5-adagrad-rmsprop-and-adam/</loc>
 <lastmod>2019-09-27T04:38:57+00:00</lastmod>
 </url>
@@ -51,6 +63,9 @@
 </url>
 <url>
 <loc>https://akshaychandra.com/research/</loc>
+</url>
+<url>
+<loc>https://akshaychandra.com/blog/2023/</loc>
 </url>
 <url>
 <loc>https://akshaychandra.com/blog/2019/</loc>
