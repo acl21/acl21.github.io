@@ -210,8 +210,10 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 <p>For comparison, writing out the operator algorithm will be helpful.</p>
 
 \[\begin{aligned}
-R_{\mathbf{q}}(\vec{v}) &amp;= \mathbf{q} \star \vec{v} \star \mathbf{q}^{\ast} = (2q_0^2-1)\vec{v} + 2(\vec{q}\cdot \vec{v})\vec{q} + 2q_0(\vec{q} \times \vec{v}) \\
-R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mathbf{q} = (q_0^2-\Vert \vec{q} \Vert^2)\vec{v} + 2(\vec{q}\cdot \vec{v})\vec{q} + 2q_0(\vec{q} \times \vec{v})
+R_{\mathbf{q}}(\vec{v}) &amp;= \mathbf{q} \star \vec{v} \star \mathbf{q}^{\ast} \\
+&amp;= (2q_0^2-1)\vec{v} + 2(\vec{q}\cdot \vec{v})\vec{q} + 2q_0(\vec{q} \times \vec{v}) \\
+R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mathbf{q} \\
+&amp;= (q_0^2-\Vert \vec{q} \Vert^2)\vec{v} + 2(\vec{q}\cdot \vec{v})\vec{q} + 2q_0(\vec{q} \times \vec{v})
 \end{aligned}\]
 
 <p>Without a formal proof, I claim that these operators indeed rotate \(\vec{v}\) in \(\mathbb{R}^3\). Through some carefully designed tests, I hope to convince you on the same by answering the following key questions about \(R_{\mathbf{q}}\):</p>
@@ -244,7 +246,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 \vec{w} &amp;= R_{\mathbf{q}}(\vec{v}) = \mathbf{q} \star i \star \mathbf{q}^{\ast} \\
 &amp;= (1+k\theta)(i)(1-k\theta) \\
 &amp;= (1+k\theta)(i+j\theta) \\
-\vec{w} &amp;= i + 2\theta j \quad (\text{or }\left[\begin{matrix} 1 \\ 2\theta \\ 0\end{matrix}\right]) \quad \hspace{5cm} \text{(1)}
+\vec{w} &amp;= i + 2\theta j \quad (\text{or }\left[\begin{matrix} 1 \\ 2\theta \\ 0\end{matrix}\right])
 \end{aligned}\]
 
 <p>We can interpret this result to mean that the input vector \(i\) has been “tweaked” by <em>some</em> angle to produce the output vector \(i + 2\theta j\). Firstly, for completeness, let us examine the length of \(\vec{w}\)</p>
@@ -308,7 +310,10 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 <p>When I first saw the incremental test, I was left uneasy and sceptical of the angle of rotation due to the approximations made. But we can be sure of the claims made on the angle of rotation with a simple angle test. Let us choose a unit quaternion with the associated angle \(\theta=\frac{\pi}{6}\) while keeping the axis of rotation \(\vec{u}\) as the same basis vector \(k\). Then we have the following quaternion</p>
 
-\[\mathbf{q} = \cos \theta + k \sin \theta = \cos (\frac{\pi}{6}) + k \sin (\frac{\pi}{6}) = \frac{\sqrt{3}}{2} + \frac{1}{2} k\]
+\[\begin{aligned}
+\mathbf{q} = \cos \theta + k \sin \theta &amp;= \cos (\frac{\pi}{6}) + k \sin (\frac{\pi}{6}) \\
+&amp;= \frac{\sqrt{3}}{2} + \frac{1}{2} k
+\end{aligned}\]
 
 <p>Let us apply the operator \(R_{\mathbf{q}}(\vec{v})\) on the same basis vector \(\vec{v} = 1i + 0j + 0k = i\). We have</p>
 
@@ -338,7 +343,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 \[\vec{w}^{\ast} = R_{\mathbf{q}^{\ast}}(\vec{v}) = 1 - 2\theta j\]
 
-<p>Comparing this with the \(\vec{w} = 1 + 2\theta j\) (see Eq. \text{(1)}) suggests that the difference between \(R_{\mathbf{q}}(\vec{v})\) and \(R_{\mathbf{q}^{\ast}}(\vec{v})\) is simply the direction of rotation. One must be careful here, however, as seen in section <em>Polar Form</em> of <d-cite key="quat-rot-op1"></d-cite>, \(\theta\) has to restrict to the domain \((-\pi, \pi]\). So \(\theta\) can be both negative and positive, which makes it very difficult to differentiate between these two operators. Basically, \(R_{\mathbf{q}}(\vec{v})\) can do what \(R_{\mathbf{q}^{\ast}}(\vec{v})\) does with an appropriate choice of \(\theta\) i.e., replace \(\theta\) by \(-\theta\) in \(\mathbf{q}\) and you go from \(R_{\mathbf{q}}(\vec{v})\) to \(R_{\mathbf{q}^{\ast}}(\vec{v})\). In a nutshell, rotation perspective, personal preference, and even library conventions often decide the use of one operator over the other in a given application. It is important to note that both are mathematically equivalent and can represent the same rotations.</p>
+<p>Comparing this with the \(\vec{w} = 1 + 2\theta j\) suggests that the difference between \(R_{\mathbf{q}}(\vec{v})\) and \(R_{\mathbf{q}^{\ast}}(\vec{v})\) is simply the direction of rotation. One must be careful here, however, as seen in section <em>Polar Form</em> of <d-cite key="quat-rot-op1"></d-cite>, \(\theta\) has to restrict to the domain \((-\pi, \pi]\). So \(\theta\) can be both negative and positive, which makes it very difficult to differentiate between these two operators. Basically, \(R_{\mathbf{q}}(\vec{v})\) can do what \(R_{\mathbf{q}^{\ast}}(\vec{v})\) does with an appropriate choice of \(\theta\) i.e., replace \(\theta\) by \(-\theta\) in \(\mathbf{q}\) and you go from \(R_{\mathbf{q}}(\vec{v})\) to \(R_{\mathbf{q}^{\ast}}(\vec{v})\). In a nutshell, rotation perspective, personal preference, and even library conventions often decide the use of one operator over the other in a given application. It is important to note that both are mathematically equivalent and can represent the same rotations.</p>
 
 <h2 id="summary">Summary</h2>
 

@@ -296,8 +296,9 @@
 &amp;= (-\vec{p}\cdot\vec{v} + p_0\vec{v} + \vec{p} \times \vec{v}) \star \mathbf{q} \\
 &amp;= - q_0 \vec{p}\cdot\vec{v} - (p_0\vec{v} + \vec{p} \times \vec{v}) \cdot \vec{q} + (-\vec{p}\cdot\vec{v})\cdot\vec{q} \\
 &amp;\quad + q_0(p_0\vec{v} + \vec{p} \times \vec{v}) + (p_0\vec{v} + \vec{p} \times \vec{v}) \times \vec{q} \\
-&amp;= - q_0 (\vec{p}\cdot\vec{v}) - p_0(\vec{v} \cdot \vec{q}) - (\vec{p} \times \vec{v}) \cdot \vec{q} - (\vec{p}\cdot\vec{v})\cdot\vec{q} \\
-&amp;\quad + q_0(p_0\vec{v} + \vec{p} \times \vec{v}) + (p_0\vec{v} + \vec{p} \times \vec{v}) \times \vec{q}
+&amp;= - q_0 (\vec{p}\cdot\vec{v}) - p_0(\vec{v} \cdot \vec{q}) - (\vec{p} \times \vec{v}) \cdot \vec{q} \\
+&amp; \quad - (\vec{p}\cdot\vec{v})\cdot\vec{q} + q_0(p_0\vec{v} + \vec{p} \times \vec{v}) \\
+&amp; \quad + (p_0\vec{v} + \vec{p} \times \vec{v}) \times \vec{q}
 \end{aligned}\]
 
 <p>Separating out the scalar part from above, we have:</p>
@@ -362,7 +363,9 @@
 <p>In fact, even for higher-order multiplication with unit quaternions, we see that the norm of the factors is preserved. Say, we have \(n\) unit quaternions \(\{\mathbf{q}_1, \mathbf{q}_2, ..., \mathbf{q}_n\}\) and a general quaternion \(\mathbf{p}\). The squared norm of the product</p>
 
 \[\begin{aligned}
-\Vert \mathbf{q}_1 \star ... \star \mathbf{p} \star ... \star \mathbf{q}_n \Vert^2 &amp;= \Vert \mathbf{p} \star \mathbf{q}_1 \star ... \star \mathbf{q}_n \Vert^2 = \Vert \mathbf{q}_1 \star ... \star \mathbf{q}_n \star \mathbf{p} \Vert^2 = \Vert \mathbf{p} \Vert^2
+\Vert \mathbf{q}_1 \star ... \star \mathbf{p} \star ... \star \mathbf{q}_n \Vert^2 &amp;= \Vert \mathbf{p} \star \mathbf{q}_1 \star ... \star \mathbf{q}_n \Vert^2 \\
+&amp;= \Vert \mathbf{q}_1 \star ... \star \mathbf{q}_n \star \mathbf{p} \Vert^2 \\
+&amp;= \Vert \mathbf{p} \Vert^2
 \end{aligned}\]
 
 <blockquote>
@@ -420,9 +423,12 @@ z_2 &amp;= r_2(\cos \theta_2 + i \sin \theta_2)
 
 \[\begin{aligned}
 z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin \theta_2) \\
-&amp;= r_1r_2(\cos \theta_1 \cos \theta_2 + i \cos \theta_1 \sin \theta_2 + i \sin \theta_1 \cos \theta_2 - \sin \theta_1 \sin \theta_2) \\
-&amp;= r_1r_2(\cos \theta_1 \cos \theta_2 - \sin \theta_1 \sin \theta_2 + i (\cos \theta_1 \sin \theta_2 + \sin \theta_1 \cos \theta_2)) \\
-&amp;= r_1r_2(\cos (\theta_1 + \theta_2) + i \sin (\theta_1 + \theta_2)) \quad \text{(from def. of} \cos (\theta_1 + \theta_2) \text{ and } \sin (\theta_1 + \theta_2))
+&amp;= r_1r_2(\cos \theta_1 \cos \theta_2 + i \cos \theta_1 \sin \theta_2 + i \sin \theta_1 \cos \theta_2 \\
+&amp; \quad - \sin \theta_1 \sin \theta_2) \\
+&amp;= r_1r_2(\cos \theta_1 \cos \theta_2 - \sin \theta_1 \sin \theta_2 \\
+&amp;\quad + i (\cos \theta_1 \sin \theta_2 + \sin \theta_1 \cos \theta_2)) \\
+&amp;= r_1r_2(\cos (\theta_1 + \theta_2) + i \sin (\theta_1 + \theta_2)) 
+% &amp;\quad \text{(from def. of} \cos (\theta_1 + \theta_2) \text{ and } \sin (\theta_1 + \theta_2))
 \end{aligned}\]
 
 <p>The geometric interpretation of the complex product is clear now. When two complex numbers are multiplied, you notice that the output complex number has an associated angle that is exactly the sum of angles associated with the multiplicands and has a magnitude equal to the product of magnitudes of the multiplicands.</p>
@@ -484,8 +490,10 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
 
 \[\begin{aligned}
 \mathbf{q}_1 \star \mathbf{q}_2 &amp;= (\cos \theta_1 + \vec{u} \sin \theta_1)(\cos \theta_2 + \vec{u} \sin \theta_2) \\
-&amp;= \cos \theta_1 \cos \theta_2 - (\vec{u} \sin \theta_1) \cdot (\vec{u} \sin \theta_2) + \cos \theta_1 (\vec{u} \sin \theta_2) + \cos \theta_2 (\vec{u} \sin \theta_1) + \vec{u} \sin \theta_1 \times \vec{u} \sin \theta_2 \\
-&amp;= \cos \theta_1 \cos \theta_2 - \sin \theta_1 \sin \theta_2 + \vec{u} (\cos \theta_1 \sin \theta_2 + \sin \theta_1 \cos \theta_2)  + 0\\
+&amp;= \cos \theta_1 \cos \theta_2 - (\vec{u} \sin \theta_1) \cdot (\vec{u} \sin \theta_2) \\
+&amp; \quad + \cos \theta_1 (\vec{u} \sin \theta_2) + \cos \theta_2 (\vec{u} \sin \theta_1) + \vec{u} \sin \theta_1 \times \vec{u} \sin \theta_2 \\
+&amp;= \cos \theta_1 \cos \theta_2 - \sin \theta_1 \sin \theta_2 \\
+&amp; \quad + \vec{u} (\cos \theta_1 \sin \theta_2 + \sin \theta_1 \cos \theta_2)\\
 &amp;= \cos (\theta_1 + \theta_2) + \vec{u} \sin (\theta_1 + \theta_2)
 \end{aligned}\]
 

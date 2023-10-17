@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://akshaychandra.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://akshaychandra.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-17T07:49:36+00:00</updated><id>https://akshaychandra.com/feed.xml</id><title type="html">blank</title><subtitle></subtitle><entry><title type="html">Quaternion Rotation Operator</title><link href="https://akshaychandra.com/blog/2023/quat-rot-op2/" rel="alternate" type="text/html" title="Quaternion Rotation Operator" /><published>2023-10-17T00:00:00+00:00</published><updated>2023-10-17T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/quat-rot-op2</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/quat-rot-op2/"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://akshaychandra.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://akshaychandra.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-17T08:36:40+00:00</updated><id>https://akshaychandra.com/feed.xml</id><title type="html">blank</title><subtitle></subtitle><entry><title type="html">Quaternion Rotation Operator</title><link href="https://akshaychandra.com/blog/2023/quat-rot-op2/" rel="alternate" type="text/html" title="Quaternion Rotation Operator" /><published>2023-10-17T00:00:00+00:00</published><updated>2023-10-17T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/quat-rot-op2</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/quat-rot-op2/"><![CDATA[<blockquote>
   <p><strong>Citation Note:</strong> I have borrowed this article’s content from Jack B. Kuipers’ seminal 1999 book <d-cite key="kuipers1999quaternions"></d-cite> on quaternions.</p>
 </blockquote>
 
@@ -26,8 +26,10 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 <p>For comparison, writing out the operator algorithm will be helpful.</p>
 
 \[\begin{aligned}
-R_{\mathbf{q}}(\vec{v}) &amp;= \mathbf{q} \star \vec{v} \star \mathbf{q}^{\ast} = (2q_0^2-1)\vec{v} + 2(\vec{q}\cdot \vec{v})\vec{q} + 2q_0(\vec{q} \times \vec{v}) \\
-R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mathbf{q} = (q_0^2-\Vert \vec{q} \Vert^2)\vec{v} + 2(\vec{q}\cdot \vec{v})\vec{q} + 2q_0(\vec{q} \times \vec{v})
+R_{\mathbf{q}}(\vec{v}) &amp;= \mathbf{q} \star \vec{v} \star \mathbf{q}^{\ast} \\
+&amp;= (2q_0^2-1)\vec{v} + 2(\vec{q}\cdot \vec{v})\vec{q} + 2q_0(\vec{q} \times \vec{v}) \\
+R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mathbf{q} \\
+&amp;= (q_0^2-\Vert \vec{q} \Vert^2)\vec{v} + 2(\vec{q}\cdot \vec{v})\vec{q} + 2q_0(\vec{q} \times \vec{v})
 \end{aligned}\]
 
 <p>Without a formal proof, I claim that these operators indeed rotate \(\vec{v}\) in \(\mathbb{R}^3\). Through some carefully designed tests, I hope to convince you on the same by answering the following key questions about \(R_{\mathbf{q}}\):</p>
@@ -60,7 +62,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 \vec{w} &amp;= R_{\mathbf{q}}(\vec{v}) = \mathbf{q} \star i \star \mathbf{q}^{\ast} \\
 &amp;= (1+k\theta)(i)(1-k\theta) \\
 &amp;= (1+k\theta)(i+j\theta) \\
-\vec{w} &amp;= i + 2\theta j \quad (\text{or }\left[\begin{matrix} 1 \\ 2\theta \\ 0\end{matrix}\right]) \quad \hspace{5cm} \text{(1)}
+\vec{w} &amp;= i + 2\theta j \quad (\text{or }\left[\begin{matrix} 1 \\ 2\theta \\ 0\end{matrix}\right])
 \end{aligned}\]
 
 <p>We can interpret this result to mean that the input vector \(i\) has been “tweaked” by <em>some</em> angle to produce the output vector \(i + 2\theta j\). Firstly, for completeness, let us examine the length of \(\vec{w}\)</p>
@@ -124,7 +126,10 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 <p>When I first saw the incremental test, I was left uneasy and sceptical of the angle of rotation due to the approximations made. But we can be sure of the claims made on the angle of rotation with a simple angle test. Let us choose a unit quaternion with the associated angle \(\theta=\frac{\pi}{6}\) while keeping the axis of rotation \(\vec{u}\) as the same basis vector \(k\). Then we have the following quaternion</p>
 
-\[\mathbf{q} = \cos \theta + k \sin \theta = \cos (\frac{\pi}{6}) + k \sin (\frac{\pi}{6}) = \frac{\sqrt{3}}{2} + \frac{1}{2} k\]
+\[\begin{aligned}
+\mathbf{q} = \cos \theta + k \sin \theta &amp;= \cos (\frac{\pi}{6}) + k \sin (\frac{\pi}{6}) \\
+&amp;= \frac{\sqrt{3}}{2} + \frac{1}{2} k
+\end{aligned}\]
 
 <p>Let us apply the operator \(R_{\mathbf{q}}(\vec{v})\) on the same basis vector \(\vec{v} = 1i + 0j + 0k = i\). We have</p>
 
@@ -154,7 +159,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 \[\vec{w}^{\ast} = R_{\mathbf{q}^{\ast}}(\vec{v}) = 1 - 2\theta j\]
 
-<p>Comparing this with the \(\vec{w} = 1 + 2\theta j\) (see Eq. \text{(1)}) suggests that the difference between \(R_{\mathbf{q}}(\vec{v})\) and \(R_{\mathbf{q}^{\ast}}(\vec{v})\) is simply the direction of rotation. One must be careful here, however, as seen in section <em>Polar Form</em> of <d-cite key="quat-rot-op1"></d-cite>, \(\theta\) has to restrict to the domain \((-\pi, \pi]\). So \(\theta\) can be both negative and positive, which makes it very difficult to differentiate between these two operators. Basically, \(R_{\mathbf{q}}(\vec{v})\) can do what \(R_{\mathbf{q}^{\ast}}(\vec{v})\) does with an appropriate choice of \(\theta\) i.e., replace \(\theta\) by \(-\theta\) in \(\mathbf{q}\) and you go from \(R_{\mathbf{q}}(\vec{v})\) to \(R_{\mathbf{q}^{\ast}}(\vec{v})\). In a nutshell, rotation perspective, personal preference, and even library conventions often decide the use of one operator over the other in a given application. It is important to note that both are mathematically equivalent and can represent the same rotations.</p>
+<p>Comparing this with the \(\vec{w} = 1 + 2\theta j\) suggests that the difference between \(R_{\mathbf{q}}(\vec{v})\) and \(R_{\mathbf{q}^{\ast}}(\vec{v})\) is simply the direction of rotation. One must be careful here, however, as seen in section <em>Polar Form</em> of <d-cite key="quat-rot-op1"></d-cite>, \(\theta\) has to restrict to the domain \((-\pi, \pi]\). So \(\theta\) can be both negative and positive, which makes it very difficult to differentiate between these two operators. Basically, \(R_{\mathbf{q}}(\vec{v})\) can do what \(R_{\mathbf{q}^{\ast}}(\vec{v})\) does with an appropriate choice of \(\theta\) i.e., replace \(\theta\) by \(-\theta\) in \(\mathbf{q}\) and you go from \(R_{\mathbf{q}}(\vec{v})\) to \(R_{\mathbf{q}^{\ast}}(\vec{v})\). In a nutshell, rotation perspective, personal preference, and even library conventions often decide the use of one operator over the other in a given application. It is important to note that both are mathematically equivalent and can represent the same rotations.</p>
 
 <h2 id="summary">Summary</h2>
 
@@ -280,8 +285,9 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 &amp;= (-\vec{p}\cdot\vec{v} + p_0\vec{v} + \vec{p} \times \vec{v}) \star \mathbf{q} \\
 &amp;= - q_0 \vec{p}\cdot\vec{v} - (p_0\vec{v} + \vec{p} \times \vec{v}) \cdot \vec{q} + (-\vec{p}\cdot\vec{v})\cdot\vec{q} \\
 &amp;\quad + q_0(p_0\vec{v} + \vec{p} \times \vec{v}) + (p_0\vec{v} + \vec{p} \times \vec{v}) \times \vec{q} \\
-&amp;= - q_0 (\vec{p}\cdot\vec{v}) - p_0(\vec{v} \cdot \vec{q}) - (\vec{p} \times \vec{v}) \cdot \vec{q} - (\vec{p}\cdot\vec{v})\cdot\vec{q} \\
-&amp;\quad + q_0(p_0\vec{v} + \vec{p} \times \vec{v}) + (p_0\vec{v} + \vec{p} \times \vec{v}) \times \vec{q}
+&amp;= - q_0 (\vec{p}\cdot\vec{v}) - p_0(\vec{v} \cdot \vec{q}) - (\vec{p} \times \vec{v}) \cdot \vec{q} \\
+&amp; \quad - (\vec{p}\cdot\vec{v})\cdot\vec{q} + q_0(p_0\vec{v} + \vec{p} \times \vec{v}) \\
+&amp; \quad + (p_0\vec{v} + \vec{p} \times \vec{v}) \times \vec{q}
 \end{aligned}\]
 
 <p>Separating out the scalar part from above, we have:</p>
@@ -346,7 +352,9 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 <p>In fact, even for higher-order multiplication with unit quaternions, we see that the norm of the factors is preserved. Say, we have \(n\) unit quaternions \(\{\mathbf{q}_1, \mathbf{q}_2, ..., \mathbf{q}_n\}\) and a general quaternion \(\mathbf{p}\). The squared norm of the product</p>
 
 \[\begin{aligned}
-\Vert \mathbf{q}_1 \star ... \star \mathbf{p} \star ... \star \mathbf{q}_n \Vert^2 &amp;= \Vert \mathbf{p} \star \mathbf{q}_1 \star ... \star \mathbf{q}_n \Vert^2 = \Vert \mathbf{q}_1 \star ... \star \mathbf{q}_n \star \mathbf{p} \Vert^2 = \Vert \mathbf{p} \Vert^2
+\Vert \mathbf{q}_1 \star ... \star \mathbf{p} \star ... \star \mathbf{q}_n \Vert^2 &amp;= \Vert \mathbf{p} \star \mathbf{q}_1 \star ... \star \mathbf{q}_n \Vert^2 \\
+&amp;= \Vert \mathbf{q}_1 \star ... \star \mathbf{q}_n \star \mathbf{p} \Vert^2 \\
+&amp;= \Vert \mathbf{p} \Vert^2
 \end{aligned}\]
 
 <blockquote>
@@ -404,9 +412,12 @@ z_2 &amp;= r_2(\cos \theta_2 + i \sin \theta_2)
 
 \[\begin{aligned}
 z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin \theta_2) \\
-&amp;= r_1r_2(\cos \theta_1 \cos \theta_2 + i \cos \theta_1 \sin \theta_2 + i \sin \theta_1 \cos \theta_2 - \sin \theta_1 \sin \theta_2) \\
-&amp;= r_1r_2(\cos \theta_1 \cos \theta_2 - \sin \theta_1 \sin \theta_2 + i (\cos \theta_1 \sin \theta_2 + \sin \theta_1 \cos \theta_2)) \\
-&amp;= r_1r_2(\cos (\theta_1 + \theta_2) + i \sin (\theta_1 + \theta_2)) \quad \text{(from def. of} \cos (\theta_1 + \theta_2) \text{ and } \sin (\theta_1 + \theta_2))
+&amp;= r_1r_2(\cos \theta_1 \cos \theta_2 + i \cos \theta_1 \sin \theta_2 + i \sin \theta_1 \cos \theta_2 \\
+&amp; \quad - \sin \theta_1 \sin \theta_2) \\
+&amp;= r_1r_2(\cos \theta_1 \cos \theta_2 - \sin \theta_1 \sin \theta_2 \\
+&amp;\quad + i (\cos \theta_1 \sin \theta_2 + \sin \theta_1 \cos \theta_2)) \\
+&amp;= r_1r_2(\cos (\theta_1 + \theta_2) + i \sin (\theta_1 + \theta_2)) 
+% &amp;\quad \text{(from def. of} \cos (\theta_1 + \theta_2) \text{ and } \sin (\theta_1 + \theta_2))
 \end{aligned}\]
 
 <p>The geometric interpretation of the complex product is clear now. When two complex numbers are multiplied, you notice that the output complex number has an associated angle that is exactly the sum of angles associated with the multiplicands and has a magnitude equal to the product of magnitudes of the multiplicands.</p>
@@ -468,8 +479,10 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
 
 \[\begin{aligned}
 \mathbf{q}_1 \star \mathbf{q}_2 &amp;= (\cos \theta_1 + \vec{u} \sin \theta_1)(\cos \theta_2 + \vec{u} \sin \theta_2) \\
-&amp;= \cos \theta_1 \cos \theta_2 - (\vec{u} \sin \theta_1) \cdot (\vec{u} \sin \theta_2) + \cos \theta_1 (\vec{u} \sin \theta_2) + \cos \theta_2 (\vec{u} \sin \theta_1) + \vec{u} \sin \theta_1 \times \vec{u} \sin \theta_2 \\
-&amp;= \cos \theta_1 \cos \theta_2 - \sin \theta_1 \sin \theta_2 + \vec{u} (\cos \theta_1 \sin \theta_2 + \sin \theta_1 \cos \theta_2)  + 0\\
+&amp;= \cos \theta_1 \cos \theta_2 - (\vec{u} \sin \theta_1) \cdot (\vec{u} \sin \theta_2) \\
+&amp; \quad + \cos \theta_1 (\vec{u} \sin \theta_2) + \cos \theta_2 (\vec{u} \sin \theta_1) + \vec{u} \sin \theta_1 \times \vec{u} \sin \theta_2 \\
+&amp;= \cos \theta_1 \cos \theta_2 - \sin \theta_1 \sin \theta_2 \\
+&amp; \quad + \vec{u} (\cos \theta_1 \sin \theta_2 + \sin \theta_1 \cos \theta_2)\\
 &amp;= \cos (\theta_1 + \theta_2) + \vec{u} \sin (\theta_1 + \theta_2)
 \end{aligned}\]
 
@@ -681,7 +694,10 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
 <h3 id="two-by-two-matrices">Two-By-Two Matrices</h3>
 <p>Another way of thinking about quaternions is to treat them as products of simple \(2 \times 2\) matrices:</p>
 
-\[U := \left[ \begin{matrix} 1 &amp; 0 \\ 0 &amp; 1 \end{matrix}\right], \; I := \left[ \begin{matrix} i &amp; 0 \\ 0 &amp; -i \end{matrix}\right], \; J := \left[ \begin{matrix} 0 &amp; 1 \\ -1 &amp; 0 \end{matrix}\right], \; K := \left[ \begin{matrix} 0 &amp; i \\ i &amp; 0 \end{matrix}\right]\]
+\[\begin{aligned}
+U &amp;:= \left[ \begin{matrix} 1 &amp; 0 \\ 0 &amp; 1 \end{matrix}\right], \; I := \left[ \begin{matrix} i &amp; 0 \\ 0 &amp; -i \end{matrix}\right], \\
+J &amp;:= \left[ \begin{matrix} 0 &amp; 1 \\ -1 &amp; 0 \end{matrix}\right], \; K := \left[ \begin{matrix} 0 &amp; i \\ i &amp; 0 \end{matrix}\right]
+\end{aligned}\]
 
 \[I^2 = J^2 = K^2 = IJK = -U\]
 
@@ -724,26 +740,28 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
 <p>Similar to addition, first let us write out the multiplication of two quaternions the naive way and see if we can transform it to the Scalar + Vector form.</p>
 
 \[\begin{aligned}
-\mathbf{p} \star \mathbf{q} &amp; = (p_0 + p_1i + p_2j + p_3k) (q_0 + q_1i + q_2j + q_3k) \\
+\mathbf{p} \star \mathbf{q} &amp;= (p_0 + p_1i + p_2j + p_3k) (q_0 + q_1i + q_2j + q_3k) \\
 \\
-&amp; = p_0q_0 + p_0(q_1i + q_2j + q_3k) + p_1q_0i + p_1i(q_1i + q_2j + q_3k) \\
-&amp; \quad + p_2q_0j + p_2j(q_1i + q_2j + q_3k) + p_3q_0k + p_3k(q_1i + q_2j + q_3k) \\
+&amp;= p_0q_0 + p_0(q_1i + q_2j + q_3k) + p_1q_0i \\
+&amp;\quad + p_1i(q_1i + q_2j + q_3k) + p_2q_0j + p_2j(q_1i + q_2j + q_3k) \\
+&amp;\quad + p_3q_0k + p_3k(q_1i + q_2j + q_3k) \\
 \\
-&amp; = p_0q_0 + p_0(q_1i + q_2j + q_3k) + p_1q_0i + p_1q_1(i^2)  \\
-&amp; \quad + p_1q_2(ij) + p1q_3(ik) + p_2q_0j + p_2q_1(ji) + p_2q_2(j^2) \\
-&amp; \quad + p_2q_3(jk) + p_3q_0k + p_3q_1(ki) + p_3q_2(kj) + p_3q_3(k^2) \\
+&amp;= p_0q_0 + p_0(q_1i + q_2j + q_3k) + p_1q_0i + p_1q_1(i^2)  \\
+&amp;\quad + p_1q_2(ij) + p1q_3(ik) + p_2q_0j + p_2q_1(ji) \\
+&amp;\quad + p_2q_2(j^2) + p_2q_3(jk) + p_3q_0k + p_3q_1(ki) \\
+&amp;\quad + p_3q_2(kj) + p_3q_3(k^2) \\
 \\
 &amp; = p_0q_0 + p_0(q_1i + q_2j + q_3k) + q_0(p_1i + p_2j+ p_3k) + p_1q_1(i^2) \\
-&amp; \quad + p_1q_2(ij) + p_1q_3(ik) + p_2q_1(ji) + p_2q_2(j^2) \\
-&amp; \quad + p_2q_3(jk) + p_3q_1(ki) + p_3q_2(kj) + p_3q_3(k^2) \\
+&amp;\quad + p_1q_2(ij) + p_1q_3(ik) + p_2q_1(ji) + p_2q_2(j^2) \\
+&amp;\quad + p_2q_3(jk) + p_3q_1(ki) + p_3q_2(kj) + p_3q_3(k^2) \\
 \\
-&amp; = p_0q_0 + p_0(q_1i + q_2j + q_3k) + q_0(p_1i + p_2j+ p_3k) + p_1q_1(-1) \\
-&amp; \quad + p_1q_2(k) + p_1q_3(-j) + p_2q_1(-k) + p_2q_2(-1) \\
-&amp; \quad + p_2q_3(i) + p_3q_1(j) + p_3q_2(-i) + p_3q_3(-1) \\
+&amp;= p_0q_0 + p_0(q_1i + q_2j + q_3k) + q_0(p_1i + p_2j+ p_3k) + p_1q_1(-1) \\
+&amp;\quad + p_1q_2(k) + p_1q_3(-j) + p_2q_1(-k) + p_2q_2(-1) \\
+&amp;\quad + p_2q_3(i) + p_3q_1(j) + p_3q_2(-i) + p_3q_3(-1) \\
 \\
-&amp; = p_0q_0 + p_0\textcolor{orange}{(q_1i + q_2j + q_3k)} + q_0\textcolor{lime}{(p_1i + p_2j+ p_3k)} \\
-&amp; \quad - \textcolor{cyan}{(p_1q_1+p_2q_2 +p_3q_3)} \\
-&amp; \quad  + \textcolor{pink}{(p_2q_3 - p_3q_2)i + (p_3q_1 - p_1q_3)j + (p_1q_2 - p_2q_1)k}
+&amp;= p_0q_0 + p_0\textcolor{orange}{(q_1i + q_2j + q_3k)} + q_0\textcolor{lime}{(p_1i + p_2j+ p_3k)} \\
+&amp;\quad - \textcolor{cyan}{(p_1q_1+p_2q_2 +p_3q_3)} \\
+&amp;\quad + \textcolor{pink}{(p_2q_3 - p_3q_2)i + (p_3q_1 - p_1q_3)j} + \textcolor{pink}{(p_1q_2 - p_2q_1)k} \hspace{5cm}
 \end{aligned}\]
 
 <p>Phew! Reminiscent of the Four-Dimensions model, one can see how quickly quaternion products in their naive form become cumbersome, unintuitive and inconvenient. Thankfully, the Scalar + Vector model allows us to rewrite the above equation in terms of dot and cross products as follows:</p>
@@ -770,7 +788,8 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
 \mathbf{q} + \mathbf{q^{\ast}} &amp; = 2q_0 \\
 \mathbf{q} - \mathbf{q^{\ast}} &amp; = 2\vec{q} \\
 \mathbf{q^{\ast}} \star \mathbf{q} &amp; = (q_0 - \vec{q}) \star (q_0 + \vec{q}) \\
-&amp; = q_0q_0 - (-\vec{q}) \cdot \vec{q} + q_0\vec{q} + (-\vec{q})q_0 + (-\vec{q}) \times \vec{q} \quad \text{(from Eq. (1))} \\
+&amp; = q_0q_0 - (-\vec{q}) \cdot \vec{q} + q_0\vec{q} \\
+&amp; \quad + (-\vec{q})q_0 + (-\vec{q}) \times \vec{q} \quad \text{(from Eq. (1))} \\
 &amp; = q_0^2 + \vec{q} \cdot \vec{q} \\
 &amp; = q_0^2 + q_1^2 + q_2^2 + q_3^2 \quad \text{(Quadrance)} \\ 
 &amp; = \mathbf{q} \star \mathbf{q^{\ast}} \quad \text{(Commutative)} \\ 
@@ -781,16 +800,18 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
 \[\begin{aligned}
 (\mathbf{p} \star \mathbf{q})^{\ast} &amp; =  (p_0q_0 -\vec{p} \cdot \vec{q} + p_0\vec{q} + q_0\vec{p} + \vec{p} \times \vec{q})^{\ast} \quad \text{(from Eq. (1))}\\
 &amp; = (p_0q_0 -\vec{p} \cdot \vec{q} - p_0\vec{q} - q_0\vec{p} - \vec{p} \times \vec{q}) \quad \text{(from Eq. (2))}\\
-&amp; = (p_0q_0 -(-\vec{p}) \cdot (-\vec{q}) + p_0(-\vec{q}) + q_0(-\vec{p}) - (-\vec{p}) \times (-\vec{q})) \quad \text{(Since } a \times b = (-a \times -b)\text{)}\\
-&amp; = (p_0q_0 -(-\vec{p}) \cdot (-\vec{q}) + p_0(-\vec{q}) + q_0(-\vec{p}) + (-\vec{q}) \times (-\vec{p})) \quad \text{(Since } a \times b = - (b \times a)\text{)}\\
-&amp; = \mathbf{q}^{\ast} \star \mathbf{p}^{\ast} \hspace{13cm} \text{(3)}
+&amp; = (p_0q_0 -(-\vec{p}) \cdot (-\vec{q}) + p_0(-\vec{q}) \\ 
+&amp; \quad + q_0(-\vec{p}) - (-\vec{p}) \times (-\vec{q})) \quad \text{(Since } a \times b = (-a \times -b)\text{)}\\
+&amp; = (p_0q_0 -(-\vec{p}) \cdot (-\vec{q}) + p_0(-\vec{q}) \\
+&amp; \quad + q_0(-\vec{p}) + (-\vec{q}) \times (-\vec{p})) \quad \text{(Since } a \times b = - (b \times a)\text{)}\\
+&amp; = \mathbf{q}^{\ast} \star \mathbf{p}^{\ast} \hspace{10cm} \text{(3)}
 \end{aligned}\]
 
 <p>With Eq. \(\text{(3)}\), we can now easily find the conjugate of quaternion multiplications of more than two quaternions and you see that the above form extends. Given four quaternions \(\mathbf{q}_1, \mathbf{q}_2, \mathbf{q}_3\) and \(\mathbf{q}_4\), we have</p>
 
 \[\begin{aligned}
 (\mathbf{q}_1 \star \mathbf{q}_2 \star \mathbf{q}_3)^{\ast} &amp;= ((\mathbf{q}_1 \star \mathbf{q}_2) \star \mathbf{q}_3)^{\ast}\\
-&amp;= \mathbf{q}_3^{\ast} \star (\mathbf{q}_1 \star \mathbf{q}_2)^{\ast}  \quad \text{(from Eq. (3))}\\
+&amp;= \mathbf{q}_3^{\ast} \star (\mathbf{q}_1 \star \mathbf{q}_2)^{\ast} \quad \text{(from Eq. (3))}\\
 &amp;= \mathbf{q}_3^{\ast} \star \mathbf{q}_2^{\ast} \star \mathbf{q}_1^{\ast} \\
 (\mathbf{q}_1 \star \mathbf{q}_2 \star \mathbf{q}_3 \star \mathbf{q}_4)^{\ast} &amp;= ((\mathbf{q}_1 \star \mathbf{q}_2) \star (\mathbf{q}_3 \star \mathbf{q}_4))^{\ast} \\
 &amp;= (\mathbf{q}_3 \star \mathbf{q}_4)^{\ast} \star (\mathbf{q}_1 \star \mathbf{q}_2) ^{\ast} \\
@@ -802,7 +823,8 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
 <p>The squared <em>norm</em> of a quaternion \(\mathbf{q}\) is simply its quadrance</p>
 
 \[\begin{aligned}
-\Vert \mathbf{q} \Vert^2 &amp;= q_0^2 + q_1^2 + q_2^2 + q_3^2 = \mathbf{q^{\ast}} \star \mathbf{q} = \mathbf{q} \star \mathbf{q^{\ast}} \\
+\Vert \mathbf{q} \Vert^2 &amp;= q_0^2 + q_1^2 + q_2^2 + q_3^2 \\
+&amp;= \mathbf{q^{\ast}} \star \mathbf{q} = \mathbf{q} \star \mathbf{q^{\ast}} \\
 &amp;= q_0^2 +  (\vec{q} \cdot \vec{q})
 \end{aligned}\]
 

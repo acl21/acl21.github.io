@@ -401,7 +401,10 @@
 <h3 id="two-by-two-matrices">Two-By-Two Matrices</h3>
 <p>Another way of thinking about quaternions is to treat them as products of simple \(2 \times 2\) matrices:</p>
 
-\[U := \left[ \begin{matrix} 1 &amp; 0 \\ 0 &amp; 1 \end{matrix}\right], \; I := \left[ \begin{matrix} i &amp; 0 \\ 0 &amp; -i \end{matrix}\right], \; J := \left[ \begin{matrix} 0 &amp; 1 \\ -1 &amp; 0 \end{matrix}\right], \; K := \left[ \begin{matrix} 0 &amp; i \\ i &amp; 0 \end{matrix}\right]\]
+\[\begin{aligned}
+U &amp;:= \left[ \begin{matrix} 1 &amp; 0 \\ 0 &amp; 1 \end{matrix}\right], \; I := \left[ \begin{matrix} i &amp; 0 \\ 0 &amp; -i \end{matrix}\right], \\
+J &amp;:= \left[ \begin{matrix} 0 &amp; 1 \\ -1 &amp; 0 \end{matrix}\right], \; K := \left[ \begin{matrix} 0 &amp; i \\ i &amp; 0 \end{matrix}\right]
+\end{aligned}\]
 
 \[I^2 = J^2 = K^2 = IJK = -U\]
 
@@ -444,26 +447,28 @@
 <p>Similar to addition, first let us write out the multiplication of two quaternions the naive way and see if we can transform it to the Scalar + Vector form.</p>
 
 \[\begin{aligned}
-\mathbf{p} \star \mathbf{q} &amp; = (p_0 + p_1i + p_2j + p_3k) (q_0 + q_1i + q_2j + q_3k) \\
+\mathbf{p} \star \mathbf{q} &amp;= (p_0 + p_1i + p_2j + p_3k) (q_0 + q_1i + q_2j + q_3k) \\
 \\
-&amp; = p_0q_0 + p_0(q_1i + q_2j + q_3k) + p_1q_0i + p_1i(q_1i + q_2j + q_3k) \\
-&amp; \quad + p_2q_0j + p_2j(q_1i + q_2j + q_3k) + p_3q_0k + p_3k(q_1i + q_2j + q_3k) \\
+&amp;= p_0q_0 + p_0(q_1i + q_2j + q_3k) + p_1q_0i \\
+&amp;\quad + p_1i(q_1i + q_2j + q_3k) + p_2q_0j + p_2j(q_1i + q_2j + q_3k) \\
+&amp;\quad + p_3q_0k + p_3k(q_1i + q_2j + q_3k) \\
 \\
-&amp; = p_0q_0 + p_0(q_1i + q_2j + q_3k) + p_1q_0i + p_1q_1(i^2)  \\
-&amp; \quad + p_1q_2(ij) + p1q_3(ik) + p_2q_0j + p_2q_1(ji) + p_2q_2(j^2) \\
-&amp; \quad + p_2q_3(jk) + p_3q_0k + p_3q_1(ki) + p_3q_2(kj) + p_3q_3(k^2) \\
+&amp;= p_0q_0 + p_0(q_1i + q_2j + q_3k) + p_1q_0i + p_1q_1(i^2)  \\
+&amp;\quad + p_1q_2(ij) + p1q_3(ik) + p_2q_0j + p_2q_1(ji) \\
+&amp;\quad + p_2q_2(j^2) + p_2q_3(jk) + p_3q_0k + p_3q_1(ki) \\
+&amp;\quad + p_3q_2(kj) + p_3q_3(k^2) \\
 \\
 &amp; = p_0q_0 + p_0(q_1i + q_2j + q_3k) + q_0(p_1i + p_2j+ p_3k) + p_1q_1(i^2) \\
-&amp; \quad + p_1q_2(ij) + p_1q_3(ik) + p_2q_1(ji) + p_2q_2(j^2) \\
-&amp; \quad + p_2q_3(jk) + p_3q_1(ki) + p_3q_2(kj) + p_3q_3(k^2) \\
+&amp;\quad + p_1q_2(ij) + p_1q_3(ik) + p_2q_1(ji) + p_2q_2(j^2) \\
+&amp;\quad + p_2q_3(jk) + p_3q_1(ki) + p_3q_2(kj) + p_3q_3(k^2) \\
 \\
-&amp; = p_0q_0 + p_0(q_1i + q_2j + q_3k) + q_0(p_1i + p_2j+ p_3k) + p_1q_1(-1) \\
-&amp; \quad + p_1q_2(k) + p_1q_3(-j) + p_2q_1(-k) + p_2q_2(-1) \\
-&amp; \quad + p_2q_3(i) + p_3q_1(j) + p_3q_2(-i) + p_3q_3(-1) \\
+&amp;= p_0q_0 + p_0(q_1i + q_2j + q_3k) + q_0(p_1i + p_2j+ p_3k) + p_1q_1(-1) \\
+&amp;\quad + p_1q_2(k) + p_1q_3(-j) + p_2q_1(-k) + p_2q_2(-1) \\
+&amp;\quad + p_2q_3(i) + p_3q_1(j) + p_3q_2(-i) + p_3q_3(-1) \\
 \\
-&amp; = p_0q_0 + p_0\textcolor{orange}{(q_1i + q_2j + q_3k)} + q_0\textcolor{lime}{(p_1i + p_2j+ p_3k)} \\
-&amp; \quad - \textcolor{cyan}{(p_1q_1+p_2q_2 +p_3q_3)} \\
-&amp; \quad  + \textcolor{pink}{(p_2q_3 - p_3q_2)i + (p_3q_1 - p_1q_3)j + (p_1q_2 - p_2q_1)k}
+&amp;= p_0q_0 + p_0\textcolor{orange}{(q_1i + q_2j + q_3k)} + q_0\textcolor{lime}{(p_1i + p_2j+ p_3k)} \\
+&amp;\quad - \textcolor{cyan}{(p_1q_1+p_2q_2 +p_3q_3)} \\
+&amp;\quad + \textcolor{pink}{(p_2q_3 - p_3q_2)i + (p_3q_1 - p_1q_3)j} + \textcolor{pink}{(p_1q_2 - p_2q_1)k} \hspace{5cm}
 \end{aligned}\]
 
 <p>Phew! Reminiscent of the Four-Dimensions model, one can see how quickly quaternion products in their naive form become cumbersome, unintuitive and inconvenient. Thankfully, the Scalar + Vector model allows us to rewrite the above equation in terms of dot and cross products as follows:</p>
@@ -490,7 +495,8 @@
 \mathbf{q} + \mathbf{q^{\ast}} &amp; = 2q_0 \\
 \mathbf{q} - \mathbf{q^{\ast}} &amp; = 2\vec{q} \\
 \mathbf{q^{\ast}} \star \mathbf{q} &amp; = (q_0 - \vec{q}) \star (q_0 + \vec{q}) \\
-&amp; = q_0q_0 - (-\vec{q}) \cdot \vec{q} + q_0\vec{q} + (-\vec{q})q_0 + (-\vec{q}) \times \vec{q} \quad \text{(from Eq. (1))} \\
+&amp; = q_0q_0 - (-\vec{q}) \cdot \vec{q} + q_0\vec{q} \\
+&amp; \quad + (-\vec{q})q_0 + (-\vec{q}) \times \vec{q} \quad \text{(from Eq. (1))} \\
 &amp; = q_0^2 + \vec{q} \cdot \vec{q} \\
 &amp; = q_0^2 + q_1^2 + q_2^2 + q_3^2 \quad \text{(Quadrance)} \\ 
 &amp; = \mathbf{q} \star \mathbf{q^{\ast}} \quad \text{(Commutative)} \\ 
@@ -501,16 +507,18 @@
 \[\begin{aligned}
 (\mathbf{p} \star \mathbf{q})^{\ast} &amp; =  (p_0q_0 -\vec{p} \cdot \vec{q} + p_0\vec{q} + q_0\vec{p} + \vec{p} \times \vec{q})^{\ast} \quad \text{(from Eq. (1))}\\
 &amp; = (p_0q_0 -\vec{p} \cdot \vec{q} - p_0\vec{q} - q_0\vec{p} - \vec{p} \times \vec{q}) \quad \text{(from Eq. (2))}\\
-&amp; = (p_0q_0 -(-\vec{p}) \cdot (-\vec{q}) + p_0(-\vec{q}) + q_0(-\vec{p}) - (-\vec{p}) \times (-\vec{q})) \quad \text{(Since } a \times b = (-a \times -b)\text{)}\\
-&amp; = (p_0q_0 -(-\vec{p}) \cdot (-\vec{q}) + p_0(-\vec{q}) + q_0(-\vec{p}) + (-\vec{q}) \times (-\vec{p})) \quad \text{(Since } a \times b = - (b \times a)\text{)}\\
-&amp; = \mathbf{q}^{\ast} \star \mathbf{p}^{\ast} \hspace{13cm} \text{(3)}
+&amp; = (p_0q_0 -(-\vec{p}) \cdot (-\vec{q}) + p_0(-\vec{q}) \\ 
+&amp; \quad + q_0(-\vec{p}) - (-\vec{p}) \times (-\vec{q})) \quad \text{(Since } a \times b = (-a \times -b)\text{)}\\
+&amp; = (p_0q_0 -(-\vec{p}) \cdot (-\vec{q}) + p_0(-\vec{q}) \\
+&amp; \quad + q_0(-\vec{p}) + (-\vec{q}) \times (-\vec{p})) \quad \text{(Since } a \times b = - (b \times a)\text{)}\\
+&amp; = \mathbf{q}^{\ast} \star \mathbf{p}^{\ast} \hspace{10cm} \text{(3)}
 \end{aligned}\]
 
 <p>With Eq. \(\text{(3)}\), we can now easily find the conjugate of quaternion multiplications of more than two quaternions and you see that the above form extends. Given four quaternions \(\mathbf{q}_1, \mathbf{q}_2, \mathbf{q}_3\) and \(\mathbf{q}_4\), we have</p>
 
 \[\begin{aligned}
 (\mathbf{q}_1 \star \mathbf{q}_2 \star \mathbf{q}_3)^{\ast} &amp;= ((\mathbf{q}_1 \star \mathbf{q}_2) \star \mathbf{q}_3)^{\ast}\\
-&amp;= \mathbf{q}_3^{\ast} \star (\mathbf{q}_1 \star \mathbf{q}_2)^{\ast}  \quad \text{(from Eq. (3))}\\
+&amp;= \mathbf{q}_3^{\ast} \star (\mathbf{q}_1 \star \mathbf{q}_2)^{\ast} \quad \text{(from Eq. (3))}\\
 &amp;= \mathbf{q}_3^{\ast} \star \mathbf{q}_2^{\ast} \star \mathbf{q}_1^{\ast} \\
 (\mathbf{q}_1 \star \mathbf{q}_2 \star \mathbf{q}_3 \star \mathbf{q}_4)^{\ast} &amp;= ((\mathbf{q}_1 \star \mathbf{q}_2) \star (\mathbf{q}_3 \star \mathbf{q}_4))^{\ast} \\
 &amp;= (\mathbf{q}_3 \star \mathbf{q}_4)^{\ast} \star (\mathbf{q}_1 \star \mathbf{q}_2) ^{\ast} \\
@@ -522,7 +530,8 @@
 <p>The squared <em>norm</em> of a quaternion \(\mathbf{q}\) is simply its quadrance</p>
 
 \[\begin{aligned}
-\Vert \mathbf{q} \Vert^2 &amp;= q_0^2 + q_1^2 + q_2^2 + q_3^2 = \mathbf{q^{\ast}} \star \mathbf{q} = \mathbf{q} \star \mathbf{q^{\ast}} \\
+\Vert \mathbf{q} \Vert^2 &amp;= q_0^2 + q_1^2 + q_2^2 + q_3^2 \\
+&amp;= \mathbf{q^{\ast}} \star \mathbf{q} = \mathbf{q} \star \mathbf{q^{\ast}} \\
 &amp;= q_0^2 +  (\vec{q} \cdot \vec{q})
 \end{aligned}\]
 
