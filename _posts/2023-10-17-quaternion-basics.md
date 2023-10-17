@@ -46,9 +46,9 @@ toc:
 * Prof. Andrew Hanson's book on quaternions<d-cite key="visquat"></d-cite>
 * Section I of Keith Conrad's notes<d-cite key="conrad-quat-algebras"></d-cite>.
 
-> This article is merely a reproduction of their work perhaps put together concisely in one place. My motivation to write this is two fold - to provide robotics practitioners a one-stop-shop entry point to quaternions as well as challenge/improve my understanding of them. I claim no expertise in this topic but found it so fascinating that I decided to write about it.
+> This article merely reproduces their work, perhaps put together concisely in one place. My motivation to write this is twofold - to provide robotics practitioners a one-stop-shop entry point to quaternions and challenge/improve my understanding of them. I claim no expertise in this topic but found it so fascinating that I decided to write about it.
 
-> **Prerequisites:** This is [1/3] article in my three part series on quaternions. For this article, I assume no familiarity with quaternions. To the point that some parts may come across as pedantic. I do not, however, talk about representing 3D rotations via quaternions in this one, I leave that to my next article<d-cite key="quat-rot-op1"></d-cite>. My goal here is to only make sure readers get comfortable with the idea of quaternion addition, multiplication, conjugate and norm. 
+> **Prerequisites:** This is [1/3] article in my series on quaternions. For this article, I assume no familiarity with quaternions, to the point that some parts may come across as pedantic. I do not, however, talk about representing 3D rotations via quaternions in this one, I leave that to my next article<d-cite key="quat-rot-op1"></d-cite>. My goal here is only to ensure readers get comfortable with the idea of quaternion addition, multiplication, conjugate, and norm. 
 
 ***
 
@@ -88,7 +88,7 @@ $$
 
 {% include figure.html path="assets/img/blog/William_Rowan_Hamilton_Plaque.jpg" width="240" height="190" class="rounded"  caption="Source: Wikipedia" zoomable=true %}
 
-If mathematics and history intrests you, I refer you to this YouTube video by "Kathy Loves Physics and History"<d-cite key="kathy-quat-history"></d-cite>. 
+If mathematics and its history interests you, I refer you to this YouTube video by "Kathy Loves Physics and History"<d-cite key="kathy-quat-history"></d-cite>. In a subsequent video, she explains how the discovery of quaternions (with Maxwell's equations) ultimately led to Vector Analysis<d-cite key="kathy-quat-history2"></d-cite>.
 
 
 ## Definition
@@ -104,7 +104,7 @@ where the following rules are imposed:
 - $$ij=k, ji=-k, jk=i, kj=-i, ki=j, ki=j, ik=-j \hspace{50cm}$$
 - every $$a \in \mathbb{R}$$ commutes with $$i, j, k$$
 
-One could always look at the circle below to remember the multiplicative rules of $$i, j, k$$. Products following the below order get a plus sign otherwise a minus sign, $$e.g., ij = k$$ and $$ji = -k$$.
+One could always look at the circle below to remember the multiplicative rules of $$i, j, k$$. Products following the below order get a plus sign, otherwise a minus sign, $$e.g., ij = k$$ and $$ji = -k$$.
 
 {% include figure.html path="assets/img/blog/ijk.jpg" width="100" height="100" class="rounded"  caption="Source: Keith Conrad" %}
 
@@ -166,7 +166,7 @@ $$
 It can be convenient to represent quaternion multiplication using matrix multiplication. One can see that $$\mathbf{P}$$ is an orthogonal matrix ($$\mathbf{P}^{\top} \mathbf{P} = I_4$$) in 4D Euclidean space. However, this model still lacks geometric interpretations in 3D. 
 
 ### Two-By-Two Matrices
-Another way of thinking about quaterions is to treat them as products of simple $$2 \times 2$$ matrices:
+Another way of thinking about quaternions is to treat them as products of simple $$2 \times 2$$ matrices:
 
 $$
 U := \left[ \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix}\right], \; I := \left[ \begin{matrix} i & 0 \\ 0 & -i \end{matrix}\right], \; J := \left[ \begin{matrix} 0 & 1 \\ -1 & 0 \end{matrix}\right], \; K := \left[ \begin{matrix} 0 & i \\ i & 0 \end{matrix}\right]
@@ -189,7 +189,7 @@ $$
 As Prof. Schröcker says in his presentation<d-cite key="schroecker2022iros"></d-cite> - "When in doubt, think of matrix multiplication!".
 
 ### Scalar + Vector
-This is perhaps the most interesting model and from now on we stick to this one. Recall from the comparisons with complex numbers, we define the real and imaginary parts of quaternion as follows:
+This is perhaps the most interesting model and from now on, we stick to this one. Recall from the comparisons with complex numbers, we define the real and imaginary parts of quaternion as follows:
 
 $$
 \begin{aligned}
@@ -209,7 +209,7 @@ Which makes $$\mathbb{H} = \mathbb{R} \oplus \mathbb{R}^3$$. This has major geom
 
 ## Quaternion Algebra
 
-Let us now derive the basic quaternion operations in Scalar + Vector form. 
+Let us derive the basic quaternion operations in Scalar + Vector form. 
 
 ### Addition
 Addition operation is rather straightforward from our understanding of scalar and vector additions.
@@ -222,7 +222,7 @@ $$
 $$
 
 ### Multiplication
-Similar to addition, first lets write out the multiplication of two quaternions the naive way and see if we can transform it to the Scalar + Vector form.
+Similar to addition, first let us write out the multiplication of two quaternions the naive way and see if we can transform it to the Scalar + Vector form.
 
 $$
 \begin{aligned}
@@ -249,17 +249,17 @@ $$
 \end{aligned}
 $$
 
-Phew! Reminisent of the Four-Dimensions model, one can see how quickly quaternion products in their naive form become cumbersome, unintuitive and incovenient. Thankfully, the Scalar + Vector model allows us to rewrite the above equation in terms of dot and cross products as follows: 
+Phew! Reminiscent of the Four-Dimensions model, one can see how quickly quaternion products in their naive form become cumbersome, unintuitive and inconvenient. Thankfully, the Scalar + Vector model allows us to rewrite the above equation in terms of dot and cross products as follows: 
 
 $$
 \mathbf{p} \star \mathbf{q} =  p_0q_0 -\textcolor{cyan}{\vec{p} \cdot \vec{q}} + p_0\textcolor{orange}{\vec{q}} + q_0\textcolor{lime}{\vec{p}} + \textcolor{pink}{\vec{p} \times \vec{q}} \tag{1}
 $$
 
-This is great! Finally, we reach a point where we can simply add scalars ($$p_0q_0 -\textcolor{cyan}{\vec{p} \cdot \vec{q}}$$) and 3D vectors ($$p_0\textcolor{orange}{\vec{q}} + q_0\textcolor{lime}{\vec{p}} + \textcolor{pink}{\vec{p} \times \vec{q}}$$) to compute quaternion multiplication. Eq. $$\text{(1)}$$ allows us make the following observations:
-- The source of non-commutativity of quaternion multiplication is now clear i.e., $$\vec{p} \times \vec{q} = - \vec{q} \times \vec{p}$$
+This is great! Finally, we reach a point where we can simply add scalars ($$p_0q_0 -\textcolor{cyan}{\vec{p} \cdot \vec{q}}$$) and 3D vectors ($$p_0\textcolor{orange}{\vec{q}} + q_0\textcolor{lime}{\vec{p}} + \textcolor{pink}{\vec{p} \times \vec{q}}$$) to compute quaternion multiplication. Eq. $$\text{(1)}$$ allows us to make the following observations:
+- The source of non-commutativity of quaternion multiplication is now clear, i.e., $$\vec{p} \times \vec{q} = - \vec{q} \times \vec{p}$$
 - Two non-zero quaternions can commute only when their vector parts are linearly dependent (parallel) i.e., $$\mathbf{p} \star \mathbf{q} = \mathbf{q} \star \mathbf{p} \Leftrightarrow \vec{p} \times \vec{q} = 0 \hspace{50cm}$$
 - Only scalars commute with all quaternions,  i.e., $$c \star \mathbf{q} = cq_0 + c\vec{q} = c \mathbf{q} = \mathbf{q} \star c $$.
-- Since quaternion multiplication is just a combination of scalar-vector, dot and cross products in $$\mathbb{R}^3$$ (Euclidean space), it _must_ have some geometric significance, it _must_ describe something independant of the values of $$\mathbf{p}$$ and $$\mathbf{q}$$. I discuss this in detail in my next article [here](../quaternions-to-rotations/). 
+- Since quaternion multiplication is just a combination of scalar-vector, dot and cross products in $$\mathbb{R}^3$$ (Euclidean space), it _must_ have some geometric significance, it _must_ describe something independent of the values of $$\mathbf{p}$$ and $$\mathbf{q}$$. I discuss this in detail in my next article [here](../quaternions-to-rotations/). 
 
 ### Complex Conjugate
 The _conjugate_ of a quaternion $$\mathbf{q}$$ is denoted by $$\mathbf{q^{\ast}}$$ and defined as 
