@@ -11,7 +11,7 @@
     <title>Quaternion Rotation Operator | Akshay L Chandra</title>
     <meta name="author" content="Akshay L Chandra">
     <meta name="description" content="Exploring the geometric effects of the quaternion sandwich product">
-    <meta name="keywords" content="akshay, chandra, lagandula, uni-freiburg, freiburg, iith, robot learning, reinforcement learning, computer vision, machine learning, deep learning, active learning">
+    <meta name="keywords" content="akshay, chandra, lagandula, uni-freiburg, freiburg, iith, robot learning, reinforcement learning, computer vision, machine learning, deep learning, active learning, quaternions, quaternion rotation operator, robot manipulation">
 
 
     <!-- Bootstrap & MDB -->
@@ -68,7 +68,7 @@
     <script async type="text/json">{
       "title": "Quaternion Rotation Operator",
       "description": "Exploring the geometric effects of the quaternion sandwich product",
-      "published": "October 16, 2023",
+      "published": "October 17, 2023",
       "authors": [
         {
           "author": "Akshay L Chandra",
@@ -107,7 +107,7 @@
       <!-- Nav Bar -->
       <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
         <div class="container">
-          <a class="navbar-brand title font-weight-lighter" href="/"><span class="font-weight-bold">Akshay </span>L Chandra</a>
+          <a class="navbar-brand title font-weight-lighter" href=""><span class="font-weight-bold">Akshay </span>L Chandra</a>
           <!-- Navbar Toggle -->
           <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -214,40 +214,40 @@ R_{\mathbf{q}}(\vec{v}) &amp;= \mathbf{q} \star \vec{v} \star \mathbf{q}^{\ast} 
 R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mathbf{q} = (q_0^2-\Vert \vec{q} \Vert^2)\vec{v} + 2(\vec{q}\cdot \vec{v})\vec{q} + 2q_0(\vec{q} \times \vec{v})
 \end{aligned}\]
 
-<p>Without a formal proof, I claim that these operators indeed rotate \(\vec{v}\) in \(\mathbb{R}^3\). Through some carefully designed tests, I hope to convince you by answering the following <em>key</em> questions about \(R_{\mathbf{q}}(\mathbf{v})\):</p>
+<p>Without a formal proof, I claim that these operators indeed rotate \(\vec{v}\) in \(\mathbb{R}^3\). Through some carefully designed tests, I hope to convince you on the same by answering the following key questions about \(R_{\mathbf{q}}\):</p>
 <ul>
   <li><strong>Q1. What is the direction of rotation?</strong></li>
   <li><strong>Q2. What is the axis of rotation?</strong></li>
   <li><strong>Q3. What is the angle of rotation?</strong></li>
-  <li><strong>Q4. What is the difference between \(R_{\mathbf{q}}(\mathbf{v})\) and \(R_{\mathbf{q}^{\ast}}(\mathbf{v})\)?</strong></li>
+  <li><strong>Q4. What is the difference between \(R_{\mathbf{q}}\) and \(R_{\mathbf{q}^{\ast}}\)?</strong></li>
 </ul>
 
-<p>Let us start by reverse engineering the output of \(R_{\mathbf{q}}(\mathbf{v})\) operator to answer the questions.</p>
+<p>Let us start by reverse engineering the output of \(R_{\mathbf{q}}(\mathbf{v})\) to answer the questions.</p>
 
 <h2 id="incremental-test">Incremental Test</h2>
 
 <p>For this test, lets make our lives easy and work with <em>simple</em> quaternions and <em>simple</em> vectors that are easy to visualize in our heads. Suppose that the unit quaternion \(\mathbf{q}\) in \(R_{\mathbf{q}}(\vec{v})\) has a basis vector</p>
 
-\[\vec{u} = 0i + 0j + 1k = k = \left[\begin{matrix} 0 \\ 0 \\ 1\end{matrix}\right]\]
+\[\vec{u} = 0i + 0j + 1k = k \quad (\text{or }\left[\begin{matrix} 0 \\ 0 \\ 1\end{matrix}\right])\]
 
-<p>where \(\{i, j, k\}\) are the standard basis vectors in \(\mathbb{R}^3\), that define the coordinate frame. For clarity and consistency, lets now look at \(\mathbf{q}\) in both Scalar + Vector and Polar form (recall the <em>Polar Form</em> from <d-cite key="quat-rot-op1"></d-cite>):</p>
+<p>where \(\{i, j, k\}\) are the standard basis vectors in \(\mathbb{R}^3\), that define the coordinate frame. Let us now look at \(\mathbf{q}\) in polar form (recall section <em>Polar Form</em> from <d-cite key="quat-rot-op1"></d-cite>):</p>
 
-\[\mathbf{q} = q_0 + \left[\begin{matrix} 0 \\ 0 \\ 1\end{matrix}\right] = \cos \theta + k \sin \theta\]
+\[\mathbf{q} = \cos \theta + k \sin \theta\]
 
-<p>Note that we have not decided on \(q_0\) yet so let us do that. Assume that the associated angle \(\theta\) is a very small positive angle. This assumption is helpful when comparing the input vector with the operator’s output vector. We want to verify if \(R_{\mathbf{q}}(\vec{v})\) merely “tweaks” the input vector when the associated angle is a very small positive value. Consequently, for very small angles, we can round things up nicely i.e., \(\cos \theta \approx 1\) and \(\sin \theta \approx \theta\) so the quaternion \(\mathbf{q}\) may be re-written as</p>
+<p>Assume that the associated angle \(\theta\) is a very small positive angle. This assumption is helpful when comparing the input vector with the operator’s output vector. We want to verify if \(R_{\mathbf{q}}(\vec{v})\) merely “tweaks” the input vector when the associated angle is a very small positive value. Conveniently, for very small angles, we can round things up nicely i.e., \(\cos \theta \approx 1\) and \(\sin \theta \approx \theta\) so the quaternion \(\mathbf{q}\) may be re-written as</p>
 
 \[\mathbf{q} \approx 1 + k\theta\]
 
-<p>In the spirit of simplicity, now suppose that you want to rotate another basis vector \(\vec{v} = 1i + 0j + 0k = i\) (or \(\left[\begin{matrix} 1 \\ 0 \\ 0\end{matrix}\right]\)). Lets see what the operator \(R_{\mathbf{q}}(\vec{v})\) outputs for this carefully chosen \(\mathbf{q}\) and \(\vec{v}\):</p>
+<p>In the spirit of simplicity, suppose that you want to rotate another basis vector \(\vec{v} = 1i + 0j + 0k = i\) (or \(\left[\begin{matrix} 1 \\ 0 \\ 0\end{matrix}\right]\)). Lets see what the operator \(R_{\mathbf{q}}(\vec{v})\) outputs for this carefully chosen \(\mathbf{q}\) and \(\vec{v}\):</p>
 
 \[\begin{aligned}
 \vec{w} &amp;= R_{\mathbf{q}}(\vec{v}) = \mathbf{q} \star i \star \mathbf{q}^{\ast} \\
 &amp;= (1+k\theta)(i)(1-k\theta) \\
 &amp;= (1+k\theta)(i+j\theta) \\
-\vec{w} &amp;= i + 2\theta j \quad (\text{or }\left[\begin{matrix} 1 \\ 2\theta \\ 0\end{matrix}\right)]
+\vec{w} &amp;= i + 2\theta j \quad (\text{or }\left[\begin{matrix} 1 \\ 2\theta \\ 0\end{matrix}\right]) \quad \hspace{5cm} \text{(1)}
 \end{aligned}\]
 
-<p>We can interpret this result to mean that the input vector \(i\) has been “tweaked” by <em>some</em> unknown angle to produce the output vector \(i + 2\theta j\). Firstly, lets examine the length of \(\vec{w}\)</p>
+<p>We can interpret this result to mean that the input vector \(i\) has been “tweaked” by <em>some</em> angle to produce the output vector \(i + 2\theta j\). Firstly, for completeness, let us examine the length of \(\vec{w}\)</p>
 
 \[\Vert \vec{w} \Vert = \sqrt{(1)^2 + (2\theta)^2} \approx 1 \quad (\text{Since }\theta \approx 0)\]
 
@@ -257,12 +257,12 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 \tan \alpha &amp;= \frac{\Vert w \times v \Vert}{(w \cdot v)} \\
 &amp;= \frac{\Vert i + 2\theta j \times i \Vert}{(i+2\theta j) \cdot (i)} \\
 &amp;= \frac{\Vert 2\theta k \Vert}{(1 \cdot 1 + 2\theta \cdot 0 + 0 \cdot 0)}\\
-&amp;= \frac{2\theta}{1} \quad (\text{Geometrically, just } \frac{\text{opposite}}{adjacent})\\
+&amp;= \frac{2\theta}{1} \quad (\text{Geometrically, just } \frac{\text{opposite}}{\text{adjacent}})\\
 \alpha &amp;\approx 2\theta \quad (\text{Since } \tan \alpha \approx \alpha \text{ when } \alpha \approx 0^+) \\
 \alpha &amp;\approx\text{A very small positive angle}
 \end{aligned}\]
 
-<p>which is exactly what we wanted when we chose a very small positive angle \(\theta\). Despite some (potentially uneasy) approximations, we now have a pretty good idea of the direction, axis and angle of rotation. The general rule goes as follows:</p>
+<p>which seems fair for the choice of a very small positive angle \(\theta\). Despite some (potentially uneasy) approximations, we now have a pretty good idea of the direction, axis and angle of rotation associated with \(R_{\mathbf{q}}\). The general rule goes as follows:</p>
 
 <blockquote>
   <p>Given a unit quaternion \(\mathbf{q} = \cos \theta + \vec{u} \sin \theta\) and a vector \(\vec{v}\) in \(\mathbb{R}^3\), \(R_{\mathbf{q}}(\vec{v})\) rotates \(\vec{v}\) in counter-clockwise direction about the axis of \(\vec{u}\) by angle \(2\theta\).</p>
@@ -298,7 +298,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
     <!-- Fallback to the original file -->
     <img src="/assets/img/blog/quat-rot-viz.gif" class="rounded" width="500" height="250" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
-  </picture><figcaption class="caption">The visualization shows rotation from the above mentioned example but with varying associated angle.</figcaption>
+  </picture><figcaption class="caption">The visualization shows rotation from the above example but with varying associated angle.</figcaption>
 
 </figure>
 
@@ -306,7 +306,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 <h2 id="angle-test">Angle Test</h2>
 
-<p>When I first saw this line of argument, I was left skeptical of the angle of rotation due to the approximations made. But we can be sure of the angle of rotation with a simple angle test. Let us choose a unit quaternion with the associated angle \(\theta=\frac{\pi}{6}\) while keeping the basis vector \(k\) same. Then we have the following quaternion</p>
+<p>When I first saw the incremental test, I was left uneasy and skeptical of the angle of rotation due to the approximations made. But we can be sure of the claims made on angle of rotation with a simple angle test. Let us choose a unit quaternion with the associated angle \(\theta=\frac{\pi}{6}\) while keeping the axis of rotation \(\vec{u}\) as the same basis vector \(k\). Then we have the following quaternion</p>
 
 \[\mathbf{q} = \cos \theta + k \sin \theta = \cos (\frac{\pi}{6}) + k \sin (\frac{\pi}{6}) = \frac{\sqrt{3}}{2} + \frac{1}{2} k\]
 
@@ -319,7 +319,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 &amp;= \frac{1}{2} i + \frac{\sqrt{3}}{2} j 
 \end{aligned}\]
 
-<p>As seen earlier, the angle between \(\vec{w}\) and \(i\) is given by</p>
+<p>As seen earlier, the angle between \(\frac{1}{2} i + \frac{\sqrt{3}}{2} j\) and \(i\) is given by</p>
 
 \[\begin{aligned}
 \tan \alpha &amp;= \frac{\frac{\sqrt{3}}{2}}{\frac{1}{2}} \quad (\frac{\text{opposite}}{\text{adjacent}}) \\
@@ -328,17 +328,17 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 \alpha &amp;= \frac{\pi}{3} \quad (= 2\theta)
 \end{aligned}\]
 
-<p>We can now confirm that the angle of rotation for a unit quaternion \(\mathbf{q}\) with an associated angle \(\theta\) is indeed \(2\theta\).</p>
+<p>We can now confirm that the angle of rotation for a unit quaternion \(\mathbf{q}\) with an associated angle \(\theta\) is indeed \(2\theta\). Always choose a quaternion that has an associate angle half that of your target rotation angle.</p>
 
 <h2 id="rotation-perspective">Rotation Perspective</h2>
 
-<p>At this point, we have everything we need to geometrically make sense of \(R_{\mathbf{q}}(\vec{v})\). For the example from the Angle Test, there are two possible interpretations of \(\vec{w}\). One is that \(\vec{v}\) has rotated about \(k\)-axis by \(+\frac{\pi}{3}\) angle that is in counter-clockwise direction with a fixed coordinate frame \(\{i, j, k\}\), this is called <em>point</em> rotation. Another one is that the coordinate frame \(\{i, j, k\}\) has rotated about \(k\)-axis by \(-\frac{\pi}{3}\) angle that is in clockwise direction with a fixed vector \(\vec{v}\), this is called <em>frame</em> rotation. Which of these two perspectives is to be prefereed in a given application is usually a subjective matter - a decision made by the practicioner. This is precisely where the conjugate rotation operator  \(R_{\mathbf{q}^{\ast}}(\vec{v})\) comes into play.</p>
+<p>At this point, we have everything we need to geometrically compare \(R_{\mathbf{q}}(\vec{v})\) and \(R_{\mathbf{q}^{\ast}}(\vec{v})\). Consider the example from the <em>Angle Test</em>, there are two possible interpretations of \(\vec{w}\). One is that \(\vec{v}\) has rotated about \(k\)-axis by \(+\frac{\pi}{3}\) angle that is in counter-clockwise direction with a fixed coordinate frame \(\{i, j, k\}\), this is called <em>point</em> rotation. Another one is that the coordinate frame \(\{i, j, k\}\) has rotated about \(k\)-axis by \(-\frac{\pi}{3}\) angle that is in clockwise direction with a fixed vector \(\vec{v}\), this is called <em>frame</em> rotation. Which of these two perspectives is to be prefereed in a given application is usually a subjective matter - a decision made by the practicioner. This is precisely where the conjugate rotation operator  \(R_{\mathbf{q}^{\ast}}(\vec{v})\) comes into play.</p>
 
-<p>One can easily verify for the example in the incremental test, where \(\mathbf{q} \approx 1 + k\theta\) and \(\vec{v} = 1i + 0j + 0k = i\), applying the conjugate rotation operator \(R_{\mathbf{q}^{\ast}}(\vec{v})\) on \(\vec{v}\) would yield the following:</p>
+<p>One can easily verify for the example in the <em>Incremental Test</em>, where \(\mathbf{q} \approx 1 + k\theta\) and \(\vec{v} = 1i + 0j + 0k = i\), applying the conjugate rotation operator \(R_{\mathbf{q}^{\ast}}(\vec{v})\) on \(\vec{v}\) would yield the following:</p>
 
 \[\vec{w}^{\ast} = R_{\mathbf{q}^{\ast}}(\vec{v}) = 1 - 2\theta j\]
 
-<p>Comparing this with the previous result suggests that the difference between \(R_{\mathbf{q}}(\vec{v})\) and \(R_{\mathbf{q}^{\ast}}(\vec{v})\) is simply the direction of rotation. One must be careful here however, as seen in section <em>Polar Form</em> of <d-cite key="quat-rot-op1"></d-cite>, \(\theta\) has to restrict to the domain \((-\pi, \pi]\). So \(\theta\) can be negative as well as positive, which makes it very difficult to differetiate between these two operators. Essentially rotation perspective, personal preference, even library conventions often decide the use of one operator over other in a given application. It is important to note that both are mathematically equivalent and can represent the same rotations.</p>
+<p>Comparing this with the \(\vec{w} = 1 + 2\theta j\) (see Eq. \text{(1)}) suggests that the difference between \(R_{\mathbf{q}}(\vec{v})\) and \(R_{\mathbf{q}^{\ast}}(\vec{v})\) is simply the direction of rotation. One must be careful here however, as seen in section <em>Polar Form</em> of <d-cite key="quat-rot-op1"></d-cite>, \(\theta\) has to restrict to the domain \((-\pi, \pi]\). So \(\theta\) can be negative as well as positive, which makes it very difficult to differetiate between these two operators. Basically, \(R_{\mathbf{q}}(\vec{v})\) can do what \(R_{\mathbf{q}^{\ast}}(\vec{v})\) does with an appropriate choice of \(\theta\) i.e., replace \(\theta\) by \(-\theta\) in \(\mathbf{q}\) and you go from \(R_{\mathbf{q}}(\vec{v})\) to \(R_{\mathbf{q}^{\ast}}(\vec{v})\). In a nutshell, rotation perspective, personal preference, even library conventions often decide the use of one operator over the other in a given application. It is important to note that both are mathematically equivalent and can represent same rotations.</p>
 
 <h2 id="summary">Summary</h2>
 
@@ -356,11 +356,11 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
   </ul>
 </blockquote>
 
-<p>While the conjectural proof above is intuitive and perhaps sufficient for a few readers, I refer the more curious to Chapter 15.15 of <d-cite key="kuipers1999quaternions"></d-cite> for the full formal proof. I also encourage readers to check the subsequent Chapter 15.16 to see how the operators elegantly handle sequence of rotations.</p>
+<p>While the conjectural proof above may be intuitive and perhaps sufficient for some readers, I refer the more curious to Chapter 15.15 of <d-cite key="kuipers1999quaternions"></d-cite> for the full formal proof. I also encourage readers to check the subsequent Chapter 15.16 to see how these operators elegantly handle sequence of rotations.</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>This concludes my attempt to get robotics practitioners introduced to quaternions. Perhaps now is a good time to watch Grant Sanderson a.k.a YouTuber 3Blue1Brown’s videos on quaternions<d-cite key="3b1b"></d-cite>. As we conclude this journey, I urge you to venture further into the realm of quaternions as a Riemannian manifold. Riemannian manifolds are mathematical spaces that, like quaternions, possess both local and global geometrical properties. They extend our understanding of spaces beyond the familiar Euclidean world, allowing us to model curved surfaces. To that end, I want to emphasize that treating unit quaternions as a Riemannian manifold has huge implications for optimization, imitation learning and other robotic applications <d-cite key="boumal2023intromanifolds"></d-cite><d-cite key="noemie2020thesis"></d-cite><d-cite key="Jaquier2018GeometryawareML"></d-cite><d-cite key="7829369"></d-cite><d-cite key="Calinon2019GaussiansOR"></d-cite><d-cite key="Silvrio2017LearningTP"></d-cite>. The marriage of quaternions and Riemannian geometry enables us to tackle complex problems with newfound precision and insight. May your explorations be filled with wonder and revelation.</p>
+<p>This concludes my attempt to get robotics practitioners introduced to quaternions and their rotation operator. Perhaps now is a good time to watch Grant Sanderson a.k.a YouTuber 3Blue1Brown’s videos on quaternions<d-cite key="3b1b"></d-cite>. As we conclude this journey, I urge you to venture further into the realm of quaternions as a Riemannian manifold. Riemannian manifolds are mathematical spaces that, like quaternions, possess both local and global geometrical properties. They extend our understanding of spaces beyond the familiar Euclidean world, allowing us to model curved surfaces. To that end, I want to emphasize that treating unit quaternions as a Riemannian manifold has huge implications for optimization, imitation learning and other robotics applications <d-cite key="boumal2023intromanifolds"></d-cite><d-cite key="noemie2020thesis"></d-cite><d-cite key="Jaquier2018GeometryawareML"></d-cite><d-cite key="7829369"></d-cite><d-cite key="Calinon2019GaussiansOR"></d-cite><d-cite key="Silvrio2017LearningTP"></d-cite>. The marriage of quaternions and Riemannian geometry enables us to tackle complex problems with newfound precision and insight. May your explorations be filled with wonder and revelation.</p>
 
       </d-article>
 

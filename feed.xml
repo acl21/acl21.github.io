@@ -1,4 +1,182 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://akshaychandra.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://akshaychandra.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-16T19:02:10+00:00</updated><id>https://akshaychandra.com/feed.xml</id><title type="html">blank</title><subtitle></subtitle><entry><title type="html">Towards a 3D Rotation Operator with a Quaternion Sandwich</title><link href="https://akshaychandra.com/blog/2023/quat-rot-op1/" rel="alternate" type="text/html" title="Towards a 3D Rotation Operator with a Quaternion Sandwich" /><published>2023-10-16T00:00:00+00:00</published><updated>2023-10-16T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/quat-rot-op1</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/quat-rot-op1/"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://akshaychandra.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://akshaychandra.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-17T07:10:59+00:00</updated><id>https://akshaychandra.com/feed.xml</id><title type="html">blank</title><subtitle></subtitle><entry><title type="html">Quaternion Rotation Operator</title><link href="https://akshaychandra.com/blog/2023/quat-rot-op2/" rel="alternate" type="text/html" title="Quaternion Rotation Operator" /><published>2023-10-17T00:00:00+00:00</published><updated>2023-10-17T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/quat-rot-op2</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/quat-rot-op2/"><![CDATA[<blockquote>
+  <p><strong>Citation Note:</strong> I have borrowed this three-part series’ content from Jack B. Kuipers’ seminal 1999 book <d-cite key="kuipers1999quaternions"></d-cite> on quaternions.</p>
+</blockquote>
+
+<blockquote>
+  <p>As an admirer of the book’s writing style, I submit that you are probably better off refering to Chapter 5 of the book. My motivation to write this regardless is two fold - to provide robotics practitioners a one-stop-shop entry point to quaternions as well as challenge/improve my understanding of them. I claim no expertise in this topic but found it so fascinating that I decided to write about it.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Prerequisites:</strong> This is [3/3] article in my series on quaternions. For this article, I assume reader’s familiary with basic quaternion algebra <d-cite key="quat-basics"></d-cite> and some quaternion variants I discussed in <d-cite key="quat-rot-op1"></d-cite>.</p>
+</blockquote>
+
+<hr />
+
+<p>Earlier, we saw a great deal of evidence that quaternions indeed can represent \(\mathbb{R}^3\) rotations. With the checked list in mind, we can now safely define the quaternion rotation operator and apply some tests to understand its geometric effects on \(\mathbb{R}^3\) vectors. All quaternions you see in this article are to be assumed unit.</p>
+
+<h2 id="quaternion-rotation-operator-definition">Quaternion Rotation Operator: Definition</h2>
+
+<p>Let \(\mathbf{q}\) be a unit quaternion, and \(\vec{v}\) be a vector in \(\mathbb{R}^3\) (pure quaternion), we define two rotation operators as follows:</p>
+
+\[\begin{aligned}
+R_{\mathbf{q}}(\vec{v}) &amp;= \mathbf{q} \star \vec{v} \star \mathbf{q}^{\ast} \\
+R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mathbf{q}
+\end{aligned}\]
+
+<p>For comparison, writing out the operator algorithm will be helpful.</p>
+
+\[\begin{aligned}
+R_{\mathbf{q}}(\vec{v}) &amp;= \mathbf{q} \star \vec{v} \star \mathbf{q}^{\ast} = (2q_0^2-1)\vec{v} + 2(\vec{q}\cdot \vec{v})\vec{q} + 2q_0(\vec{q} \times \vec{v}) \\
+R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mathbf{q} = (q_0^2-\Vert \vec{q} \Vert^2)\vec{v} + 2(\vec{q}\cdot \vec{v})\vec{q} + 2q_0(\vec{q} \times \vec{v})
+\end{aligned}\]
+
+<p>Without a formal proof, I claim that these operators indeed rotate \(\vec{v}\) in \(\mathbb{R}^3\). Through some carefully designed tests, I hope to convince you on the same by answering the following key questions about \(R_{\mathbf{q}}\):</p>
+<ul>
+  <li><strong>Q1. What is the direction of rotation?</strong></li>
+  <li><strong>Q2. What is the axis of rotation?</strong></li>
+  <li><strong>Q3. What is the angle of rotation?</strong></li>
+  <li><strong>Q4. What is the difference between \(R_{\mathbf{q}}\) and \(R_{\mathbf{q}^{\ast}}\)?</strong></li>
+</ul>
+
+<p>Let us start by reverse engineering the output of \(R_{\mathbf{q}}(\mathbf{v})\) to answer the questions.</p>
+
+<h2 id="incremental-test">Incremental Test</h2>
+
+<p>For this test, lets make our lives easy and work with <em>simple</em> quaternions and <em>simple</em> vectors that are easy to visualize in our heads. Suppose that the unit quaternion \(\mathbf{q}\) in \(R_{\mathbf{q}}(\vec{v})\) has a basis vector</p>
+
+\[\vec{u} = 0i + 0j + 1k = k \quad (\text{or }\left[\begin{matrix} 0 \\ 0 \\ 1\end{matrix}\right])\]
+
+<p>where \(\{i, j, k\}\) are the standard basis vectors in \(\mathbb{R}^3\), that define the coordinate frame. Let us now look at \(\mathbf{q}\) in polar form (recall section <em>Polar Form</em> from <d-cite key="quat-rot-op1"></d-cite>):</p>
+
+\[\mathbf{q} = \cos \theta + k \sin \theta\]
+
+<p>Assume that the associated angle \(\theta\) is a very small positive angle. This assumption is helpful when comparing the input vector with the operator’s output vector. We want to verify if \(R_{\mathbf{q}}(\vec{v})\) merely “tweaks” the input vector when the associated angle is a very small positive value. Conveniently, for very small angles, we can round things up nicely i.e., \(\cos \theta \approx 1\) and \(\sin \theta \approx \theta\) so the quaternion \(\mathbf{q}\) may be re-written as</p>
+
+\[\mathbf{q} \approx 1 + k\theta\]
+
+<p>In the spirit of simplicity, suppose that you want to rotate another basis vector \(\vec{v} = 1i + 0j + 0k = i\) (or \(\left[\begin{matrix} 1 \\ 0 \\ 0\end{matrix}\right]\)). Lets see what the operator \(R_{\mathbf{q}}(\vec{v})\) outputs for this carefully chosen \(\mathbf{q}\) and \(\vec{v}\):</p>
+
+\[\begin{aligned}
+\vec{w} &amp;= R_{\mathbf{q}}(\vec{v}) = \mathbf{q} \star i \star \mathbf{q}^{\ast} \\
+&amp;= (1+k\theta)(i)(1-k\theta) \\
+&amp;= (1+k\theta)(i+j\theta) \\
+\vec{w} &amp;= i + 2\theta j \quad (\text{or }\left[\begin{matrix} 1 \\ 2\theta \\ 0\end{matrix}\right]) \quad \hspace{5cm} \text{(1)}
+\end{aligned}\]
+
+<p>We can interpret this result to mean that the input vector \(i\) has been “tweaked” by <em>some</em> angle to produce the output vector \(i + 2\theta j\). Firstly, for completeness, let us examine the length of \(\vec{w}\)</p>
+
+\[\Vert \vec{w} \Vert = \sqrt{(1)^2 + (2\theta)^2} \approx 1 \quad (\text{Since }\theta \approx 0)\]
+
+<p>The length of the \(\vec{w}\) is still \(1\) (well almost, if you ignore the very small value \(\theta^2\)). <d-footnote>Note that we have no restriction on the length of the vector to be rotated, just that the output vector's length _should not_ change post rotation and it does not so this is good news. </d-footnote>Now, lets think about the angle between <em>rotated image</em> \(\vec{w}\) and \(\vec{v}\). It helps to mentally visualize this rotation as a vector that was ealier pointing at \(i\) (or \(\left[\begin{matrix} 1 \\ 0 \\ 0\end{matrix}\right]\)) and is now pointing at \(i+2\theta j\) (or \(\left[\begin{matrix} 1 \\ 2\theta \\ 0\end{matrix}\right]\)). Geometrically, it so appears that \(i\) is rotated <em>counter-clockwise</em> about the axis \(k\) by \(2\theta\) angle. Lets verify this by checking the angle of rotation \(\alpha\) between \(\vec{w}\) and \(\vec{v}\), which can be given by:</p>
+
+\[\begin{aligned}
+\tan \alpha &amp;= \frac{\Vert w \times v \Vert}{(w \cdot v)} \\
+&amp;= \frac{\Vert i + 2\theta j \times i \Vert}{(i+2\theta j) \cdot (i)} \\
+&amp;= \frac{\Vert 2\theta k \Vert}{(1 \cdot 1 + 2\theta \cdot 0 + 0 \cdot 0)}\\
+&amp;= \frac{2\theta}{1} \quad (\text{Geometrically, just } \frac{\text{opposite}}{\text{adjacent}})\\
+\alpha &amp;\approx 2\theta \quad (\text{Since } \tan \alpha \approx \alpha \text{ when } \alpha \approx 0^+) \\
+\alpha &amp;\approx\text{A very small positive angle}
+\end{aligned}\]
+
+<p>which seems fair for the choice of a very small positive angle \(\theta\). Despite some (potentially uneasy) approximations, we now have a pretty good idea of the direction, axis and angle of rotation associated with \(R_{\mathbf{q}}\). The general rule goes as follows:</p>
+
+<blockquote>
+  <p>Given a unit quaternion \(\mathbf{q} = \cos \theta + \vec{u} \sin \theta\) and a vector \(\vec{v}\) in \(\mathbb{R}^3\), \(R_{\mathbf{q}}(\vec{v})\) rotates \(\vec{v}\) in counter-clockwise direction about the axis of \(\vec{u}\) by angle \(2\theta\).</p>
+</blockquote>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/quat-rot-viz-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/quat-rot-viz-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/quat-rot-viz-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/quat-rot-viz.png" class="rounded" width="400" height="200" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+<p>See the figure above for clarity. We can further verify this visually (at least the axis and direction of roation) for varying \(\theta\) values in Ben Eater’s interactive quaternion visualization <d-cite key="eater-quat-viz"></d-cite>, see the following animation.</p>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/quat-rot-viz.gif-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/quat-rot-viz.gif-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/quat-rot-viz.gif-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/quat-rot-viz.gif" class="rounded" width="500" height="250" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture><figcaption class="caption">The visualization shows rotation from the above example but with varying associated angle.</figcaption>
+
+</figure>
+
+<p>I encourage you to verify other rotations, say when \(\vec{u} = i\) or \(j\). If you did verify, for the case \(\vec{u} = i\), you will have seen no rotation at all. This implies, perhaps obviously, that any vector \(\vec{v}\) which lies <em>on the axis of rotation</em> \(\vec{u}\) must be <em>invariant</em> under \(R_{\mathbf{q}}(\vec{v})\).</p>
+
+<h2 id="angle-test">Angle Test</h2>
+
+<p>When I first saw the incremental test, I was left uneasy and skeptical of the angle of rotation due to the approximations made. But we can be sure of the claims made on angle of rotation with a simple angle test. Let us choose a unit quaternion with the associated angle \(\theta=\frac{\pi}{6}\) while keeping the axis of rotation \(\vec{u}\) as the same basis vector \(k\). Then we have the following quaternion</p>
+
+\[\mathbf{q} = \cos \theta + k \sin \theta = \cos (\frac{\pi}{6}) + k \sin (\frac{\pi}{6}) = \frac{\sqrt{3}}{2} + \frac{1}{2} k\]
+
+<p>Let us apply the operator \(R_{\mathbf{q}}(\vec{v})\) on the same basis vector \(\vec{v} = 1i + 0j + 0k = i\). We have</p>
+
+\[\begin{aligned}
+\vec{w} &amp;= R_{\mathbf{q}}(\vec{v}) = (\frac{\sqrt{3}}{2} + \frac{1}{2} k)(i)(\frac{\sqrt{3}}{2} - \frac{1}{2} k) \\
+&amp;= (\frac{\sqrt{3}}{2} i + \frac{1}{2} j)(\frac{\sqrt{3}}{2} - \frac{1}{2} k) \\
+&amp;= \frac{3}{4} i + \frac{\sqrt{3}}{4} j + \frac{\sqrt{3}}{4} j -  \frac{1}{4} i \\
+&amp;= \frac{1}{2} i + \frac{\sqrt{3}}{2} j 
+\end{aligned}\]
+
+<p>As seen earlier, the angle between \(\frac{1}{2} i + \frac{\sqrt{3}}{2} j\) and \(i\) is given by</p>
+
+\[\begin{aligned}
+\tan \alpha &amp;= \frac{\frac{\sqrt{3}}{2}}{\frac{1}{2}} \quad (\frac{\text{opposite}}{\text{adjacent}}) \\
+&amp;= \sqrt{3} \\
+\alpha &amp;= \arctan \sqrt{3} \\
+\alpha &amp;= \frac{\pi}{3} \quad (= 2\theta)
+\end{aligned}\]
+
+<p>We can now confirm that the angle of rotation for a unit quaternion \(\mathbf{q}\) with an associated angle \(\theta\) is indeed \(2\theta\). Always choose a quaternion that has an associate angle half that of your target rotation angle.</p>
+
+<h2 id="rotation-perspective">Rotation Perspective</h2>
+
+<p>At this point, we have everything we need to geometrically compare \(R_{\mathbf{q}}(\vec{v})\) and \(R_{\mathbf{q}^{\ast}}(\vec{v})\). Consider the example from the <em>Angle Test</em>, there are two possible interpretations of \(\vec{w}\). One is that \(\vec{v}\) has rotated about \(k\)-axis by \(+\frac{\pi}{3}\) angle that is in counter-clockwise direction with a fixed coordinate frame \(\{i, j, k\}\), this is called <em>point</em> rotation. Another one is that the coordinate frame \(\{i, j, k\}\) has rotated about \(k\)-axis by \(-\frac{\pi}{3}\) angle that is in clockwise direction with a fixed vector \(\vec{v}\), this is called <em>frame</em> rotation. Which of these two perspectives is to be prefereed in a given application is usually a subjective matter - a decision made by the practicioner. This is precisely where the conjugate rotation operator  \(R_{\mathbf{q}^{\ast}}(\vec{v})\) comes into play.</p>
+
+<p>One can easily verify for the example in the <em>Incremental Test</em>, where \(\mathbf{q} \approx 1 + k\theta\) and \(\vec{v} = 1i + 0j + 0k = i\), applying the conjugate rotation operator \(R_{\mathbf{q}^{\ast}}(\vec{v})\) on \(\vec{v}\) would yield the following:</p>
+
+\[\vec{w}^{\ast} = R_{\mathbf{q}^{\ast}}(\vec{v}) = 1 - 2\theta j\]
+
+<p>Comparing this with the \(\vec{w} = 1 + 2\theta j\) (see Eq. \text{(1)}) suggests that the difference between \(R_{\mathbf{q}}(\vec{v})\) and \(R_{\mathbf{q}^{\ast}}(\vec{v})\) is simply the direction of rotation. One must be careful here however, as seen in section <em>Polar Form</em> of <d-cite key="quat-rot-op1"></d-cite>, \(\theta\) has to restrict to the domain \((-\pi, \pi]\). So \(\theta\) can be negative as well as positive, which makes it very difficult to differetiate between these two operators. Basically, \(R_{\mathbf{q}}(\vec{v})\) can do what \(R_{\mathbf{q}^{\ast}}(\vec{v})\) does with an appropriate choice of \(\theta\) i.e., replace \(\theta\) by \(-\theta\) in \(\mathbf{q}\) and you go from \(R_{\mathbf{q}}(\vec{v})\) to \(R_{\mathbf{q}^{\ast}}(\vec{v})\). In a nutshell, rotation perspective, personal preference, even library conventions often decide the use of one operator over the other in a given application. It is important to note that both are mathematically equivalent and can represent same rotations.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>I present to you, without formal proof, the two theorems that summarize the two quaternion rotation operators \(R_{\mathbf{q}}(\vec{v})\) and \(R_{\mathbf{q}^{\ast}}(\vec{v})\).</p>
+
+<blockquote>
+  <p><strong>Theorem 1:</strong> For any unit quaternion \(\mathbf{q} = q_0 + \vec{q} = \cos \theta + \vec{u} \sin \theta\) and for any vector \(\vec{v} \in \mathbb{R}^3\), the action of the operator \(R_{\mathbf{q}}(\vec{v}) = \mathbf{q} \star \vec{v} \star \mathbf{q}^{\ast}\) on \(\vec{v}\) may be interpreted geometrically as a rotation of the vector \(\vec{v}\) through an angle \(2\theta\) about \(\vec{q}\) or \(\vec{u}\) as the axis of rotation.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Theorem 2:</strong> For any unit quaternion \(\mathbf{q} = q_0 + \vec{q} = \cos \theta + \vec{u} \sin \theta\) and for any vector \(\vec{v} \in \mathbb{R}^3\), the action of the operator \(R_{\mathbf{q}^{\ast}}(\vec{v}) = \mathbf{q}^{\ast} \star \vec{v} \star \mathbf{q}\) on \(\vec{v}\) may be interpreted geometrically</p>
+  <ul>
+    <li>as a rotation of the cordinate frame with respect to the vector \(\vec{v}\) through an angle \(2\theta\) about \(\vec{q}\) or \(\vec{u}\) as the axis, or,</li>
+    <li>an opposite rotation of the vector \(\vec{v}\) with respect to the coordinate frame through an angle \(2\theta\) about \(\vec{q}\) or \(\vec{u}\) as the axis.</li>
+  </ul>
+</blockquote>
+
+<p>While the conjectural proof above may be intuitive and perhaps sufficient for some readers, I refer the more curious to Chapter 15.15 of <d-cite key="kuipers1999quaternions"></d-cite> for the full formal proof. I also encourage readers to check the subsequent Chapter 15.16 to see how these operators elegantly handle sequence of rotations.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This concludes my attempt to get robotics practitioners introduced to quaternions and their rotation operator. Perhaps now is a good time to watch Grant Sanderson a.k.a YouTuber 3Blue1Brown’s videos on quaternions<d-cite key="3b1b"></d-cite>. As we conclude this journey, I urge you to venture further into the realm of quaternions as a Riemannian manifold. Riemannian manifolds are mathematical spaces that, like quaternions, possess both local and global geometrical properties. They extend our understanding of spaces beyond the familiar Euclidean world, allowing us to model curved surfaces. To that end, I want to emphasize that treating unit quaternions as a Riemannian manifold has huge implications for optimization, imitation learning and other robotics applications <d-cite key="boumal2023intromanifolds"></d-cite><d-cite key="noemie2020thesis"></d-cite><d-cite key="Jaquier2018GeometryawareML"></d-cite><d-cite key="7829369"></d-cite><d-cite key="Calinon2019GaussiansOR"></d-cite><d-cite key="Silvrio2017LearningTP"></d-cite>. The marriage of quaternions and Riemannian geometry enables us to tackle complex problems with newfound precision and insight. May your explorations be filled with wonder and revelation.</p>]]></content><author><name>Akshay L Chandra</name></author><summary type="html"><![CDATA[Exploring the geometric effects of the quaternion sandwich product]]></summary></entry><entry><title type="html">Towards a 3D Rotation Operator with a Quaternion Sandwich</title><link href="https://akshaychandra.com/blog/2023/quat-rot-op1/" rel="alternate" type="text/html" title="Towards a 3D Rotation Operator with a Quaternion Sandwich" /><published>2023-10-16T00:00:00+00:00</published><updated>2023-10-16T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/quat-rot-op1</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/quat-rot-op1/"><![CDATA[<blockquote>
   <p><strong>Citation Note:</strong> I have borrowed this three-part series’ content from Jack B. Kuipers’ seminal 1999 book <d-cite key="kuipers1999quaternions"></d-cite> on quaternions.</p>
 </blockquote>
 
@@ -7,9 +185,10 @@
 </blockquote>
 
 <blockquote>
-  <p><strong>Prerequisites:</strong> This is [2/3] article in my three part series on quaternions. For this article, I assume readers’ familiarty with basic quaternion algebra <d-cite key="quat-basics"></d-cite> and rotation matrices and their basic properties<d-cite key="rotmat"></d-cite><d-cite key="rotmat2d"></d-cite><d-cite key="rotmat3d"></d-cite>. 
-***</p>
+  <p><strong>Prerequisites:</strong> This is [2/3] article in my three part series on quaternions. For this article, I assume readers’ familiarty with basic quaternion algebra <d-cite key="quat-basics"></d-cite> and rotation matrices and their basic properties<d-cite key="rotmat"></d-cite><d-cite key="rotmat2d"></d-cite><d-cite key="rotmat3d"></d-cite>.</p>
 </blockquote>
+
+<hr />
 
 <h2 id="agenda">Agenda</h2>
 
@@ -70,7 +249,7 @@
 \[\begin{aligned}
 \mathbf{q} \star \mathbf{v} &amp;= (q_0 + \vec{q}) \star (0 + \vec{v}) \\
 &amp;= q_0 \cdot 0 - \vec{q} \cdot \vec{v} + 0 \cdot \vec{q} + q_0\vec{v} + \vec{q} \times \vec{v}\\
-&amp;= -\vec{q} \cdot \vec{v} + q_0\vec{v} +  \vec{q} \times \vec{v}
+&amp;= -\vec{q} \cdot \vec{v} + q_0\vec{v} +  \vec{q} \times \vec{v} \hspace{10cm} \text{(1)}
 \end{aligned}\]
 
 <p>It is now clear that quaternion multiplication allows us to operate on vectors, as one should expect if one wants to define an \(\mathbb{R}^3\) rotation operator based on quaternions.</p>
@@ -81,17 +260,20 @@
 
 <h2 id="quaternion-sandwich-product">Quaternion Sandwich Product</h2>
 
-<p>For quaternions to operate on vectors in \(\mathbb{R}^3\), it would have helped a lot in favour of item 2 in our list if their multiplication lead to a one-to-one correspondence between \(\mathbb{R}^3\) and \(Q_0\). However, we see in Eq. (DOUBLE PRODUCT) that the <em>double</em> product still has a scalar part. The <em>double</em> products \(\mathbf{q} \star \mathbf{v}\) and \(\mathbf{v} \star \mathbf{q}\) do not have a place in \(R_{\mathbf{q}}\). This suggests that the quaternion operator \(R_{\mathbf{q}}\) must have a <em>triple</em> or evern higher order quaternion multiplication in it.</p>
+<p>For quaternions to operate on vectors in \(\mathbb{R}^3\), it would have helped a lot in favour of item 2 in our list if their multiplication lead to a one-to-one correspondence between \(\mathbb{R}^3\) and \(Q_0\). However, we see in Eq. \(\text{(1)}\) that the <em>double</em> product still has a scalar part. Which is why the <em>double</em> products \(\mathbf{q} \star \mathbf{v}\) and \(\mathbf{v} \star \mathbf{q}\)<d-footnote>The commutation does not change the scalar part.</d-footnote> do not have a place in \(R_{\mathbf{q}}\). This suggests that the quaternion operator \(R_{\mathbf{q}}\) must have a <em>triple</em> or evern higher order quaternion multiplication in it.</p>
 
 <p>As one should, lets see if a <em>triple</em> product gives us what we want and what we want is to be able to stay in \(\mathbb{R}^3\) after the mulltiplication. Consider two general quaternions \(\mathbf{p}=p_0 + \vec{p}\) and \(\mathbf{q} = q_0 + \vec{q}\) and a pure quaternion \(\mathbf{v} = 0 + \vec{v}\). There are six possible products involving these three quaternions:</p>
 
-\[\mathbf{p} \star \mathbf{q} \star \mathbf{v} \quad \mathbf{q} \star \mathbf{v} \star \mathbf{p} \quad  \mathbf{v} \star \mathbf{p} \star \mathbf{q} \quad \mathbf{q} \star \mathbf{p} \star \mathbf{v} \quad \mathbf{p} \star \mathbf{v} \star \mathbf{q} \quad \mathbf{v} \star \mathbf{q} \star \mathbf{p}\]
+\[\begin{aligned}
+&amp;\mathbf{p} \star \mathbf{q} \star \mathbf{v} \quad \mathbf{q} \star \mathbf{v} \star \mathbf{p} \quad  \mathbf{v} \star \mathbf{p} \star \mathbf{q} \\ 
+&amp;\mathbf{q} \star \mathbf{p} \star \mathbf{v} \quad \mathbf{p} \star \mathbf{v} \star \mathbf{q} \quad \mathbf{v} \star \mathbf{q} \star \mathbf{p}
+\end{aligned}\]
 
 <p>On examination, we see that all products where \(\mathbf{p}\) and \(\mathbf{q}\) are together lead to the same problem we discussed earlier. Their product, regardless of the order, would return another general quaternion, making them <em>double</em> products. Our last hope seems to be in the two leftover <em>triple</em> products <d-footnote>Although, I suspect the section's title must have given away the plot already.</d-footnote></p>
 
 \[\mathbf{p} \star \mathbf{v} \star \mathbf{q} \quad \quad \mathbf{q} \star \mathbf{v} \star \mathbf{p}\]
 
-<p>Despite the uninteresting exercise in it, lets expand one the <em>triple</em> products, say \(\mathbf{p} \star \mathbf{v} \star \mathbf{q}\).</p>
+<p>Despite the uninteresting exercise, lets expand one the <em>triple</em> products, say \(\mathbf{p} \star \mathbf{v} \star \mathbf{q}\).</p>
 
 \[\begin{aligned}
 \mathbf{p} \star \mathbf{v} \star \mathbf{q} &amp;= (\mathbf{p} \star \mathbf{v}) \star \mathbf{q} \\
@@ -118,11 +300,11 @@
 &amp;\Rightarrow -(q_0k+p_0)(\vec{q}\cdot\vec{v})
 \end{aligned}\]
 
-<p>It is easy to verify that the above expression goes to \(0\) when \(\vec{p}\) and \(\vec{v}\) are parallel to each other or if \(k=-1\) and \(p_0 = q_0\) which would simply mean that</p>
+<p>It is easy to verify that the above expression goes to \(0\) when \(\vec{q}\) and \(\vec{v}\) are parallel to each other or if \(k=-1\) and \(p_0 = q_0\) which would simply mean that</p>
 
 \[\mathbf{p} = p_0 + \vec{p} = q_0 -\vec{q} \Rightarrow \mathbf{p} = \mathbf{q}^{\ast}\]
 
-<p>From this discussion, we obtain two <em>triple</em> quaternion products that always output a pure quaternion whenever they <em>sandwich</em> (hence the name) a pure quaternion, although it is not yet clear how they differ from each other (Eq. SANDWICH here)</p>
+<p>From this discussion, we obtain two <em>triple</em> quaternion products that always output a pure quaternion whenever they <em>sandwich</em> (hence the name) a pure quaternion, although it is not yet clear how they differ from each other</p>
 
 \[\mathbf{q} \star \mathbf{v} \star \mathbf{q}^{\ast} \quad \quad \mathbf{q}^{\ast} \star \mathbf{v} \star \mathbf{q}\]
 
@@ -144,7 +326,7 @@
 
 </figure>
 
-<p>A natural question to raise here is - what geometric interpretation can we give this sandwich product? Is there some way to associate an angle with a quaternion, analogous to the rotation matrices. You will see in the later parts of this article that there is indeed a way to associate an angle with quaternions. But I study their geometric considerations more closely in my follow up article <a href="../quat-rot-op2/">here</a>.</p>
+<p>A natural question to raise here is - what geometric interpretation can we give this sandwich product? I study their geometric considerations more closely in my next article <d-cite key="quat-rot-op2"></d-cite>. But to see the geometrics, it helps to associate an angle with a quaternion. Is there some way to do that, analogous to the rotation matrices. You will see in the later parts of this article that there is indeed a way to associate an angle with quaternions.</p>
 
 <blockquote>
   <p><strong>:heavy_check_mark: Item 2 in the list is checked as long as \(R_{\mathbf{q}}\) has sandwich product.</strong></p>
@@ -152,7 +334,7 @@
 
 <h2 id="unit-quaternions">Unit Quaternions</h2>
 
-<p>Unit quaternions i.e., \(\Vert \mathbf{q} \Vert^2 = (\mathbf{q}^{\ast} \star \mathbf{q}) = (\mathbf{q} \star \mathbf{q}^{\ast}) = 1\) are simply quaternions whose norm is 1. What is worth noting about unit quaternions is that their quaternion multiplication preserves membership in the \(\mathbf{S}^3\) space<d-footnote>A sphere in 4-dimensional space where each point represents a quaternion with magnitude 1.</d-footnote> of unit quaternions. That is, the quaternion product of two unit quaternions \(\mathbf{p}\) and \(\mathbf{q}\) i.e., \(\mathbf{p} \star \mathbf{q}\) will also be a unit quaternion and hence will still belong to the unit-sphere in \(\mathbf{S}^3\). This convenient geometric property allows us to do many cool things such as non-Euclidean calculus<d-cite key="boumal2023intromanifolds"></d-cite> with quaternions, something that could be exploited to learn geometry-aware models, say, a dynamical system on robot’s trajectory of both positions and orientations<d-cite key="noemie2020thesis"></d-cite>. More importantly, it should be clear that the rotation operator \(R_{\mathbf{q}}\) should somehow include multiple unit quaternions and not general quaternions.</p>
+<p>Unit quaternions i.e., \(\Vert \mathbf{q} \Vert^2 = (\mathbf{q}^{\ast} \star \mathbf{q}) = (\mathbf{q} \star \mathbf{q}^{\ast}) = 1\) are simply quaternions whose norm is 1. What is worth noting about unit quaternions is that their quaternion multiplication preserves membership in the \(\mathbf{S}^3\) space<d-footnote>A sphere in 4-dimensional space where each point represents a quaternion with magnitude 1.</d-footnote> of unit quaternions. That is, the quaternion product of two unit quaternions \(\mathbf{p}\) and \(\mathbf{q}\) i.e., \(\mathbf{p} \star \mathbf{q}\) will also be a unit quaternion and hence will still belong to the unit-sphere in \(\mathbf{S}^3\). This convenient geometric property allows us to do many cool things such as non-Euclidean calculus<d-cite key="boumal2023intromanifolds"></d-cite> with quaternions, something that could be exploited to learn geometry-aware models, say, a dynamical system on robot’s trajectory of both positions and orientations<d-cite key="noemie2020thesis"></d-cite>&lt;/d-cite&gt;<d-cite key="Jaquier2018GeometryawareML"></d-cite><d-cite key="7829369"></d-cite>. More importantly to our journey, it should be clear that the rotation operator \(R_{\mathbf{q}}\) should include unit quaternions and not general quaternions.</p>
 
 <p>Perhaps this is already obvious (from Eq. \((4)\) and Eq. \((5)\) of <d-cite key="quat-basics"></d-cite>), the quaternion sandwich product with unit quaternions wouldn’t change the magnitude of the pure quaternion \(\mathbf{v}\).</p>
 
@@ -251,18 +433,18 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
 
 <h3 id="quaternions">Quaternions</h3>
 
-<p>Quaternions, particularly unit quaternions, can also be written in polar form albeit the interpretation of the angle \(\theta\) may not be as straightforward as it is for complex numbers. We know that a unit quaternion \(\mathbf{q} = q_0 + \vec{q}\) has norm 1 i.e., \(q_0^2 + \vec{q}^2 = 1\). And that for any angle \(\theta\), we know that \(\cos^2 \theta + \sin^2 \theta = 1\) holds. So there must be an angle \(\theta\) such that</p>
+<p>Quaternions, particularly unit quaternions, can also be written in polar form albeit the interpretation of the angle \(\theta\) may not be as straightforward as it is for complex numbers. We know that a unit quaternion \(\mathbf{q} = q_0 + \vec{q}\) has norm 1 i.e., \(q_0^2 + \Vert \vec{q} \Vert^2 = 1\). And that for any angle \(\theta\), we know that \(\cos^2 \theta + \sin^2 \theta = 1\) holds. So there must be an angle \(\theta\) such that</p>
 
 \[\begin{aligned}
 \cos^2 \theta &amp;= q_0^2 \\
 \sin^2 \theta &amp;= \Vert \vec{q} \Vert^2
 \end{aligned}\]
 
-<p>The angle \(\theta\) can be defined uniquely as long as it stays within \(-\pi &lt; \theta \leq \pi\). But this is it, we now have an angle (althought unclear what it represents) associated with the quaternion \(\mathbf{q}\). We can take this form further by defining a unit vector \(\vec{u}\), which represents the direction of \(\vec{q}\):</p>
+<p>The angle \(\theta\) can be defined uniquely as long as it stays within \((-\pi, \pi]\). But this is it, we now have an angle (althought still unclear what it represents) associated with the quaternion \(\mathbf{q}\). We can take this form further by defining a unit vector \(\vec{u}\), which represents the direction of \(\vec{q}\):</p>
 
 \[\vec{u} = \frac{\vec{q}}{\Vert \vec{q} \Vert} = \frac{\vec{q}}{\sin \theta}\]
 
-<p>Then we may be able to write all unit quanternions in terms of the angle \(\theta\) and the unit vector \(\vec{u}\) as</p>
+<p>Then we may be able to write all unit quanternions in terms of the associated angle \(\theta\) and the unit vector \(\vec{u}\) as</p>
 
 \[\mathbf{q} = q_0 + \vec{q} = \cos \theta + \vec{u} \sin \theta\]
 
@@ -273,11 +455,11 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
 &amp;= \cos \theta - \vec{u} \sin \theta
 \end{aligned}\]
 
-<p>Looking back at Eq. (SANDWICH), if we replace \(\theta\) by \(-\theta\) of \(\mathbf{q}\) in one operator, we get the other operator. Hence, by the appropriate choice of the angle \(\theta\) these operators may in fact represent the same geometric transformation.</p>
+<p>It is not too difficult to verify, that if we replace \(\theta\) by \(-\theta\) of \(\mathbf{q}\) in one sandwich product, we get the other one out. So by the appropriate choice of the angle \(\theta\) these operators may in fact represent the same geometric transformation. I discuss more of this in <d-cite key="quat-rot-op2"></d-cite></p>
 
 <h3 id="a-special-property-of-quaternion-product">A Special Property of Quaternion Product</h3>
 
-<p>I hope you have figured out where I am going with this by now. Consider two unit quaternions:</p>
+<p>I hope you will have figured out where I am going with this by now. Consider two unit quaternions:</p>
 
 \[\begin{aligned}
 \mathbf{q}_1 &amp;= \cos \theta_1 + \vec{u} \sin \theta_1\\
@@ -293,7 +475,7 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
 &amp;= \cos (\theta_1 + \theta_2) + \vec{u} \sin (\theta_1 + \theta_2)
 \end{aligned}\]
 
-<p>Once again, very similar to complex numbers, this is an interesting result and has an important geometric implication. It says, if we multiply two unit quaternions \(\mathbf{q}_1\) and \(\mathbf{q}_2\), each having the same unit vector in them \(\vec{u}\), then the product is also a unit quaternion having this same unit vector \(\vec{u}\). And, associated with it is an angle that is exactly the sum of angles associated with \(\mathbf{q}_1\) and \(\mathbf{q}_2\). Now if, in fact, quaternion rotation operator represents rotation, this is exactly what we would expect and desire.</p>
+<p>Once again, very similar to complex numbers, this is an interesting result and has an important geometric implication. It says, if we multiply two unit quaternions \(\mathbf{q}_1\) and \(\mathbf{q}_2\), each having the same unit vector in them \(\vec{u}\), then the product is also a unit quaternion having this same unit vector \(\vec{u}\). And, associated with it is an angle that is exactly the sum of angles associated with \(\mathbf{q}_1\) and \(\mathbf{q}_2\). Now if, in fact, quaternion rotation operator represents rotation, this property suggests that there is a possibility of sequencing rotations with different \(\mathbf{q}\)s, a property enjoyed by the rotation matrices.</p>
 
 <blockquote>
   <p><strong>:heavy_check_mark: Item 4 in the list is checked as we showed that it is possible to associate an angle \(\theta\) with unit quaternions.</strong></p>
@@ -305,185 +487,7 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
 
 \[R_{\mathbf{q}}(\mathbf{v}) =  \mathbf{q} \star \mathbf{v} \star \mathbf{q}^{\ast} \quad \text{or} \quad \mathbf{q}^{\ast} \star \mathbf{v} \star \mathbf{q}\]
 
-<p>and that it is in some way related to rotations in \(\mathbb{R}^3\). However, I accept that there is still a lot to be discussed and investigated, especially the geometric effects of the sandwich product when applied to an arbitrary \(\mathbb{R}^3\) vector. I wrote about exactly this in the next article of this series <d-cite key="quat-rot-op2"></d-cite>.</p>]]></content><author><name>Akshay L Chandra</name></author><summary type="html"><![CDATA[All nuts and bolts needed to go from quaternions to a quaternion rotation operator]]></summary></entry><entry><title type="html">Quaternion Rotation Operator</title><link href="https://akshaychandra.com/blog/2023/quat-rot-op2/" rel="alternate" type="text/html" title="Quaternion Rotation Operator" /><published>2023-10-16T00:00:00+00:00</published><updated>2023-10-16T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/quat-rot-op2</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/quat-rot-op2/"><![CDATA[<blockquote>
-  <p><strong>Citation Note:</strong> I have borrowed this three-part series’ content from Jack B. Kuipers’ seminal 1999 book <d-cite key="kuipers1999quaternions"></d-cite> on quaternions.</p>
-</blockquote>
-
-<blockquote>
-  <p>As an admirer of the book’s writing style, I submit that you are probably better off refering to Chapter 5 of the book. My motivation to write this regardless is two fold - to provide robotics practitioners a one-stop-shop entry point to quaternions as well as challenge/improve my understanding of them. I claim no expertise in this topic but found it so fascinating that I decided to write about it.</p>
-</blockquote>
-
-<blockquote>
-  <p><strong>Prerequisites:</strong> This is [3/3] article in my series on quaternions. For this article, I assume reader’s familiary with basic quaternion algebra <d-cite key="quat-basics"></d-cite> and some quaternion variants I discussed in <d-cite key="quat-rot-op1"></d-cite>.</p>
-</blockquote>
-
-<hr />
-
-<p>Earlier, we saw a great deal of evidence that quaternions indeed can represent \(\mathbb{R}^3\) rotations. With the checked list in mind, we can now safely define the quaternion rotation operator and apply some tests to understand its geometric effects on \(\mathbb{R}^3\) vectors. All quaternions you see in this article are to be assumed unit.</p>
-
-<h2 id="quaternion-rotation-operator-definition">Quaternion Rotation Operator: Definition</h2>
-
-<p>Let \(\mathbf{q}\) be a unit quaternion, and \(\vec{v}\) be a vector in \(\mathbb{R}^3\) (pure quaternion), we define two rotation operators as follows:</p>
-
-\[\begin{aligned}
-R_{\mathbf{q}}(\vec{v}) &amp;= \mathbf{q} \star \vec{v} \star \mathbf{q}^{\ast} \\
-R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mathbf{q}
-\end{aligned}\]
-
-<p>For comparison, writing out the operator algorithm will be helpful.</p>
-
-\[\begin{aligned}
-R_{\mathbf{q}}(\vec{v}) &amp;= \mathbf{q} \star \vec{v} \star \mathbf{q}^{\ast} = (2q_0^2-1)\vec{v} + 2(\vec{q}\cdot \vec{v})\vec{q} + 2q_0(\vec{q} \times \vec{v}) \\
-R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mathbf{q} = (q_0^2-\Vert \vec{q} \Vert^2)\vec{v} + 2(\vec{q}\cdot \vec{v})\vec{q} + 2q_0(\vec{q} \times \vec{v})
-\end{aligned}\]
-
-<p>Without a formal proof, I claim that these operators indeed rotate \(\vec{v}\) in \(\mathbb{R}^3\). Through some carefully designed tests, I hope to convince you by answering the following <em>key</em> questions about \(R_{\mathbf{q}}(\mathbf{v})\):</p>
-<ul>
-  <li><strong>Q1. What is the direction of rotation?</strong></li>
-  <li><strong>Q2. What is the axis of rotation?</strong></li>
-  <li><strong>Q3. What is the angle of rotation?</strong></li>
-  <li><strong>Q4. What is the difference between \(R_{\mathbf{q}}(\mathbf{v})\) and \(R_{\mathbf{q}^{\ast}}(\mathbf{v})\)?</strong></li>
-</ul>
-
-<p>Let us start by reverse engineering the output of \(R_{\mathbf{q}}(\mathbf{v})\) operator to answer the questions.</p>
-
-<h2 id="incremental-test">Incremental Test</h2>
-
-<p>For this test, lets make our lives easy and work with <em>simple</em> quaternions and <em>simple</em> vectors that are easy to visualize in our heads. Suppose that the unit quaternion \(\mathbf{q}\) in \(R_{\mathbf{q}}(\vec{v})\) has a basis vector</p>
-
-\[\vec{u} = 0i + 0j + 1k = k = \left[\begin{matrix} 0 \\ 0 \\ 1\end{matrix}\right]\]
-
-<p>where \(\{i, j, k\}\) are the standard basis vectors in \(\mathbb{R}^3\), that define the coordinate frame. For clarity and consistency, lets now look at \(\mathbf{q}\) in both Scalar + Vector and Polar form (recall the <em>Polar Form</em> from <d-cite key="quat-rot-op1"></d-cite>):</p>
-
-\[\mathbf{q} = q_0 + \left[\begin{matrix} 0 \\ 0 \\ 1\end{matrix}\right] = \cos \theta + k \sin \theta\]
-
-<p>Note that we have not decided on \(q_0\) yet so let us do that. Assume that the associated angle \(\theta\) is a very small positive angle. This assumption is helpful when comparing the input vector with the operator’s output vector. We want to verify if \(R_{\mathbf{q}}(\vec{v})\) merely “tweaks” the input vector when the associated angle is a very small positive value. Consequently, for very small angles, we can round things up nicely i.e., \(\cos \theta \approx 1\) and \(\sin \theta \approx \theta\) so the quaternion \(\mathbf{q}\) may be re-written as</p>
-
-\[\mathbf{q} \approx 1 + k\theta\]
-
-<p>In the spirit of simplicity, now suppose that you want to rotate another basis vector \(\vec{v} = 1i + 0j + 0k = i\) (or \(\left[\begin{matrix} 1 \\ 0 \\ 0\end{matrix}\right]\)). Lets see what the operator \(R_{\mathbf{q}}(\vec{v})\) outputs for this carefully chosen \(\mathbf{q}\) and \(\vec{v}\):</p>
-
-\[\begin{aligned}
-\vec{w} &amp;= R_{\mathbf{q}}(\vec{v}) = \mathbf{q} \star i \star \mathbf{q}^{\ast} \\
-&amp;= (1+k\theta)(i)(1-k\theta) \\
-&amp;= (1+k\theta)(i+j\theta) \\
-\vec{w} &amp;= i + 2\theta j \quad (\text{or }\left[\begin{matrix} 1 \\ 2\theta \\ 0\end{matrix}\right)]
-\end{aligned}\]
-
-<p>We can interpret this result to mean that the input vector \(i\) has been “tweaked” by <em>some</em> unknown angle to produce the output vector \(i + 2\theta j\). Firstly, lets examine the length of \(\vec{w}\)</p>
-
-\[\Vert \vec{w} \Vert = \sqrt{(1)^2 + (2\theta)^2} \approx 1 \quad (\text{Since }\theta \approx 0)\]
-
-<p>The length of the \(\vec{w}\) is still \(1\) (well almost, if you ignore the very small value \(\theta^2\)). <d-footnote>Note that we have no restriction on the length of the vector to be rotated, just that the output vector's length _should not_ change post rotation and it does not so this is good news. </d-footnote>Now, lets think about the angle between <em>rotated image</em> \(\vec{w}\) and \(\vec{v}\). It helps to mentally visualize this rotation as a vector that was ealier pointing at \(i\) (or \(\left[\begin{matrix} 1 \\ 0 \\ 0\end{matrix}\right]\)) and is now pointing at \(i+2\theta j\) (or \(\left[\begin{matrix} 1 \\ 2\theta \\ 0\end{matrix}\right]\)). Geometrically, it so appears that \(i\) is rotated <em>counter-clockwise</em> about the axis \(k\) by \(2\theta\) angle. Lets verify this by checking the angle of rotation \(\alpha\) between \(\vec{w}\) and \(\vec{v}\), which can be given by:</p>
-
-\[\begin{aligned}
-\tan \alpha &amp;= \frac{\Vert w \times v \Vert}{(w \cdot v)} \\
-&amp;= \frac{\Vert i + 2\theta j \times i \Vert}{(i+2\theta j) \cdot (i)} \\
-&amp;= \frac{\Vert 2\theta k \Vert}{(1 \cdot 1 + 2\theta \cdot 0 + 0 \cdot 0)}\\
-&amp;= \frac{2\theta}{1} \quad (\text{Geometrically, just } \frac{\text{opposite}}{adjacent})\\
-\alpha &amp;\approx 2\theta \quad (\text{Since } \tan \alpha \approx \alpha \text{ when } \alpha \approx 0^+) \\
-\alpha &amp;\approx\text{A very small positive angle}
-\end{aligned}\]
-
-<p>which is exactly what we wanted when we chose a very small positive angle \(\theta\). Despite some (potentially uneasy) approximations, we now have a pretty good idea of the direction, axis and angle of rotation. The general rule goes as follows:</p>
-
-<blockquote>
-  <p>Given a unit quaternion \(\mathbf{q} = \cos \theta + \vec{u} \sin \theta\) and a vector \(\vec{v}\) in \(\mathbb{R}^3\), \(R_{\mathbf{q}}(\vec{v})\) rotates \(\vec{v}\) in counter-clockwise direction about the axis of \(\vec{u}\) by angle \(2\theta\).</p>
-</blockquote>
-
-<figure>
-
-  <picture>
-    
-    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/quat-rot-viz-480.webp" />
-    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/quat-rot-viz-800.webp" />
-    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/quat-rot-viz-1400.webp" />
-    
-
-    <!-- Fallback to the original file -->
-    <img src="/assets/img/blog/quat-rot-viz.png" class="rounded" width="400" height="200" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
-
-  </picture>
-
-</figure>
-
-<p>See the figure above for clarity. We can further verify this visually (at least the axis and direction of roation) for varying \(\theta\) values in Ben Eater’s interactive quaternion visualization <d-cite key="eater-quat-viz"></d-cite>, see the following animation.</p>
-
-<figure>
-
-  <picture>
-    
-    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/quat-rot-viz.gif-480.webp" />
-    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/quat-rot-viz.gif-800.webp" />
-    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/quat-rot-viz.gif-1400.webp" />
-    
-
-    <!-- Fallback to the original file -->
-    <img src="/assets/img/blog/quat-rot-viz.gif" class="rounded" width="500" height="250" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
-
-  </picture><figcaption class="caption">The visualization shows rotation from the above mentioned example but with varying associated angle.</figcaption>
-
-</figure>
-
-<p>I encourage you to verify other rotations, say when \(\vec{u} = i\) or \(j\). If you did verify, for the case \(\vec{u} = i\), you will have seen no rotation at all. This implies, perhaps obviously, that any vector \(\vec{v}\) which lies <em>on the axis of rotation</em> \(\vec{u}\) must be <em>invariant</em> under \(R_{\mathbf{q}}(\vec{v})\).</p>
-
-<h2 id="angle-test">Angle Test</h2>
-
-<p>When I first saw this line of argument, I was left skeptical of the angle of rotation due to the approximations made. But we can be sure of the angle of rotation with a simple angle test. Let us choose a unit quaternion with the associated angle \(\theta=\frac{\pi}{6}\) while keeping the basis vector \(k\) same. Then we have the following quaternion</p>
-
-\[\mathbf{q} = \cos \theta + k \sin \theta = \cos (\frac{\pi}{6}) + k \sin (\frac{\pi}{6}) = \frac{\sqrt{3}}{2} + \frac{1}{2} k\]
-
-<p>Let us apply the operator \(R_{\mathbf{q}}(\vec{v})\) on the same basis vector \(\vec{v} = 1i + 0j + 0k = i\). We have</p>
-
-\[\begin{aligned}
-\vec{w} &amp;= R_{\mathbf{q}}(\vec{v}) = (\frac{\sqrt{3}}{2} + \frac{1}{2} k)(i)(\frac{\sqrt{3}}{2} - \frac{1}{2} k) \\
-&amp;= (\frac{\sqrt{3}}{2} i + \frac{1}{2} j)(\frac{\sqrt{3}}{2} - \frac{1}{2} k) \\
-&amp;= \frac{3}{4} i + \frac{\sqrt{3}}{4} j + \frac{\sqrt{3}}{4} j -  \frac{1}{4} i \\
-&amp;= \frac{1}{2} i + \frac{\sqrt{3}}{2} j 
-\end{aligned}\]
-
-<p>As seen earlier, the angle between \(\vec{w}\) and \(i\) is given by</p>
-
-\[\begin{aligned}
-\tan \alpha &amp;= \frac{\frac{\sqrt{3}}{2}}{\frac{1}{2}} \quad (\frac{\text{opposite}}{\text{adjacent}}) \\
-&amp;= \sqrt{3} \\
-\alpha &amp;= \arctan \sqrt{3} \\
-\alpha &amp;= \frac{\pi}{3} \quad (= 2\theta)
-\end{aligned}\]
-
-<p>We can now confirm that the angle of rotation for a unit quaternion \(\mathbf{q}\) with an associated angle \(\theta\) is indeed \(2\theta\).</p>
-
-<h2 id="rotation-perspective">Rotation Perspective</h2>
-
-<p>At this point, we have everything we need to geometrically make sense of \(R_{\mathbf{q}}(\vec{v})\). For the example from the Angle Test, there are two possible interpretations of \(\vec{w}\). One is that \(\vec{v}\) has rotated about \(k\)-axis by \(+\frac{\pi}{3}\) angle that is in counter-clockwise direction with a fixed coordinate frame \(\{i, j, k\}\), this is called <em>point</em> rotation. Another one is that the coordinate frame \(\{i, j, k\}\) has rotated about \(k\)-axis by \(-\frac{\pi}{3}\) angle that is in clockwise direction with a fixed vector \(\vec{v}\), this is called <em>frame</em> rotation. Which of these two perspectives is to be prefereed in a given application is usually a subjective matter - a decision made by the practicioner. This is precisely where the conjugate rotation operator  \(R_{\mathbf{q}^{\ast}}(\vec{v})\) comes into play.</p>
-
-<p>One can easily verify for the example in the incremental test, where \(\mathbf{q} \approx 1 + k\theta\) and \(\vec{v} = 1i + 0j + 0k = i\), applying the conjugate rotation operator \(R_{\mathbf{q}^{\ast}}(\vec{v})\) on \(\vec{v}\) would yield the following:</p>
-
-\[\vec{w}^{\ast} = R_{\mathbf{q}^{\ast}}(\vec{v}) = 1 - 2\theta j\]
-
-<p>Comparing this with the previous result suggests that the difference between \(R_{\mathbf{q}}(\vec{v})\) and \(R_{\mathbf{q}^{\ast}}(\vec{v})\) is simply the direction of rotation. One must be careful here however, as seen in section <em>Polar Form</em> of <d-cite key="quat-rot-op1"></d-cite>, \(\theta\) has to restrict to the domain \((-\pi, \pi]\). So \(\theta\) can be negative as well as positive, which makes it very difficult to differetiate between these two operators. Essentially rotation perspective, personal preference, even library conventions often decide the use of one operator over other in a given application. It is important to note that both are mathematically equivalent and can represent the same rotations.</p>
-
-<h2 id="summary">Summary</h2>
-
-<p>I present to you, without formal proof, the two theorems that summarize the two quaternion rotation operators \(R_{\mathbf{q}}(\vec{v})\) and \(R_{\mathbf{q}^{\ast}}(\vec{v})\).</p>
-
-<blockquote>
-  <p><strong>Theorem 1:</strong> For any unit quaternion \(\mathbf{q} = q_0 + \vec{q} = \cos \theta + \vec{u} \sin \theta\) and for any vector \(\vec{v} \in \mathbb{R}^3\), the action of the operator \(R_{\mathbf{q}}(\vec{v}) = \mathbf{q} \star \vec{v} \star \mathbf{q}^{\ast}\) on \(\vec{v}\) may be interpreted geometrically as a rotation of the vector \(\vec{v}\) through an angle \(2\theta\) about \(\vec{q}\) or \(\vec{u}\) as the axis of rotation.</p>
-</blockquote>
-
-<blockquote>
-  <p><strong>Theorem 2:</strong> For any unit quaternion \(\mathbf{q} = q_0 + \vec{q} = \cos \theta + \vec{u} \sin \theta\) and for any vector \(\vec{v} \in \mathbb{R}^3\), the action of the operator \(R_{\mathbf{q}^{\ast}}(\vec{v}) = \mathbf{q}^{\ast} \star \vec{v} \star \mathbf{q}\) on \(\vec{v}\) may be interpreted geometrically</p>
-  <ul>
-    <li>as a rotation of the cordinate frame with respect to the vector \(\vec{v}\) through an angle \(2\theta\) about \(\vec{q}\) or \(\vec{u}\) as the axis, or,</li>
-    <li>an opposite rotation of the vector \(\vec{v}\) with respect to the coordinate frame through an angle \(2\theta\) about \(\vec{q}\) or \(\vec{u}\) as the axis.</li>
-  </ul>
-</blockquote>
-
-<p>While the conjectural proof above is intuitive and perhaps sufficient for a few readers, I refer the more curious to Chapter 15.15 of <d-cite key="kuipers1999quaternions"></d-cite> for the full formal proof. I also encourage readers to check the subsequent Chapter 15.16 to see how the operators elegantly handle sequence of rotations.</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>This concludes my attempt to get robotics practitioners introduced to quaternions. Perhaps now is a good time to watch Grant Sanderson a.k.a YouTuber 3Blue1Brown’s videos on quaternions<d-cite key="3b1b"></d-cite>. As we conclude this journey, I urge you to venture further into the realm of quaternions as a Riemannian manifold. Riemannian manifolds are mathematical spaces that, like quaternions, possess both local and global geometrical properties. They extend our understanding of spaces beyond the familiar Euclidean world, allowing us to model curved surfaces. To that end, I want to emphasize that treating unit quaternions as a Riemannian manifold has huge implications for optimization, imitation learning and other robotic applications <d-cite key="boumal2023intromanifolds"></d-cite><d-cite key="noemie2020thesis"></d-cite><d-cite key="Jaquier2018GeometryawareML"></d-cite><d-cite key="7829369"></d-cite><d-cite key="Calinon2019GaussiansOR"></d-cite><d-cite key="Silvrio2017LearningTP"></d-cite>. The marriage of quaternions and Riemannian geometry enables us to tackle complex problems with newfound precision and insight. May your explorations be filled with wonder and revelation.</p>]]></content><author><name>Akshay L Chandra</name></author><summary type="html"><![CDATA[Exploring the geometric effects of the quaternion sandwich product]]></summary></entry><entry><title type="html">Quaternions: Basic Algebra</title><link href="https://akshaychandra.com/blog/2023/quaternion-basics/" rel="alternate" type="text/html" title="Quaternions: Basic Algebra" /><published>2023-10-16T00:00:00+00:00</published><updated>2023-10-16T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/quaternion-basics</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/quaternion-basics/"><![CDATA[<blockquote>
+<p>and that it is in some way related to rotations in \(\mathbb{R}^3\). However, I accept that there is still a lot to be discussed and investigated, especially the geometric effects of the sandwich product when applied to an arbitrary \(\mathbb{R}^3\) vector. I wrote about exactly this in the next article of this series <d-cite key="quat-rot-op2"></d-cite>. There we take the sandwich product to a couple of field tests and reverse engineer the output vector with some convenient visualizations.</p>]]></content><author><name>Akshay L Chandra</name></author><summary type="html"><![CDATA[All the nuts and bolts needed to go from quaternions to a quaternion rotation operator]]></summary></entry><entry><title type="html">Quaternions: Basic Algebra</title><link href="https://akshaychandra.com/blog/2023/quaternion-basics/" rel="alternate" type="text/html" title="Quaternions: Basic Algebra" /><published>2023-10-15T00:00:00+00:00</published><updated>2023-10-15T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/quaternion-basics</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/quaternion-basics/"><![CDATA[<blockquote>
   <p><strong>Citation Note:</strong> For this article, I have borrowed many things, sometimes “as is”, from:</p>
   <ul>
     <li>Prof. Jack B. Kuipers’ seminal 1999 book <d-cite key="kuipers1999quaternions"></d-cite></li>
@@ -830,4 +834,282 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>With these basics of quaternions and its algebra in check, I feel that one can now look at how quaternions can be used to represent 3D rotations. You can find the next article in the series exactly on this here<d-cite key="quat-rot-op1"></d-cite>.</p>]]></content><author><name>Akshay L Chandra</name></author><summary type="html"><![CDATA[A brief introduction to quaternions and their basic algebra]]></summary></entry><entry><title type="html">Learning Parameters Part 5: AdaGrad, RMSProp, and Adam</title><link href="https://akshaychandra.com/blog/2019/learning-parameters-part-5-adagrad-rmsprop-and-adam/" rel="alternate" type="text/html" title="Learning Parameters Part 5: AdaGrad, RMSProp, and Adam" /><published>2019-09-27T04:38:57+00:00</published><updated>2019-09-27T04:38:57+00:00</updated><id>https://akshaychandra.com/blog/2019/learning-parameters-part-5-adagrad-rmsprop-and-adam</id><content type="html" xml:base="https://akshaychandra.com/blog/2019/learning-parameters-part-5-adagrad-rmsprop-and-adam/"><![CDATA[]]></content><author><name></name></author></entry><entry><title type="html">Learning Parameters Part 4: Tips For Adjusting Learning Rate, Line Search</title><link href="https://akshaychandra.com/blog/2019/learning-parameters-part-4-tips-for-adjusting-learning-rate-line-search/" rel="alternate" type="text/html" title="Learning Parameters Part 4: Tips For Adjusting Learning Rate, Line Search" /><published>2019-09-27T03:37:12+00:00</published><updated>2019-09-27T03:37:12+00:00</updated><id>https://akshaychandra.com/blog/2019/learning-parameters-part-4-tips-for-adjusting-learning-rate-line-search</id><content type="html" xml:base="https://akshaychandra.com/blog/2019/learning-parameters-part-4-tips-for-adjusting-learning-rate-line-search/"><![CDATA[]]></content><author><name></name></author></entry><entry><title type="html">Learning Parameters, Part 3: Stochastic &amp;amp; Mini-Batch Gradient Descent</title><link href="https://akshaychandra.com/blog/2019/learning-parameters-part-3-stochastic-mini-batch-gradient-descent/" rel="alternate" type="text/html" title="Learning Parameters, Part 3: Stochastic &amp;amp; Mini-Batch Gradient Descent" /><published>2019-05-16T12:50:50+00:00</published><updated>2019-05-16T12:50:50+00:00</updated><id>https://akshaychandra.com/blog/2019/learning-parameters-part-3-stochastic--mini-batch-gradient-descent</id><content type="html" xml:base="https://akshaychandra.com/blog/2019/learning-parameters-part-3-stochastic-mini-batch-gradient-descent/"><![CDATA[]]></content><author><name></name></author></entry><entry><title type="html">Learning Parameters, Part 2: Momentum-Based And Nesterov Accelerated Gradient Descent</title><link href="https://akshaychandra.com/blog/2019/learning-parameters-part-2-momentum-based-and-nesterov-accelerated-gradient-descent/" rel="alternate" type="text/html" title="Learning Parameters, Part 2: Momentum-Based And Nesterov Accelerated Gradient Descent" /><published>2019-05-15T12:44:13+00:00</published><updated>2019-05-15T12:44:13+00:00</updated><id>https://akshaychandra.com/blog/2019/learning-parameters-part-2-momentum-based-and-nesterov-accelerated-gradient-descent</id><content type="html" xml:base="https://akshaychandra.com/blog/2019/learning-parameters-part-2-momentum-based-and-nesterov-accelerated-gradient-descent/"><![CDATA[]]></content><author><name></name></author></entry><entry><title type="html">Learning Parameters, Part 1: Gradient Descent</title><link href="https://akshaychandra.com/blog/2019/learning-parameters-part-1-gradient-descent/" rel="alternate" type="text/html" title="Learning Parameters, Part 1: Gradient Descent" /><published>2019-05-14T21:20:57+00:00</published><updated>2019-05-14T21:20:57+00:00</updated><id>https://akshaychandra.com/blog/2019/learning-parameters-part-1-gradient-descent</id><content type="html" xml:base="https://akshaychandra.com/blog/2019/learning-parameters-part-1-gradient-descent/"><![CDATA[]]></content><author><name></name></author><summary type="html"><![CDATA[Gradient Descent is an iterative optimization algorithm for finding the (local) minimum of a function. It is one of the most popular&#x2026;Continue reading on Towards Data Science »]]></summary></entry><entry><title type="html">Learning Parameters, Part 0: Basic Stuff</title><link href="https://akshaychandra.com/blog/2019/learning-parameters-part-0-basic-stuff/" rel="alternate" type="text/html" title="Learning Parameters, Part 0: Basic Stuff" /><published>2019-05-14T21:20:41+00:00</published><updated>2019-05-14T21:20:41+00:00</updated><id>https://akshaychandra.com/blog/2019/learning-parameters-part-0-basic-stuff</id><content type="html" xml:base="https://akshaychandra.com/blog/2019/learning-parameters-part-0-basic-stuff/"><![CDATA[]]></content><author><name></name></author></entry><entry><title type="html">Mouse Cursor Control Using Facial Movements — An HCI Application</title><link href="https://akshaychandra.com/blog/2018/mouse-cursor-control-using-facial-movementsan-hci-application/" rel="alternate" type="text/html" title="Mouse Cursor Control Using Facial Movements — An HCI Application" /><published>2018-10-07T20:36:17+00:00</published><updated>2018-10-07T20:36:17+00:00</updated><id>https://akshaychandra.com/blog/2018/mouse-cursor-control-using-facial-movementsan-hci-application</id><content type="html" xml:base="https://akshaychandra.com/blog/2018/mouse-cursor-control-using-facial-movementsan-hci-application/"><![CDATA[]]></content><author><name></name></author></entry></feed>
+<p>With these basics of quaternions and its algebra in check, I feel that one can now look at how quaternions can be used to represent 3D rotations. You can find the next article in the series exactly on this here<d-cite key="quat-rot-op1"></d-cite>.</p>]]></content><author><name>Akshay L Chandra</name></author><summary type="html"><![CDATA[A brief introduction to quaternions and their basic algebra]]></summary></entry><entry><title type="html">a distill-style blog post</title><link href="https://akshaychandra.com/blog/2023/distill/" rel="alternate" type="text/html" title="a distill-style blog post" /><published>2023-04-04T00:00:00+00:00</published><updated>2023-04-04T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/distill</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/distill/"><![CDATA[<h2 id="equations">Equations</h2>
+
+<p>This theme supports rendering beautiful math in inline and display modes using <a href="https://www.mathjax.org/">MathJax 3</a> engine.
+You just need to surround your math expression with <code class="language-plaintext highlighter-rouge">$$</code>, like <code class="language-plaintext highlighter-rouge">$$ E = mc^2 $$</code>.
+If you leave it inside a paragraph, it will produce an inline expression, just like \(E = mc^2\).</p>
+
+<p>To use display mode, again surround your expression with <code class="language-plaintext highlighter-rouge">$$</code> and place it as a separate paragraph.
+Here is an example:</p>
+
+\[\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)\]
+
+<p>Note that MathJax 3 is <a href="https://docs.mathjax.org/en/latest/upgrading/whats-new-3.0.html">a major re-write of MathJax</a> that brought a significant improvement to the loading and rendering speed, which is now <a href="http://www.intmath.com/cg5/katex-mathjax-comparison.php">on par with KaTeX</a>.</p>
+
+<hr />
+
+<h2 id="citations">Citations</h2>
+
+<p>Citations are then used in the article body with the <code class="language-plaintext highlighter-rouge">&lt;d-cite&gt;</code> tag.
+The key attribute is a reference to the id provided in the bibliography.
+The key attribute can take multiple ids, separated by commas.</p>
+
+<p>The citation is presented inline like this: <d-cite key="gregor2015draw"></d-cite> (a number that displays more information on hover).
+If you have an appendix, a bibliography is automatically created and populated in it.</p>
+
+<p>Distill chose a numerical inline citation style to improve readability of citation dense articles and because many of the benefits of longer citations are obviated by displaying more information on hover.
+However, we consider it good style to mention author last names if you discuss something at length and it fits into the flow well — the authors are human and it’s nice for them to have the community associate them with their work.</p>
+
+<hr />
+
+<h2 id="footnotes">Footnotes</h2>
+
+<p>Just wrap the text you would like to show up in a footnote in a <code class="language-plaintext highlighter-rouge">&lt;d-footnote&gt;</code> tag.
+The number of the footnote will be automatically generated.<d-footnote>This will become a hoverable footnote.</d-footnote></p>
+
+<hr />
+
+<h2 id="code-blocks">Code Blocks</h2>
+
+<p>Syntax highlighting is provided within <code class="language-plaintext highlighter-rouge">&lt;d-code&gt;</code> tags.
+An example of inline code snippets: <code class="language-plaintext highlighter-rouge">&lt;d-code language="html"&gt;let x = 10;&lt;/d-code&gt;</code>.
+For larger blocks of code, add a <code class="language-plaintext highlighter-rouge">block</code> attribute:</p>
+
+<d-code block="" language="javascript">
+  var x = 25;
+  function(x) {
+    return x * x;
+  }
+</d-code>
+
+<p><strong>Note:</strong> <code class="language-plaintext highlighter-rouge">&lt;d-code&gt;</code> blocks do not look good in the dark mode.
+You can always use the default code-highlight using the <code class="language-plaintext highlighter-rouge">highlight</code> liquid tag:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
+<span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">x</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<hr />
+
+<h2 id="interactive-plots">Interactive Plots</h2>
+
+<p>You can add interative plots using plotly + iframes :framed_picture:</p>
+
+<div class="l-page">
+  <iframe src="/assets/plotly/demo.html" frameborder="0" scrolling="no" height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
+</div>
+
+<p>The plot must be generated separately and saved into an HTML file.
+To generate the plot that you see above, you can use the following code snippet:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="n">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="n">plotly.express</span> <span class="k">as</span> <span class="n">px</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">read_csv</span><span class="p">(</span>
+  <span class="sh">'</span><span class="s">https://raw.githubusercontent.com/plotly/datasets/master/earthquakes-23k.csv</span><span class="sh">'</span>
+<span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="nf">density_mapbox</span><span class="p">(</span>
+  <span class="n">df</span><span class="p">,</span>
+  <span class="n">lat</span><span class="o">=</span><span class="sh">'</span><span class="s">Latitude</span><span class="sh">'</span><span class="p">,</span>
+  <span class="n">lon</span><span class="o">=</span><span class="sh">'</span><span class="s">Longitude</span><span class="sh">'</span><span class="p">,</span>
+  <span class="n">z</span><span class="o">=</span><span class="sh">'</span><span class="s">Magnitude</span><span class="sh">'</span><span class="p">,</span>
+  <span class="n">radius</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+  <span class="n">center</span><span class="o">=</span><span class="nf">dict</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lon</span><span class="o">=</span><span class="mi">180</span><span class="p">),</span>
+  <span class="n">zoom</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+  <span class="n">mapbox_style</span><span class="o">=</span><span class="sh">"</span><span class="s">stamen-terrain</span><span class="sh">"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">.</span><span class="nf">write_html</span><span class="p">(</span><span class="sh">'</span><span class="s">assets/plotly/demo.html</span><span class="sh">'</span><span class="p">)</span></code></pre></figure>
+
+<hr />
+
+<h2 id="layouts">Layouts</h2>
+
+<p>The main text column is referred to as the body.
+It is the assumed layout of any direct descendants of the <code class="language-plaintext highlighter-rouge">d-article</code> element.</p>
+
+<div class="fake-img l-body">
+  <p>.l-body</p>
+</div>
+
+<p>For images you want to display a little larger, try <code class="language-plaintext highlighter-rouge">.l-page</code>:</p>
+
+<div class="fake-img l-page">
+  <p>.l-page</p>
+</div>
+
+<p>All of these have an outset variant if you want to poke out from the body text a little bit.
+For instance:</p>
+
+<div class="fake-img l-body-outset">
+  <p>.l-body-outset</p>
+</div>
+
+<div class="fake-img l-page-outset">
+  <p>.l-page-outset</p>
+</div>
+
+<p>Occasionally you’ll want to use the full browser width.
+For this, use <code class="language-plaintext highlighter-rouge">.l-screen</code>.
+You can also inset the element a little from the edge of the browser by using the inset variant.</p>
+
+<div class="fake-img l-screen">
+  <p>.l-screen</p>
+</div>
+<div class="fake-img l-screen-inset">
+  <p>.l-screen-inset</p>
+</div>
+
+<p>The final layout is for marginalia, asides, and footnotes.
+It does not interrupt the normal flow of <code class="language-plaintext highlighter-rouge">.l-body</code> sized text except on mobile screen sizes.</p>
+
+<div class="fake-img l-gutter">
+  <p>.l-gutter</p>
+</div>
+
+<hr />
+
+<h2 id="other-typography">Other Typography?</h2>
+
+<p>Emphasis, aka italics, with <em>asterisks</em> (<code class="language-plaintext highlighter-rouge">*asterisks*</code>) or <em>underscores</em> (<code class="language-plaintext highlighter-rouge">_underscores_</code>).</p>
+
+<p>Strong emphasis, aka bold, with <strong>asterisks</strong> or <strong>underscores</strong>.</p>
+
+<p>Combined emphasis with <strong>asterisks and <em>underscores</em></strong>.</p>
+
+<p>Strikethrough uses two tildes. <del>Scratch this.</del></p>
+
+<ol>
+  <li>First ordered list item</li>
+  <li>Another item
+⋅⋅* Unordered sub-list.</li>
+  <li>Actual numbers don’t matter, just that it’s a number
+⋅⋅1. Ordered sub-list</li>
+  <li>And another item.</li>
+</ol>
+
+<p>⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we’ll use three here to also align the raw Markdown).</p>
+
+<p>⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
+⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
+⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)</p>
+
+<ul>
+  <li>Unordered list can use asterisks</li>
+  <li>Or minuses</li>
+  <li>Or pluses</li>
+</ul>
+
+<p><a href="https://www.google.com">I’m an inline-style link</a></p>
+
+<p><a href="https://www.google.com" title="Google's Homepage">I’m an inline-style link with title</a></p>
+
+<p><a href="https://www.mozilla.org">I’m a reference-style link</a></p>
+
+<p><a href="../quaternions-to-rotations">I’m a relative reference to a repository file</a></p>
+
+<p><a href="http://slashdot.org">You can use numbers for reference-style link definitions</a></p>
+
+<p>Or leave it empty and use the <a href="http://www.reddit.com">link text itself</a>.</p>
+
+<p>URLs and URLs in angle brackets will automatically get turned into links.
+http://www.example.com or <a href="http://www.example.com">http://www.example.com</a> and sometimes
+example.com (but not on Github, for example).</p>
+
+<p>Some text to show that the reference links can follow later.</p>
+
+<p>Here’s our logo (hover to see the title text):</p>
+
+<p>Inline-style:
+<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" alt="alt text" title="Logo Title Text 1" /></p>
+
+<p>Reference-style:
+<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" alt="alt text" title="Logo Title Text 2" /></p>
+
+<p>Inline <code class="language-plaintext highlighter-rouge">code</code> has <code class="language-plaintext highlighter-rouge">back-ticks around</code> it.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">JavaScript syntax highlighting</span><span class="dl">"</span><span class="p">;</span>
+<span class="nf">alert</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s</span> <span class="o">=</span> <span class="sh">"</span><span class="s">Python syntax highlighting</span><span class="sh">"</span>
+<span class="k">print</span> <span class="n">s</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>No language indicated, so no syntax highlighting.
+But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
+</code></pre></div></div>
+
+<p>Colons can be used to align columns.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tables</th>
+      <th style="text-align: center">Are</th>
+      <th style="text-align: right">Cool</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>col 3 is</td>
+      <td style="text-align: center">right-aligned</td>
+      <td style="text-align: right">$1600</td>
+    </tr>
+    <tr>
+      <td>col 2 is</td>
+      <td style="text-align: center">centered</td>
+      <td style="text-align: right">$12</td>
+    </tr>
+    <tr>
+      <td>zebra stripes</td>
+      <td style="text-align: center">are neat</td>
+      <td style="text-align: right">$1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>There must be at least 3 dashes separating each header cell.
+The outer pipes (|) are optional, and you don’t need to make the
+raw Markdown line up prettily. You can also use inline Markdown.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Markdown</th>
+      <th>Less</th>
+      <th>Pretty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em>Still</em></td>
+      <td><code class="language-plaintext highlighter-rouge">renders</code></td>
+      <td><strong>nicely</strong></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>Blockquotes are very handy in email to emulate reply text.
+This line is part of the same quote.</p>
+</blockquote>
+
+<p>Quote break.</p>
+
+<blockquote>
+  <p>This is a very long line that will still be quoted properly when it wraps. Oh boy let’s keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can <em>put</em> <strong>Markdown</strong> into a blockquote.</p>
+</blockquote>
+
+<p>Here’s a line for us to start with.</p>
+
+<p>This line is separated from the one above by two newlines, so it will be a <em>separate paragraph</em>.</p>
+
+<p>This line is also a separate paragraph, but…
+This line is only separated by a single newline, so it’s a separate line in the <em>same paragraph</em>.</p>]]></content><author><name>Albert Einstein</name></author><summary type="html"><![CDATA[an example of a distill-style blog post and main elements]]></summary></entry><entry><title type="html">Learning Parameters Part 5: AdaGrad, RMSProp, and Adam</title><link href="https://akshaychandra.com/blog/2019/learning-parameters-part-5-adagrad-rmsprop-and-adam/" rel="alternate" type="text/html" title="Learning Parameters Part 5: AdaGrad, RMSProp, and Adam" /><published>2019-09-27T04:38:57+00:00</published><updated>2019-09-27T04:38:57+00:00</updated><id>https://akshaychandra.com/blog/2019/learning-parameters-part-5-adagrad-rmsprop-and-adam</id><content type="html" xml:base="https://akshaychandra.com/blog/2019/learning-parameters-part-5-adagrad-rmsprop-and-adam/"><![CDATA[]]></content><author><name></name></author></entry><entry><title type="html">Learning Parameters Part 4: Tips For Adjusting Learning Rate, Line Search</title><link href="https://akshaychandra.com/blog/2019/learning-parameters-part-4-tips-for-adjusting-learning-rate-line-search/" rel="alternate" type="text/html" title="Learning Parameters Part 4: Tips For Adjusting Learning Rate, Line Search" /><published>2019-09-27T03:37:12+00:00</published><updated>2019-09-27T03:37:12+00:00</updated><id>https://akshaychandra.com/blog/2019/learning-parameters-part-4-tips-for-adjusting-learning-rate-line-search</id><content type="html" xml:base="https://akshaychandra.com/blog/2019/learning-parameters-part-4-tips-for-adjusting-learning-rate-line-search/"><![CDATA[]]></content><author><name></name></author></entry><entry><title type="html">Learning Parameters, Part 3: Stochastic &amp;amp; Mini-Batch Gradient Descent</title><link href="https://akshaychandra.com/blog/2019/learning-parameters-part-3-stochastic-mini-batch-gradient-descent/" rel="alternate" type="text/html" title="Learning Parameters, Part 3: Stochastic &amp;amp; Mini-Batch Gradient Descent" /><published>2019-05-16T12:50:50+00:00</published><updated>2019-05-16T12:50:50+00:00</updated><id>https://akshaychandra.com/blog/2019/learning-parameters-part-3-stochastic--mini-batch-gradient-descent</id><content type="html" xml:base="https://akshaychandra.com/blog/2019/learning-parameters-part-3-stochastic-mini-batch-gradient-descent/"><![CDATA[]]></content><author><name></name></author></entry><entry><title type="html">Learning Parameters, Part 2: Momentum-Based And Nesterov Accelerated Gradient Descent</title><link href="https://akshaychandra.com/blog/2019/learning-parameters-part-2-momentum-based-and-nesterov-accelerated-gradient-descent/" rel="alternate" type="text/html" title="Learning Parameters, Part 2: Momentum-Based And Nesterov Accelerated Gradient Descent" /><published>2019-05-15T12:44:13+00:00</published><updated>2019-05-15T12:44:13+00:00</updated><id>https://akshaychandra.com/blog/2019/learning-parameters-part-2-momentum-based-and-nesterov-accelerated-gradient-descent</id><content type="html" xml:base="https://akshaychandra.com/blog/2019/learning-parameters-part-2-momentum-based-and-nesterov-accelerated-gradient-descent/"><![CDATA[]]></content><author><name></name></author></entry><entry><title type="html">Learning Parameters, Part 1: Gradient Descent</title><link href="https://akshaychandra.com/blog/2019/learning-parameters-part-1-gradient-descent/" rel="alternate" type="text/html" title="Learning Parameters, Part 1: Gradient Descent" /><published>2019-05-14T21:20:57+00:00</published><updated>2019-05-14T21:20:57+00:00</updated><id>https://akshaychandra.com/blog/2019/learning-parameters-part-1-gradient-descent</id><content type="html" xml:base="https://akshaychandra.com/blog/2019/learning-parameters-part-1-gradient-descent/"><![CDATA[]]></content><author><name></name></author><summary type="html"><![CDATA[Gradient Descent is an iterative optimization algorithm for finding the (local) minimum of a function. It is one of the most popular&#x2026;Continue reading on Towards Data Science »]]></summary></entry><entry><title type="html">Learning Parameters, Part 0: Basic Stuff</title><link href="https://akshaychandra.com/blog/2019/learning-parameters-part-0-basic-stuff/" rel="alternate" type="text/html" title="Learning Parameters, Part 0: Basic Stuff" /><published>2019-05-14T21:20:41+00:00</published><updated>2019-05-14T21:20:41+00:00</updated><id>https://akshaychandra.com/blog/2019/learning-parameters-part-0-basic-stuff</id><content type="html" xml:base="https://akshaychandra.com/blog/2019/learning-parameters-part-0-basic-stuff/"><![CDATA[]]></content><author><name></name></author></entry></feed>
