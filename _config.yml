@@ -11,31 +11,30 @@ description: > # the ">" symbol means to ignore newlines until "footer_text:"
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: akshay, chandra, lagandula, uni-freiburg, freiburg, iith, robot learning, reinforcement learning, computer vision, machine learning, deep learning, active learning  # add your own keywords or leave empty
-
+keywords: akshay, chandra, lagandula, uni-freiburg, freiburg, iith, robot learning, reinforcement learning, computer vision, machine learning, deep learning, active learning, quaternions, quaternion rotation operator, robot manipulation # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: favicon-32x32.png  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: favicon-32x32.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://akshaychandra.com # the base hostname & protocol for your site
-baseurl: / # the subpath of your site, e.g. /blog/
+# baseurl: null # the subpath of your site, e.g. /blog/
 last_updated: false # set to true if you want to display last updated in the footer
-impressum_path:  # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
+impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
 
 # -----------------------------------------------------------------------------
 # Theme
 # -----------------------------------------------------------------------------
 
 # code highlighter theme
-highlight_theme_light: github   # https://github.com/jwarby/jekyll-pygments-themes
-highlight_theme_dark: native    # https://github.com/jwarby/jekyll-pygments-themes
+highlight_theme_light: github # https://github.com/jwarby/jekyll-pygments-themes
+highlight_theme_dark: native # https://github.com/jwarby/jekyll-pygments-themes
 
 # repo color theme
-repo_theme_light: default       # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
-repo_theme_dark: dark           # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
+repo_theme_light: default # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
+repo_theme_dark: dark # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
 repo_trophies:
   enabled: false
-  theme_light: flat    # https://github.com/ryo-ma/github-profile-trophy
-  theme_dark: gitdimmed  # https://github.com/ryo-ma/github-profile-trophy
+  theme_light: flat # https://github.com/ryo-ma/github-profile-trophy
+  theme_dark: gitdimmed # https://github.com/ryo-ma/github-profile-trophy
 
 # -----------------------------------------------------------------------------
 # RSS Feed
@@ -108,11 +107,11 @@ contact_note: >
 # Analytics and search engine verification
 # -----------------------------------------------------------------------------
 
-google_analytics:  # your Google Analytics measurement ID (format: G-XXXXXXXXXX)
-panelbear_analytics:  # panelbear analytics site ID (format: XXXXXXXXX)
+google_analytics: # your Google Analytics measurement ID (format: G-XXXXXXXXXX)
+panelbear_analytics: # panelbear analytics site ID (format: XXXXXXXXX)
 
-google_site_verification:  # your google-site-verification ID (Google Search Console)
-bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
+google_site_verification: # your google-site-verification ID (Google Search Console)
+bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 
 # -----------------------------------------------------------------------------
 # Blog
@@ -135,15 +134,15 @@ related_blog_posts:
 # Follow instructions on https://giscus.app/ to setup for your repo to fill out
 # the information below.
 giscus:
-  repo: acl21/acl21.github.io      # <your-github-user-name>/<your-github-repo-name>
+  repo: acl21/acl21.github.io # <your-github-user-name>/<your-github-repo-name>
   repo_id: R_kgDOJOpV4w
-  category: Comments             # name of the category under which discussions will be created
+  category: Comments # name of the category under which discussions will be created
   category_id: DIC_kwDOJOpV484CVhdC
-  mapping: title                 # identify discussions by post title
-  strict: 1                      # use strict identification mode
-  reactions_enabled: 1           # enable (1) or disable (0) emoji reactions
-  input_position: bottom         # whether to display input form below (bottom) or above (top) the comments
-  theme: preferred_color_scheme  # name of the color scheme (preferred works well with al-folio light/dark mode)
+  mapping: title # identify discussions by post title
+  strict: 1 # use strict identification mode
+  reactions_enabled: 1 # enable (1) or disable (0) emoji reactions
+  input_position: bottom # whether to display input form below (bottom) or above (top) the comments
+  theme: preferred_color_scheme # name of the color scheme (preferred works well with al-folio light/dark mode)
   emit_metadata: 0
   lang: en
 
@@ -175,7 +174,7 @@ highlighter: rouge
 kramdown:
   input: GFM
   syntax_highlighter_opts:
-    css_class: 'highlight'
+    css_class: "highlight"
     span:
       line_numbers: false
     block:
@@ -183,7 +182,7 @@ kramdown:
       start_line: 1
 
 # Includes & excludes
-include: ['_pages']
+include: ["_pages"]
 exclude:
   - bin
   - Gemfile
@@ -221,7 +220,7 @@ defaults:
 # -----------------------------------------------------------------------------
 
 jekyll-minifier:
-  exclude: ['robots.txt']
+  exclude: ["robots.txt"]
   uglifier_args:
     harmony: true
 
@@ -236,9 +235,9 @@ jekyll-archives:
     tag: archive-tag
     category: archive-category
   permalinks:
-    year: '/blog/:year/'
-    tag: '/blog/tag/:name/'
-    category: '/blog/category/:name/'
+    year: "/blog/:year/"
+    tag: "/blog/tag/:name/"
+    category: "/blog/category/:name/"
 
 display_tags: [] # this tags will be dispalyed on the front page of your blog
 
@@ -247,7 +246,6 @@ display_tags: [] # this tags will be dispalyed on the front page of your blog
 # -----------------------------------------------------------------------------
 
 scholar:
-
   last_name: [Chandra]
   first_name: [Akshay L]
 
@@ -276,12 +274,28 @@ badges: # Display different badges for your pulications
   dimensions_badge: false # Dimensions badge (https://badge.dimensions.ai/)
 
 # Filter out certain bibtex entry keywords used internally from the bib output
-filtered_bibtex_keywords: [abbr, abstract, arxiv, bibtex_show, html, pdf, selected, supp, blog, code, poster, slides, website, preview, altmetric]
+filtered_bibtex_keywords:
+  [
+    abbr,
+    abstract,
+    arxiv,
+    bibtex_show,
+    html,
+    pdf,
+    selected,
+    supp,
+    blog,
+    code,
+    poster,
+    slides,
+    website,
+    preview,
+    altmetric,
+  ]
 
 # Maximum number of authors to be shown for each publication (more authors are visible on click)
-max_author_limit:  # leave blank to always show all authors
-more_authors_animation_delay: 10  # more authors are revealed on click using animation; smaller delay means faster animation
-
+max_author_limit: # leave blank to always show all authors
+more_authors_animation_delay: 10 # more authors are revealed on click using animation; smaller delay means faster animation
 
 # -----------------------------------------------------------------------------
 # Jekyll Link Attributes
@@ -293,7 +307,6 @@ external_links:
   rel: external nofollow noopener
   target: _blank
   exclude:
-
 
 # -----------------------------------------------------------------------------
 # Responsive WebP Images
@@ -320,29 +333,31 @@ imagemagick:
 # -----------------------------------------------------------------------------
 
 jekyll-diagrams:
-    # configuration, see https://github.com/zhustec/jekyll-diagrams.
-    # feel free to comment out this section if not using jekyll diagrams.
-
+  # configuration, see https://github.com/zhustec/jekyll-diagrams.
+  # feel free to comment out this section if not using jekyll diagrams.
 
 # -----------------------------------------------------------------------------
 # Optional Features
 # -----------------------------------------------------------------------------
 
-enable_google_analytics:    false  # enables google analytics
-enable_panelbear_analytics: false  # enables panelbear analytics
-enable_google_verification: false  # enables google site verification
-enable_bing_verification:   false  # enables bing site verification
-enable_masonry:             true   # enables automatic project cards arangement
-enable_math:                true   # enables math typesetting (uses MathJax)
-enable_tooltips:            false  # enables automatic tooltip links generated
-                                   # for each section titles on pages and posts
-enable_darkmode:            true   # enables switching between light/dark modes
-enable_navbar_social:       false  # enables displaying social links in the
-                                   # navbar on the about page
-enable_project_categories:  false   # enables categorization of projects into
-                                   # multiple categories
-enable_medium_zoom:         true   # enables image zoom feature (as on medium.com)
-enable_progressbar:         true   # enables a horizontal progress bar linked to the vertical scroll position
+enable_google_analytics: false # enables google analytics
+enable_panelbear_analytics: false # enables panelbear analytics
+enable_google_verification: false # enables google site verification
+enable_bing_verification: false # enables bing site verification
+enable_masonry: true # enables automatic project cards arangement
+enable_math: true # enables math typesetting (uses MathJax)
+enable_tooltips:
+  false # enables automatic tooltip links generated
+  # for each section titles on pages and posts
+enable_darkmode: true # enables switching between light/dark modes
+enable_navbar_social:
+  false # enables displaying social links in the
+  # navbar on the about page
+enable_project_categories:
+  false # enables categorization of projects into
+  # multiple categories
+enable_medium_zoom: true # enables image zoom feature (as on medium.com)
+enable_progressbar: true # enables a horizontal progress bar linked to the vertical scroll position
 
 # -----------------------------------------------------------------------------
 # Library versions

@@ -3,7 +3,7 @@ layout: distill
 title: "Quaternions: Basic Algebra"
 description: A brief introduction to quaternions and their basic algebra 
 giscus_comments: true
-date: 2023-10-16
+date: 2023-10-15
 
 
 authors:
