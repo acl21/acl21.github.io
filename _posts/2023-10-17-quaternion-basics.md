@@ -169,7 +169,10 @@ It can be convenient to represent quaternion multiplication using matrix multipl
 Another way of thinking about quaternions is to treat them as products of simple $$2 \times 2$$ matrices:
 
 $$
-U := \left[ \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix}\right], \; I := \left[ \begin{matrix} i & 0 \\ 0 & -i \end{matrix}\right], \; J := \left[ \begin{matrix} 0 & 1 \\ -1 & 0 \end{matrix}\right], \; K := \left[ \begin{matrix} 0 & i \\ i & 0 \end{matrix}\right]
+\begin{aligned}
+U &:= \left[ \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix}\right], \; I := \left[ \begin{matrix} i & 0 \\ 0 & -i \end{matrix}\right], \\
+J &:= \left[ \begin{matrix} 0 & 1 \\ -1 & 0 \end{matrix}\right], \; K := \left[ \begin{matrix} 0 & i \\ i & 0 \end{matrix}\right]
+\end{aligned}
 $$
 
 
@@ -226,26 +229,28 @@ Similar to addition, first let us write out the multiplication of two quaternion
 
 $$
 \begin{aligned}
-\mathbf{p} \star \mathbf{q} & = (p_0 + p_1i + p_2j + p_3k) (q_0 + q_1i + q_2j + q_3k) \\
+\mathbf{p} \star \mathbf{q} &= (p_0 + p_1i + p_2j + p_3k) (q_0 + q_1i + q_2j + q_3k) \\
 \\
-& = p_0q_0 + p_0(q_1i + q_2j + q_3k) + p_1q_0i + p_1i(q_1i + q_2j + q_3k) \\
-& \quad + p_2q_0j + p_2j(q_1i + q_2j + q_3k) + p_3q_0k + p_3k(q_1i + q_2j + q_3k) \\
+&= p_0q_0 + p_0(q_1i + q_2j + q_3k) + p_1q_0i \\
+&\quad + p_1i(q_1i + q_2j + q_3k) + p_2q_0j + p_2j(q_1i + q_2j + q_3k) \\
+&\quad + p_3q_0k + p_3k(q_1i + q_2j + q_3k) \\
 \\
-& = p_0q_0 + p_0(q_1i + q_2j + q_3k) + p_1q_0i + p_1q_1(i^2)  \\
-& \quad + p_1q_2(ij) + p1q_3(ik) + p_2q_0j + p_2q_1(ji) + p_2q_2(j^2) \\
-& \quad + p_2q_3(jk) + p_3q_0k + p_3q_1(ki) + p_3q_2(kj) + p_3q_3(k^2) \\
+&= p_0q_0 + p_0(q_1i + q_2j + q_3k) + p_1q_0i + p_1q_1(i^2)  \\
+&\quad + p_1q_2(ij) + p1q_3(ik) + p_2q_0j + p_2q_1(ji) \\
+&\quad + p_2q_2(j^2) + p_2q_3(jk) + p_3q_0k + p_3q_1(ki) \\
+&\quad + p_3q_2(kj) + p_3q_3(k^2) \\
 \\
 & = p_0q_0 + p_0(q_1i + q_2j + q_3k) + q_0(p_1i + p_2j+ p_3k) + p_1q_1(i^2) \\
-& \quad + p_1q_2(ij) + p_1q_3(ik) + p_2q_1(ji) + p_2q_2(j^2) \\
-& \quad + p_2q_3(jk) + p_3q_1(ki) + p_3q_2(kj) + p_3q_3(k^2) \\
+&\quad + p_1q_2(ij) + p_1q_3(ik) + p_2q_1(ji) + p_2q_2(j^2) \\
+&\quad + p_2q_3(jk) + p_3q_1(ki) + p_3q_2(kj) + p_3q_3(k^2) \\
 \\
-& = p_0q_0 + p_0(q_1i + q_2j + q_3k) + q_0(p_1i + p_2j+ p_3k) + p_1q_1(-1) \\
-& \quad + p_1q_2(k) + p_1q_3(-j) + p_2q_1(-k) + p_2q_2(-1) \\
-& \quad + p_2q_3(i) + p_3q_1(j) + p_3q_2(-i) + p_3q_3(-1) \\
+&= p_0q_0 + p_0(q_1i + q_2j + q_3k) + q_0(p_1i + p_2j+ p_3k) + p_1q_1(-1) \\
+&\quad + p_1q_2(k) + p_1q_3(-j) + p_2q_1(-k) + p_2q_2(-1) \\
+&\quad + p_2q_3(i) + p_3q_1(j) + p_3q_2(-i) + p_3q_3(-1) \\
 \\
-& = p_0q_0 + p_0\textcolor{orange}{(q_1i + q_2j + q_3k)} + q_0\textcolor{lime}{(p_1i + p_2j+ p_3k)} \\
-& \quad - \textcolor{cyan}{(p_1q_1+p_2q_2 +p_3q_3)} \\
-& \quad  + \textcolor{pink}{(p_2q_3 - p_3q_2)i + (p_3q_1 - p_1q_3)j + (p_1q_2 - p_2q_1)k}
+&= p_0q_0 + p_0\textcolor{orange}{(q_1i + q_2j + q_3k)} + q_0\textcolor{lime}{(p_1i + p_2j+ p_3k)} \\
+&\quad - \textcolor{cyan}{(p_1q_1+p_2q_2 +p_3q_3)} \\
+&\quad + \textcolor{pink}{(p_2q_3 - p_3q_2)i + (p_3q_1 - p_1q_3)j} + \textcolor{pink}{(p_1q_2 - p_2q_1)k} \hspace{5cm}
 \end{aligned}
 $$
 
@@ -276,7 +281,8 @@ $$
 \mathbf{q} + \mathbf{q^{\ast}} & = 2q_0 \\
 \mathbf{q} - \mathbf{q^{\ast}} & = 2\vec{q} \\
 \mathbf{q^{\ast}} \star \mathbf{q} & = (q_0 - \vec{q}) \star (q_0 + \vec{q}) \\
-& = q_0q_0 - (-\vec{q}) \cdot \vec{q} + q_0\vec{q} + (-\vec{q})q_0 + (-\vec{q}) \times \vec{q} \quad \text{(from Eq. (1))} \\
+& = q_0q_0 - (-\vec{q}) \cdot \vec{q} + q_0\vec{q} \\
+& \quad + (-\vec{q})q_0 + (-\vec{q}) \times \vec{q} \quad \text{(from Eq. (1))} \\
 & = q_0^2 + \vec{q} \cdot \vec{q} \\
 & = q_0^2 + q_1^2 + q_2^2 + q_3^2 \quad \text{(Quadrance)} \\ 
 & = \mathbf{q} \star \mathbf{q^{\ast}} \quad \text{(Commutative)} \\ 
@@ -289,9 +295,11 @@ $$
 \begin{aligned}
 (\mathbf{p} \star \mathbf{q})^{\ast} & =  (p_0q_0 -\vec{p} \cdot \vec{q} + p_0\vec{q} + q_0\vec{p} + \vec{p} \times \vec{q})^{\ast} \quad \text{(from Eq. (1))}\\
 & = (p_0q_0 -\vec{p} \cdot \vec{q} - p_0\vec{q} - q_0\vec{p} - \vec{p} \times \vec{q}) \quad \text{(from Eq. (2))}\\
-& = (p_0q_0 -(-\vec{p}) \cdot (-\vec{q}) + p_0(-\vec{q}) + q_0(-\vec{p}) - (-\vec{p}) \times (-\vec{q})) \quad \text{(Since } a \times b = (-a \times -b)\text{)}\\
-& = (p_0q_0 -(-\vec{p}) \cdot (-\vec{q}) + p_0(-\vec{q}) + q_0(-\vec{p}) + (-\vec{q}) \times (-\vec{p})) \quad \text{(Since } a \times b = - (b \times a)\text{)}\\
-& = \mathbf{q}^{\ast} \star \mathbf{p}^{\ast} \hspace{13cm} \text{(3)}
+& = (p_0q_0 -(-\vec{p}) \cdot (-\vec{q}) + p_0(-\vec{q}) \\ 
+& \quad + q_0(-\vec{p}) - (-\vec{p}) \times (-\vec{q})) \quad \text{(Since } a \times b = (-a \times -b)\text{)}\\
+& = (p_0q_0 -(-\vec{p}) \cdot (-\vec{q}) + p_0(-\vec{q}) \\
+& \quad + q_0(-\vec{p}) + (-\vec{q}) \times (-\vec{p})) \quad \text{(Since } a \times b = - (b \times a)\text{)}\\
+& = \mathbf{q}^{\ast} \star \mathbf{p}^{\ast} \hspace{10cm} \text{(3)}
 \end{aligned}
 $$
 
@@ -300,7 +308,7 @@ With Eq. $$\text{(3)}$$, we can now easily find the conjugate of quaternion mult
 $$
 \begin{aligned}
 (\mathbf{q}_1 \star \mathbf{q}_2 \star \mathbf{q}_3)^{\ast} &= ((\mathbf{q}_1 \star \mathbf{q}_2) \star \mathbf{q}_3)^{\ast}\\
-&= \mathbf{q}_3^{\ast} \star (\mathbf{q}_1 \star \mathbf{q}_2)^{\ast}  \quad \text{(from Eq. (3))}\\
+&= \mathbf{q}_3^{\ast} \star (\mathbf{q}_1 \star \mathbf{q}_2)^{\ast} \quad \text{(from Eq. (3))}\\
 &= \mathbf{q}_3^{\ast} \star \mathbf{q}_2^{\ast} \star \mathbf{q}_1^{\ast} \\
 (\mathbf{q}_1 \star \mathbf{q}_2 \star \mathbf{q}_3 \star \mathbf{q}_4)^{\ast} &= ((\mathbf{q}_1 \star \mathbf{q}_2) \star (\mathbf{q}_3 \star \mathbf{q}_4))^{\ast} \\
 &= (\mathbf{q}_3 \star \mathbf{q}_4)^{\ast} \star (\mathbf{q}_1 \star \mathbf{q}_2) ^{\ast} \\
@@ -315,7 +323,8 @@ The squared _norm_ of a quaternion $$\mathbf{q}$$ is simply its quadrance
 
 $$
 \begin{aligned}
-\Vert \mathbf{q} \Vert^2 &= q_0^2 + q_1^2 + q_2^2 + q_3^2 = \mathbf{q^{\ast}} \star \mathbf{q} = \mathbf{q} \star \mathbf{q^{\ast}} \\
+\Vert \mathbf{q} \Vert^2 &= q_0^2 + q_1^2 + q_2^2 + q_3^2 \\
+&= \mathbf{q^{\ast}} \star \mathbf{q} = \mathbf{q} \star \mathbf{q^{\ast}} \\
 &= q_0^2 +  (\vec{q} \cdot \vec{q})
 \end{aligned}
 $$
