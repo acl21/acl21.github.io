@@ -264,7 +264,7 @@ This is great! Finally, we reach a point where we can simply add scalars ($$p_0q
 - The source of non-commutativity of quaternion multiplication is now clear, i.e., $$\vec{p} \times \vec{q} = - \vec{q} \times \vec{p}$$
 - Two non-zero quaternions can commute only when their vector parts are linearly dependent (parallel) i.e., $$\mathbf{p} \star \mathbf{q} = \mathbf{q} \star \mathbf{p} \Leftrightarrow \vec{p} \times \vec{q} = 0 \hspace{50cm}$$
 - Only scalars commute with all quaternions,  i.e., $$c \star \mathbf{q} = cq_0 + c\vec{q} = c \mathbf{q} = \mathbf{q} \star c $$.
-- Since quaternion multiplication is just a combination of scalar-vector, dot and cross products in $$\mathbb{R}^3$$ (Euclidean space), it _must_ have some geometric significance, it _must_ describe something independent of the values of $$\mathbf{p}$$ and $$\mathbf{q}$$. I discuss this in detail in my next article [here](../quaternions-to-rotations/). 
+- Since quaternion multiplication is just a combination of scalar-vector, dot and cross products in $$\mathbb{R}^3$$ (Euclidean space), it _must_ have some geometric significance, it _must_ describe something independent of the values of $$\mathbf{p}$$ and $$\mathbf{q}$$. I discuss this in detail in <d-cite key="quat-rot-op2"></d-cite>. 
 
 ### Complex Conjugate
 The _conjugate_ of a quaternion $$\mathbf{q}$$ is denoted by $$\mathbf{q^{\ast}}$$ and defined as 
@@ -360,4 +360,4 @@ $$\mathbf{q}^{-1} = \frac{\mathbf{q^{\ast}}}{\mathbf{q^{\ast}} \star \mathbf{q}}
 
 ## Conclusion
 
-With these basics of quaternions and its algebra in check, I feel that one can now look at how quaternions can be used to represent 3D rotations. You can find the next article in the series exactly on this here<d-cite key="quat-rot-op1"></d-cite>.
+In this article, we've delved into the seemingly peculiar realm of quaternion algebra. We started by introducing quaternions as a four-dimensional extension of complex numbers, consisting of a real part and three imaginary components. We looked into some commonly used quaternion models, and then explored Scalar + Vector model's arithmetic operations and properties, including addition, scalar and quaternion multiplication, complex conjugate, norm and inverse and discussed the source of non-commutativity of their multiplication. In my next article <d-cite key="quat-rot-op1"></d-cite>, we'll take this understanding a step further by exploring how quaternions can be _easily_ extended to form a rotation operator in $$\mathbb{R}^3$$. 
