@@ -15,34 +15,39 @@
 
 
     <!-- Bootstrap & MDB -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04">
+    <!-- <link rel="stylesheet" href="/assets/css/mdb.min.css?62a43d1430ddb46fc4886f9d0e3b49b8"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
 
+    <!-- Bootstrap Table -->
+    <link defer rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css">
+
     <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
 
     <!-- Code Syntax Highlighting -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+    <link rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?19f3075a2d19613090fe9e16b564e1fe" media="" id="highlight_theme_light">
+
+    
 
     <!-- Styles -->
     
-    <link rel="shortcut icon" href="/assets/img/favicon-32x32.png">
+    <link rel="shortcut icon" href="/assets/img/favicon-32x32.png?e4d5452579d75e98f5d60c162fb6ab40">
     
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e">
     <link rel="canonical" href="https://akshaychandra.com/blog/2023/quat-rot-op1/">
-    
+
     <!-- Dark Mode -->
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
-
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/dark_mode.js"></script>
+    <link rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?e74e74bf055e5729d44a7d031a5ca6a5" media="none" id="highlight_theme_dark">
+    <script src="/assets/js/theme.js?3dd82e91913a2c1265c0f80e41ff39e2"></script>
+    <script src="/assets/js/dark_mode.js?6458e63976eae16c0cbe86b97023895a"></script>
     
 
-
-    <!-- jQuery -->
+      <!-- Medium Zoom JS -->
+      <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+      <script defer src="/assets/js/zoom.js?7b30caa5023af4af8408a472dc4e1ebb"></script><!-- jQuery -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- MathJax -->
@@ -107,7 +112,7 @@
       <!-- Nav Bar -->
       <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
         <div class="container">
-          <a class="navbar-brand title font-weight-lighter" href=""><span class="font-weight-bold">Akshay </span>L Chandra</a>
+          <a class="navbar-brand title font-weight-lighter" href="/"><span class="font-weight-bold">Akshay </span>L Chandra</a>
           <!-- Navbar Toggle -->
           <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -138,6 +143,7 @@
               <li class="nav-item active">
                 <a class="nav-link" href="/blog/">Blog<span class="sr-only">(current)</span></a>
               </li>
+
               <!-- Toogle theme mode -->
               <li class="toggle-container">
                 <button id="light-toggle" title="Change theme">
@@ -165,11 +171,7 @@
       <d-title>
         <h1>Towards a 3D Rotation Operator with a Quaternion Sandwich</h1>
         <p>All the nuts and bolts needed to go from quaternions to a quaternion rotation operator</p>
-      </d-title>
-
-      <d-byline></d-byline>
-
-      <d-article>
+      </d-title><d-byline></d-byline><d-article>
         <d-contents>
           <nav class="l-text figcaption">
           <h3>Contents</h3>
@@ -245,7 +247,6 @@
 <p>provide a <em>one-to-one correspondence</em> between \(\mathbb{R}^3\) and \(Q_0\). This is great and goes toward items 1 and 2 on our checklist.</p>
 
 <figure>
-
   <picture>
     
     <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/pure_quat-480.webp"></source>
@@ -254,8 +255,7 @@
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/blog/pure_quat.png" class="rounded" width="250" height="125" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
-
+    <img src="/assets/img/blog/pure_quat.png" class="img-fluid rounded img-width-25" width="auto" height="auto" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture><figcaption class="caption">Source: Jack B Kuipers. Quaternions and Rotation Sequences (1999)</figcaption>
 
 </figure>
@@ -328,7 +328,6 @@
 <p>The algebraic action of \(\mathbf{w} = \mathbf{q} \star \mathbf{v} \star \mathbf{q}^{\ast}\) is illustrated in the figure below.</p>
 
 <figure>
-
   <picture>
     
     <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/quat_sandwich-480.webp"></source>
@@ -337,8 +336,7 @@
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/blog/quat_sandwich.png" class="rounded" width="250" height="125" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
-
+    <img src="/assets/img/blog/quat_sandwich.png" class="img-fluid rounded img-width-25" width="auto" height="auto" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture><figcaption class="caption">Source: Jack B Kuipers. Quaternions and Rotation Sequences (1999)</figcaption>
 
 </figure>
@@ -379,7 +377,6 @@
 <p>Complex numbers<d-footnote>I bring complex numbers into the discussion for familiarity and easy visualisations. If this is obvious to you, please skip to the next subsection.</d-footnote> have an intuitive alternate form of representation to them. A complex number \(z = a + ib\) can be interpreted as a 2D vector on a complex plane where the horizontal axis is the real axis and the vertical axis is the imaginary axis, as shown in the figure below. A natural consequence of this is the polar or trigonometric form where \(z = a + ib\) can be represented with its polar pair \((r, \theta)\) such that \(r = \sqrt{a^2 + b^2}\) (norm) and \(\theta = \arctan (\frac{b}{a})\) (angle between complex vector and the real axes), from this it follows that \(\cos \theta = \frac{a}{r}\) and \(\sin \theta = \frac{b}{r}\).</p>
 
 <figure>
-
   <picture>
     
     <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/complex_plane-480.webp"></source>
@@ -388,8 +385,7 @@
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/blog/complex_plane.png" class="rounded" width="125" height="250" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
-
+    <img src="/assets/img/blog/complex_plane.png" class="img-fluid rounded img-width-20" width="auto" height="auto" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture>
 
 </figure>
@@ -427,14 +423,12 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
 &amp; \quad - \sin \theta_1 \sin \theta_2) \\
 &amp;= r_1r_2(\cos \theta_1 \cos \theta_2 - \sin \theta_1 \sin \theta_2 \\
 &amp;\quad + i (\cos \theta_1 \sin \theta_2 + \sin \theta_1 \cos \theta_2)) \\
-&amp;= r_1r_2(\cos (\theta_1 + \theta_2) + i \sin (\theta_1 + \theta_2)) 
-% &amp;\quad \text{(from def. of} \cos (\theta_1 + \theta_2) \text{ and } \sin (\theta_1 + \theta_2))
+&amp;= r_1r_2(\cos (\theta_1 + \theta_2) + i \sin (\theta_1 + \theta_2))
 \end{aligned}\]
 
 <p>The geometric interpretation of the complex product is clear now. When two complex numbers are multiplied, you notice that the output complex number has an associated angle that is exactly the sum of angles associated with the multiplicands and has a magnitude equal to the product of magnitudes of the multiplicands.</p>
 
 <figure>
-
   <picture>
     
     <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/complex_product-480.webp"></source>
@@ -443,8 +437,7 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/blog/complex_product.png" class="rounded" width="125" height="250" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
-
+    <img src="/assets/img/blog/complex_product.png" class="img-fluid rounded img-width-20" width="auto" height="auto" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture><figcaption class="caption">This is true if a3+ib3 = (a1+ib1)(a2+ib2)</figcaption>
 
 </figure>
@@ -519,7 +512,7 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
       </d-appendix>
 
       <d-bibliography src="/assets/bibliography/2023-10-17-quaternions.bib"></d-bibliography><div id="giscus_thread" style="max-width: 800px; margin: 0 auto;">
-  <script>
+<script>
     let giscusTheme = localStorage.getItem("theme");
     let giscusAttributes = {
         "src": "https://giscus.app/client.js",
@@ -557,7 +550,8 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
     </footer>
 
     <!-- Bootsrap & MDB scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="/assets/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="/assets/js/mdb.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
 
     

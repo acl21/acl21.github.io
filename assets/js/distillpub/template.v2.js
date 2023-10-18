@@ -916,7 +916,7 @@ ${math}
       } else if (url.slice(-5) == ".html") {
         var label = "HTML";
       }
-      return ` &ensp;<a href="${url}">[${label || "LINK"}]</a>`;
+      return ` &ensp;<a href="${url}">[${label || "link"}]</a>`;
     } /* else if ("doi" in ent){
       return ` &ensp;<a href="https://doi.org/${ent.doi}" >[DOI]</a>`;
     }*/ else {
@@ -1113,7 +1113,7 @@ ${math}
     if (!byline) {
       if (data.authors) {
         byline = dom.createElement('d-byline');
-        body.insertBefore(byline, article);
+        // body.insertBefore(byline, article);
       } else {
         console.warn('No authors found in front matter; please add them before submission!');
       }

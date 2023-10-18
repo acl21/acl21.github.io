@@ -17,30 +17,34 @@
 
 
     <!-- Bootstrap & MDB -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04">
+    <!-- <link rel="stylesheet" href="/assets/css/mdb.min.css?62a43d1430ddb46fc4886f9d0e3b49b8"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
 
+    <!-- Bootstrap Table -->
+    <link defer rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css">
+
     <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
 
     <!-- Code Syntax Highlighting -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+    <link rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?19f3075a2d19613090fe9e16b564e1fe" media="" id="highlight_theme_light">
+
+    
 
     <!-- Styles -->
     
-    <link rel="shortcut icon" href="/assets/img/favicon-32x32.png">
+    <link rel="shortcut icon" href="/assets/img/favicon-32x32.png?e4d5452579d75e98f5d60c162fb6ab40">
     
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e">
     <link rel="canonical" href="https://akshaychandra.com/">
-    
+
     <!-- Dark Mode -->
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
-
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/dark_mode.js"></script>
+    <link rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?e74e74bf055e5729d44a7d031a5ca6a5" media="none" id="highlight_theme_dark">
+    <script src="/assets/js/theme.js?3dd82e91913a2c1265c0f80e41ff39e2"></script>
+    <script src="/assets/js/dark_mode.js?6458e63976eae16c0cbe86b97023895a"></script>
     
 
   </head>
@@ -85,6 +89,7 @@
               <li class="nav-item ">
                 <a class="nav-link" href="/blog/">Blog</a>
               </li>
+
               <!-- Toogle theme mode -->
               <li class="toggle-container">
                 <button id="light-toggle" title="Change theme">
@@ -108,11 +113,12 @@
 
     <!-- Content -->
     <div class="container mt-5">
-      <!-- about.html -->
+      
+        <!-- about.html -->
       <div class="post">
         <header class="post-header">
           <h1 class="post-title">
-           <span class="font-weight-bold">Akshay</span> L Chandra
+            <span class="font-weight-bold">Akshay</span> L Chandra
           </h1>
           <p class="desc"></p>
         </header>
@@ -121,7 +127,6 @@
           <div class="profile float-right">
 
               <figure>
-
   <picture>
     
     <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/prof_pic-480.webp"></source>
@@ -130,8 +135,7 @@
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/prof_pic.jpg" class="img-fluid z-depth-1 rounded-circle" width="auto" height="auto" alt="prof_pic.jpg" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
-
+    <img src="/assets/img/prof_pic.jpg?fb92206e20fbc25cea42b97fe37cf52a" class="img-fluid z-depth-1 rounded-circle" width="auto" height="auto" alt="prof_pic.jpg" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
   </picture>
 
 </figure>
@@ -139,7 +143,7 @@
           </div>
 
           <div class="clearfix">
-            <p>Hi! I am an M.Sc. Computer Science student at the <a href="http://www.informatik.uni-freiburg.de/studies/furtherinformation/concentrationCTS?set_language=en" rel="external nofollow noopener" target="_blank">University of Freiburg</a>, specializing in Artificial Intelligence. Currently, I am working as a Student Research Assistant on robot manipulation problems, supervised by <a href="https://www.imanema.com/" rel="external nofollow noopener" target="_blank">Iman Nematollahi</a> and <a href="https://rl.uni-freiburg.de/people/valada" rel="external nofollow noopener" target="_blank">Prof. Dr. Abhinav Valada</a> at the Uni-Freiburg’s <a href="https://rl.uni-freiburg.de/" rel="external nofollow noopener" target="_blank">Robot Learning Lab</a>. Most of my days in the lab are spent trying to better define, learn, sequence, and refine robot “skills”. Boradly speaking, my current interests are in the intersection of robot and deep reinforcement learning.</p>
+            <p>Hi! I am an M.Sc. Computer Science student at the <a href="http://www.informatik.uni-freiburg.de/studies/furtherinformation/concentrationCTS?set_language=en" rel="external nofollow noopener" target="_blank">University of Freiburg</a>, specializing in Artificial Intelligence. Currently, I am working as a Student Research Assistant on robot manipulation problems, supervised by <a href="https://www.imanema.com/" rel="external nofollow noopener" target="_blank">Iman Nematollahi</a> and <a href="https://rl.uni-freiburg.de/people/valada" rel="external nofollow noopener" target="_blank">Prof. Dr. Abhinav Valada</a> at the Uni-Freiburg’s <a href="https://rl.uni-freiburg.de/" rel="external nofollow noopener" target="_blank">Robot Learning Lab</a>. Most of my days in the lab are spent trying to better define, learn, sequence, and refine robot “skills”. I am using reinforcement learning to guide geometry-aware dynamical systems to perform long horizon manipulation tasks. Boradly speaking, my current interests are in the intersection of robot and deep reinforcement learning.</p>
 
 <p>Earlier, I was a research assistant at <a href="https://www.iith.ac.in/~vineethnb/" rel="external nofollow noopener" target="_blank">Dr. Vineeth N Balasubramanian</a>’s Machine Learning and Vision (MLV) research group at <a href="https://cse.iith.ac.in/" rel="external nofollow noopener" target="_blank">IIT Hyderabad</a> for nearly 3 years, mainly working on deep active learning for image data. During my time at IIT Hyderabad, I also frequently collaborated with <a href="https://scholar.google.co.jp/citations?user=pnMyJLEAAAAJ&amp;hl=zh-CN" rel="external nofollow noopener" target="_blank">Dr. Wei Guo</a> at the <a href="http://park.itc.u-tokyo.ac.jp/Field-Phenomics/ninolab/index.html" rel="external nofollow noopener" target="_blank">Field Phenomics Lab</a> (University of Tokyo) and worked on several plant phenotyping solutions.</p>
 
@@ -148,13 +152,16 @@
           <!-- News -->
           
 
+          <!-- Latest posts -->
+          
+
           <!-- Selected papers -->
           
 
           <!-- Social -->
             <div class="social">
               <div class="contact-icons">
-                <a href="https://scholar.google.com/citations?user=UC9Q3KEAAAAJ" title="Google Scholar" rel="external nofollow noopener" target="_blank"><i class="ai ai-google-scholar"></i></a>
+                <a href="https://scholar.google.com/citations?user=UC9Q3KEAAAAJ" title="Google Scholar" rel="external nofollow noopener" target="_blank"><i class="fa-solid fa-graduation-cap"></i></a>
             <a href="https://github.com/acl21" title="GitHub" rel="external nofollow noopener" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://www.linkedin.com/in/acl21" title="LinkedIn" rel="external nofollow noopener" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://medium.com/@acl21" title="Medium" rel="external nofollow noopener" target="_blank"><i class="fab fa-medium"></i></a>
@@ -166,12 +173,13 @@
                 You can contact me at research [at] [domain] (for queries related to my research) or email [at] [domain].
 
               </div>
-              
+
             </div>
         </article>
 
 </div>
 
+      
     </div>
 
     <!-- Footer -->    
@@ -187,7 +195,8 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- Bootsrap & MDB scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="/assets/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="/assets/js/mdb.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
 
     <!-- Masonry & imagesLoaded -->
@@ -197,9 +206,15 @@
     
   <!-- Medium Zoom JS -->
   <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
-  <script defer src="/assets/js/zoom.js"></script><!-- Load Common JS -->
-  <script defer src="/assets/js/common.js"></script>
-  <script defer src="/assets/js/copy_code.js" type="text/javascript"></script>
+  <script defer src="/assets/js/zoom.js?7b30caa5023af4af8408a472dc4e1ebb"></script>
+
+  <!-- Bootstrap Table -->
+  <script defer src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+
+  <!-- Load Common JS -->
+  <script src="/assets/js/no_defer.js?d633890033921b33e0ceb13d22340a9c"></script>
+  <script defer src="/assets/js/common.js?acdb9690d7641b2f8d40529018c71a01"></script>
+  <script defer src="/assets/js/copy_code.js?c9d9dd48933de3831b3ee5ec9c209cac" type="text/javascript"></script>
 
     
 
@@ -294,5 +309,6 @@
   }
 </script>
 
+    
   </body>
 </html>

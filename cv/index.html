@@ -17,30 +17,34 @@
 
 
     <!-- Bootstrap & MDB -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04">
+    <!-- <link rel="stylesheet" href="/assets/css/mdb.min.css?62a43d1430ddb46fc4886f9d0e3b49b8"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
 
+    <!-- Bootstrap Table -->
+    <link defer rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css">
+
     <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
 
     <!-- Code Syntax Highlighting -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+    <link rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?19f3075a2d19613090fe9e16b564e1fe" media="" id="highlight_theme_light">
+
+    
 
     <!-- Styles -->
     
-    <link rel="shortcut icon" href="/assets/img/favicon-32x32.png">
+    <link rel="shortcut icon" href="/assets/img/favicon-32x32.png?e4d5452579d75e98f5d60c162fb6ab40">
     
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e">
     <link rel="canonical" href="https://akshaychandra.com/cv/">
-    
+
     <!-- Dark Mode -->
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
-
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/dark_mode.js"></script>
+    <link rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?e74e74bf055e5729d44a7d031a5ca6a5" media="none" id="highlight_theme_dark">
+    <script src="/assets/js/theme.js?3dd82e91913a2c1265c0f80e41ff39e2"></script>
+    <script src="/assets/js/dark_mode.js?6458e63976eae16c0cbe86b97023895a"></script>
     
 
   </head>
@@ -54,7 +58,7 @@
       <!-- Nav Bar -->
       <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
         <div class="container">
-          <a class="navbar-brand title font-weight-lighter" href=""><span class="font-weight-bold">Akshay </span>L Chandra</a>
+          <a class="navbar-brand title font-weight-lighter" href="/"><span class="font-weight-bold">Akshay </span>L Chandra</a>
           <!-- Navbar Toggle -->
           <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -85,6 +89,7 @@
               <li class="nav-item ">
                 <a class="nav-link" href="/blog/">Blog</a>
               </li>
+
               <!-- Toogle theme mode -->
               <li class="toggle-container">
                 <button id="light-toggle" title="Change theme">
@@ -108,47 +113,79 @@
 
     <!-- Content -->
     <div class="container mt-5">
-      <!-- _layouts/cv.html -->
-        <div class="post">
+      
+        <!-- _layouts/cv.html -->
 
-          <header class="post-header">
-            <h1 class="post-title">CV <a href="/assets/pdf/CV.pdf" target="_blank" rel="noopener noreferrer" class="float-right"><i class="fas fa-file-pdf"></i></a>
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">CV <a href="/assets/pdf/CV.pdf" target="_blank" rel="noopener noreferrer" class="float-right"><i class="fas fa-file-pdf"></i></a>
 </h1>
-            <p class="post-description"></p>
-          </header>
+      
+  </header>
 
-          <article>
-            <div class="cv">
-              
-                <div class="card mt-3 p-3">
-                  <h3 class="card-title font-weight-medium">General Information</h3>
-                  <div>
-                  
-                    <table class="table table-sm table-borderless table-responsive">
+  <article>
+    <div class="cv">
+      
+        <a class="anchor" id="General Information"></a>
+        <div class="card mt-3 p-3">
+          <h3 class="card-title font-weight-medium">General Information</h3>
+          <div>
+          
+            <table class="table table-cv table-sm table-borderless table-responsive">
     
       <tr>
         <td class="p-1 pr-2 font-weight-bold"><b>Full Name</b></td>
+        
         <td class="p-1 pl-2 font-weight-light text">Akshay L Chandra</td>
+        
+        
+      </tr>
+    
+      <tr>
+        <td class="p-1 pr-2 font-weight-bold"><b>Email</b></td>
+        
+        <td class="p-1 pl-2 font-weight-light text">research [at] domain (or) email [at] domain</td>
+        
+        
+      </tr>
+    
+      <tr>
+        <td class="p-1 pr-2 font-weight-bold"><b>Website</b></td>
+        
+        <td class="p-1 pl-2 font-weight-light text">https://akshaychandra.com</td>
+        
+        
       </tr>
     
 </table>
-                  
-                  </div>
-                </div>
-              
-                <div class="card mt-3 p-3">
-                  <h3 class="card-title font-weight-medium">Education</h3>
-                  <div>
-                  
-                   <ul class="card-text font-weight-light list-group list-group-flush">
+
+          
+          </div>
+        </div>
+      
+        <a class="anchor" id="Education"></a>
+        <div class="card mt-3 p-3">
+          <h3 class="card-title font-weight-medium">Education</h3>
+          <div>
+          
+            <ul class="card-text font-weight-light list-group list-group-flush">
     
       <li class="list-group-item">
         <div class="row">
           
             <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px;">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">
-                2021-Now
-              </span>
+              <table class="table-cv">
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">2021-Now</span>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              
             </div>
           
           <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
@@ -156,7 +193,19 @@
             <h6 class="title font-weight-bold ml-1 ml-md-4">Master of Science (Computer Science)</h6>
             
             
-            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;">University of Freiburg, Freiburg, Germany</h6>
+            <table class="table-cv ml-1 ml-md-4 institution">
+            <tbody>
+              
+              <tr>
+                <td style="vertical-align: top; text-align: center;" class="institution"><i class="fas fa-university iconinstitution"></i></td>
+                <td class="institution">University of Freiburg, Freiburg, Germany</td>
+              </tr>
+              
+              
+            </tbody>
+            </table>
+            
+            
             
             
             
@@ -168,9 +217,17 @@
         <div class="row">
           
             <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px;">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">
-                2017-2018
-              </span>
+              <table class="table-cv">
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">2017-2018</span>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              
             </div>
           
           <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
@@ -178,7 +235,19 @@
             <h6 class="title font-weight-bold ml-1 ml-md-4">Post-Graduate Diploma (Applied Statistics)</h6>
             
             
-            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;">Indira Gandhi National Open University, Delhi, India</h6>
+            <table class="table-cv ml-1 ml-md-4 institution">
+            <tbody>
+              
+              <tr>
+                <td style="vertical-align: top; text-align: center;" class="institution"><i class="fas fa-university iconinstitution"></i></td>
+                <td class="institution">Indira Gandhi National Open University, Delhi, India</td>
+              </tr>
+              
+              
+            </tbody>
+            </table>
+            
+            
             
             
             
@@ -190,9 +259,17 @@
         <div class="row">
           
             <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px;">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">
-                2013-2017
-              </span>
+              <table class="table-cv">
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">2013-2017</span>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              
             </div>
           
           <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
@@ -200,7 +277,19 @@
             <h6 class="title font-weight-bold ml-1 ml-md-4">Bachelor of Technology (Computer Science and Engineering)</h6>
             
             
-            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;">Jawaharlal Nehru Technological University, Hyderabad, India</h6>
+            <table class="table-cv ml-1 ml-md-4 institution">
+            <tbody>
+              
+              <tr>
+                <td style="vertical-align: top; text-align: center;" class="institution"><i class="fas fa-university iconinstitution"></i></td>
+                <td class="institution">Jawaharlal Nehru Technological University, Hyderabad, India</td>
+              </tr>
+              
+              
+            </tbody>
+            </table>
+            
+            
             
             
             
@@ -209,23 +298,32 @@
       </li>
     
     </ul>
-                  
-                  </div>
-                </div>
-              
-                <div class="card mt-3 p-3">
-                  <h3 class="card-title font-weight-medium">Experience</h3>
-                  <div>
-                  
-                   <ul class="card-text font-weight-light list-group list-group-flush">
+          
+          </div>
+        </div>
+      
+        <a class="anchor" id="Experience"></a>
+        <div class="card mt-3 p-3">
+          <h3 class="card-title font-weight-medium">Experience</h3>
+          <div>
+          
+            <ul class="card-text font-weight-light list-group list-group-flush">
     
       <li class="list-group-item">
         <div class="row">
           
             <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px;">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">
-                2022 - Now
-              </span>
+              <table class="table-cv">
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">2022 - Now</span>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              
             </div>
           
           <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
@@ -233,18 +331,30 @@
             <h6 class="title font-weight-bold ml-1 ml-md-4">Student Research Assistant</h6>
             
             
-            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;">Autonomous Intelligent Systems Lab, University of Freiburg</h6>
+            <table class="table-cv ml-1 ml-md-4 institution">
+            <tbody>
+              
+              <tr>
+                <td style="vertical-align: top; text-align: center;" class="institution"><i class="fas fa-university iconinstitution"></i></td>
+                <td class="institution">Robot Learning Lab, University of Freiburg, Germany</td>
+              </tr>
+              
+              
+            </tbody>
+            </table>
+            
             
             
               <ul class="items">
                 
                   <li>
                     
-                      <span class="item">Working towards making Robot Manipulation more physics intuitive with Reinforcement Learning, supervised by Iman Nematollahi and Prof. Dr. Wolfram Burgard at the Autonomous Intelligent Systems (AIS) Lab.</span>
+                      <span class="item">Working on robot learning and manipulation, supervised by Iman Nematollahi and Prof. Dr. Abhinav Valada at the Robot Learning Lab. Most of my days in the lab are spent trying to better define, learn, sequence, and refine robot "skills".</span>
                     
                   </li>
                 
               </ul>
+            
             
             
           </div>
@@ -255,9 +365,17 @@
         <div class="row">
           
             <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px;">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">
-                2018-2021
-              </span>
+              <table class="table-cv">
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">2018-2021</span>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              
             </div>
           
           <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
@@ -265,7 +383,18 @@
             <h6 class="title font-weight-bold ml-1 ml-md-4">Research Assistant</h6>
             
             
-            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;">Indian Institute of Technology, Hyderabad, India</h6>
+            <table class="table-cv ml-1 ml-md-4 institution">
+            <tbody>
+              
+              <tr>
+                <td style="vertical-align: top; text-align: center;" class="institution"><i class="fas fa-university iconinstitution"></i></td>
+                <td class="institution">Indian Institute of Technology, Hyderabad, India</td>
+              </tr>
+              
+              
+            </tbody>
+            </table>
+            
             
             
               <ul class="items">
@@ -278,11 +407,12 @@
                 
                   <li>
                     
-                      <span class="item">During my time at IITH, I was fortunate enough to publish four peer-reviewed research articles in the area of “Machine Learning with Limited Labeled Data” with a few more still to come. I was also fortunate to have co-authored a chapter in a soon-to-be-published book “Plant Omics: Advances in Big Data Biology”. I feel extremely lucky to have had an opportunity to learn from the brilliant members of the lab on how cutting edge computer science research is done.</span>
+                      <span class="item">During my time at IITH, I was fortunate enough to publish four peer-reviewed research articles in the area of “Machine Learning with Limited Labeled Data” with a few more still to come. I feel extremely lucky to have had an opportunity to learn from the brilliant members of the lab on how cutting edge computer science research is done.</span>
                     
                   </li>
                 
               </ul>
+            
             
             
           </div>
@@ -293,9 +423,17 @@
         <div class="row">
           
             <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px;">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">
-                2017-2018
-              </span>
+              <table class="table-cv">
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">2017-2018</span>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              
             </div>
           
           <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
@@ -303,7 +441,18 @@
             <h6 class="title font-weight-bold ml-1 ml-md-4">Associate Software Engineer</h6>
             
             
-            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;">GGK Technologies, Hyderabad, India.</h6>
+            <table class="table-cv ml-1 ml-md-4 institution">
+            <tbody>
+              
+              <tr>
+                <td style="vertical-align: top; text-align: center;" class="institution"><i class="fas fa-university iconinstitution"></i></td>
+                <td class="institution">GGK Technologies, Hyderabad, India.</td>
+              </tr>
+              
+              
+            </tbody>
+            </table>
+            
             
             
               <ul class="items">
@@ -329,6 +478,7 @@
               </ul>
             
             
+            
           </div>
         </div>
       </li>
@@ -337,9 +487,17 @@
         <div class="row">
           
             <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px;">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">
-                2016
-              </span>
+              <table class="table-cv">
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px;">2016</span>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              
             </div>
           
           <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
@@ -347,7 +505,18 @@
             <h6 class="title font-weight-bold ml-1 ml-md-4">Software Engineer Intern</h6>
             
             
-            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem;">Polycom Inc., Hyderabad, India</h6>
+            <table class="table-cv ml-1 ml-md-4 institution">
+            <tbody>
+              
+              <tr>
+                <td style="vertical-align: top; text-align: center;" class="institution"><i class="fas fa-university iconinstitution"></i></td>
+                <td class="institution">Polycom Inc., Hyderabad, India</td>
+              </tr>
+              
+              
+            </tbody>
+            </table>
+            
             
             
               <ul class="items">
@@ -361,20 +530,22 @@
               </ul>
             
             
+            
           </div>
         </div>
       </li>
     
     </ul>
-                  
-                  </div>
-                </div>
-              
-              </div>
-          </article>
-
+          
+          </div>
         </div>
+      
+      </div>
+  </article>
 
+</div>
+
+      
     </div>
 
     <!-- Footer -->    
@@ -390,7 +561,8 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- Bootsrap & MDB scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="/assets/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="/assets/js/mdb.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
 
     <!-- Masonry & imagesLoaded -->
@@ -400,9 +572,15 @@
     
   <!-- Medium Zoom JS -->
   <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
-  <script defer src="/assets/js/zoom.js"></script><!-- Load Common JS -->
-  <script defer src="/assets/js/common.js"></script>
-  <script defer src="/assets/js/copy_code.js" type="text/javascript"></script>
+  <script defer src="/assets/js/zoom.js?7b30caa5023af4af8408a472dc4e1ebb"></script>
+
+  <!-- Bootstrap Table -->
+  <script defer src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+
+  <!-- Load Common JS -->
+  <script src="/assets/js/no_defer.js?d633890033921b33e0ceb13d22340a9c"></script>
+  <script defer src="/assets/js/common.js?acdb9690d7641b2f8d40529018c71a01"></script>
+  <script defer src="/assets/js/copy_code.js?c9d9dd48933de3831b3ee5ec9c209cac" type="text/javascript"></script>
 
     
 
@@ -497,5 +675,6 @@
   }
 </script>
 
+    
   </body>
 </html>
