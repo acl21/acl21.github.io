@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://akshaychandra.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://akshaychandra.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-17T08:36:40+00:00</updated><id>https://akshaychandra.com/feed.xml</id><title type="html">blank</title><subtitle></subtitle><entry><title type="html">Quaternion Rotation Operator</title><link href="https://akshaychandra.com/blog/2023/quat-rot-op2/" rel="alternate" type="text/html" title="Quaternion Rotation Operator" /><published>2023-10-17T00:00:00+00:00</published><updated>2023-10-17T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/quat-rot-op2</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/quat-rot-op2/"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://akshaychandra.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://akshaychandra.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-18T08:06:25+00:00</updated><id>https://akshaychandra.com/feed.xml</id><title type="html">blank</title><subtitle></subtitle><entry><title type="html">Quaternion Rotation Operator</title><link href="https://akshaychandra.com/blog/2023/quat-rot-op2/" rel="alternate" type="text/html" title="Quaternion Rotation Operator" /><published>2023-10-17T00:00:00+00:00</published><updated>2023-10-17T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/quat-rot-op2</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/quat-rot-op2/"><![CDATA[<blockquote>
   <p><strong>Citation Note:</strong> I have borrowed this article’s content from Jack B. Kuipers’ seminal 1999 book <d-cite key="kuipers1999quaternions"></d-cite> on quaternions.</p>
 </blockquote>
 
@@ -52,7 +52,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 \[\mathbf{q} = \cos \theta + k \sin \theta\]
 
-<p>Assume that the associated angle \(\theta\) is a very small positive angle. This assumption is helpful when comparing the input vector with the operator’s output vector. We want to verify if \(R_{\mathbf{q}}(\vec{v})\) merely “tweaks” the input vector when the associated angle is a very small positive value. Conveniently, for very small angles, we can round things up nicely i.e., \(\cos \theta \approx 1\) and \(\sin \theta \approx \theta\) so the quaternion \(\mathbf{q}\) may be re-written as</p>
+<p>Assume that the associated angle \(\theta\) is a very small positive angle. This assumption is helpful when comparing the input vector with the operator’s output vector. We want to verify if \(R_{\mathbf{q}}(\vec{v})\) merely “tweaks” the input vector when the associated angle is a very small positive value. Conveniently, for very small positive angles, we can round things up nicely i.e., \(\cos \theta \approx 1\) and \(\sin \theta \approx \theta\) so the quaternion \(\mathbf{q}\) may be re-written as</p>
 
 \[\mathbf{q} \approx 1 + k\theta\]
 
@@ -69,7 +69,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 \[\Vert \vec{w} \Vert = \sqrt{(1)^2 + (2\theta)^2} \approx 1 \quad (\text{Since }\theta \approx 0)\]
 
-<p>The length of the \(\vec{w}\) is still \(1\) (well almost, if you ignore the very small value \(\theta^2\)). <d-footnote>Note that we have no restriction on the length of the vector to be rotated, just that the output vector's length _should not_ change after rotation and it does not so this is good news. </d-footnote>Now, lets think about the angle between <em>rotated image</em> \(\vec{w}\) and \(\vec{v}\). It helps to mentally visualize this rotation as a vector that was earlier pointing at \(i\) (or \(\left[\begin{matrix} 1 \\ 0 \\ 0\end{matrix}\right]\)) and is now pointing at \(i+2\theta j\) (or \(\left[\begin{matrix} 1 \\ 2\theta \\ 0\end{matrix}\right]\)). Geometrically, it so appears that \(i\) is rotated <em>counter-clockwise</em> about the axis \(k\) by \(2\theta\) angle. Let us verify this by checking the angle of rotation \(\alpha\) between \(\vec{w}\) and \(\vec{v}\), which can be given by:</p>
+<p>The length of the \(\vec{w}\) is still \(1\) (well almost, if you ignore the very small value \(\theta^2\))<d-footnote>Note that we have no restriction on the length of the vector to be rotated, just that the output vector's length _should not_ change after rotation and it does not so this is good news. </d-footnote>. Now, lets think about the angle between <em>rotated image</em> \(\vec{w}\) and \(\vec{v}\). It helps to mentally visualize this rotation as a vector that was earlier pointing at \(i\) (or \(\left[\begin{matrix} 1 \\ 0 \\ 0\end{matrix}\right]\)) and is now pointing at \(i+2\theta j\) (or \(\left[\begin{matrix} 1 \\ 2\theta \\ 0\end{matrix}\right]\)). Geometrically, it so appears that \(i\) is rotated <em>counter-clockwise</em> about the axis \(k\) by \(2\theta\) angle. Let us verify this by checking the angle of rotation \(\alpha\) between \(\vec{w}\) and \(\vec{v}\), which can be given by:</p>
 
 \[\begin{aligned}
 \tan \alpha &amp;= \frac{\Vert w \times v \Vert}{(w \cdot v)} \\
@@ -102,7 +102,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 </figure>
 
-<p>See the figure above for clarity. We can further verify this visually (at least the axis and direction of rotation) for varying \(\theta\) values in Ben Eater’s interactive quaternion visualisation <d-cite key="eater-quat-viz"></d-cite>, see the following animation.</p>
+<p>See the figure above for clarity. We can further verify this visually (at least the axis and direction of rotation) for varying \(\theta\) values in Ben Eater’s interactive quaternion visualisation<d-cite key="eater-quat-viz"></d-cite>, see the following animation.</p>
 
 <figure>
 
@@ -177,11 +177,23 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
   </ul>
 </blockquote>
 
-<p>While the conjectural proof above may be intuitive and perhaps sufficient for some readers, I refer the more curious to Chapter 15.15 of <d-cite key="kuipers1999quaternions"></d-cite> for the full formal proof. I also encourage readers to check the subsequent Chapter 15.16 to see how these operators elegantly handle a sequence of rotations.</p>
+<p>While the conjectural proof above may be intuitive and perhaps sufficient for some readers, I refer the more curious to Chapter 15.15 of <d-cite key="kuipers1999quaternions"></d-cite> for the full formal proof. I also encourage readers to check the subsequent Chapter 15.16 for discussion, proof and examples on how these operators elegantly handle rotation sequences. The quaternion operator sequence theorems are as follows:</p>
+
+<blockquote>
+  <p><strong>Theorem 3:</strong> Suppose that \(\mathbf{p}\) and \(\mathbf{q}\) are unit quaternions which define the quaternion rotation operators \(R_{\mathbf{p}}(\vec{u}) = \mathbf{p} \star \vec{u} \star \mathbf{p}^{\ast}\) and \(R_{\mathbf{q}}(\vec{v}) = \mathbf{q} \star \vec{v} \star \mathbf{q}^{\ast}\). Then the quaternion product \(\mathbf{q} \star \mathbf{p}\) defines a quaternion rotation operator \(R_{\mathbf{q} \star \mathbf{p}}\) which represents a sequence of operators, \(R_{\mathbf{p}}\) followed by \(R_{\mathbf{q}}\). The axis and the angle of rotation are those represented by the quaternion product \(\mathbf{q} \star \mathbf{p}\).</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Theorem 4:</strong> Suppose that \(\mathbf{p}\) and \(\mathbf{q}\) are unit quaternions which define the quaternion rotation operators \(R_{\mathbf{p}}(\vec{u}) = \mathbf{p}^{\ast} \star \vec{u} \star \mathbf{p}\) and \(R_{\mathbf{q}}(\vec{v}) = \mathbf{q}^{\ast} \star \vec{v} \star \mathbf{q}\). Then the quaternion product \(\mathbf{p} \star \mathbf{q}\) defines a quaternion rotation operator \(R_{\mathbf{p} \star \mathbf{q}}\) which represents a sequence of operators, \(R_{\mathbf{p}}\) followed by \(R_{\mathbf{q}}\). The axis and the angle of rotation are those represented by the quaternion product \(\mathbf{p} \star \mathbf{q}\).</p>
+</blockquote>
+
+<p>Note that in both of these theoremns the sequence of operators is \(R_{\mathbf{p}}\) followed by \(R_{\mathbf{q}}\). I leave you with something to ponder on your next coffee break.</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>This concludes my attempt to get robotics practitioners introduced to quaternions and their rotation operators. Perhaps now is a good time to watch Grant Sanderson a.k.a YouTuber 3Blue1Brown’s videos on quaternions<d-cite key="3b1b"></d-cite>. As we conclude this journey, I urge you to venture further into the realm of quaternions as a Riemannian manifold. Riemannian manifolds are mathematical spaces that, like quaternions, possess both local and global geometrical properties. They extend our understanding of spaces beyond the familiar Euclidean world, allowing us to model curved surfaces. To that end, I want to emphasize that treating unit quaternions as a Riemannian manifold has huge implications for optimization, imitation learning and other robotics applications <d-cite key="boumal2023intromanifolds"></d-cite><d-cite key="noemie2020thesis"></d-cite><d-cite key="Jaquier2018GeometryawareML"></d-cite><d-cite key="7829369"></d-cite><d-cite key="Calinon2019GaussiansOR"></d-cite><d-cite key="Silvrio2017LearningTP"></d-cite>. The marriage of quaternions and Riemannian geometry enables us to tackle complex problems with newfound precision and insight. May your explorations be filled with wonder and revelation.</p>]]></content><author><name>Akshay L Chandra</name></author><summary type="html"><![CDATA[Exploring the geometric effects of the quaternion sandwich product]]></summary></entry><entry><title type="html">Towards a 3D Rotation Operator with a Quaternion Sandwich</title><link href="https://akshaychandra.com/blog/2023/quat-rot-op1/" rel="alternate" type="text/html" title="Towards a 3D Rotation Operator with a Quaternion Sandwich" /><published>2023-10-16T00:00:00+00:00</published><updated>2023-10-16T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/quat-rot-op1</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/quat-rot-op1/"><![CDATA[<blockquote>
+<p>This concludes my attempt to get robotics practitioners introduced to quaternions and their rotation operators. Perhaps now is a good time to watch Grant Sanderson a.k.a Mathematics YouTuber 3Blue1Brown’s videos on quaternions<d-cite key="3b1b"></d-cite>.</p>
+
+<p>As we conclude this journey, I urge you to venture further into the realm of quaternions as a Riemannian manifold. Riemannian manifolds are mathematical spaces that, like quaternions, possess both local and global geometrical properties. They extend our understanding of spaces beyond the familiar Euclidean world, allowing us to model curved surfaces. To that end, I want to emphasize that treating unit quaternions as a Riemannian manifold has huge implications for optimization, imitation learning and other robotics applications <d-cite key="boumal2023intromanifolds"></d-cite><d-cite key="noemie2020thesis"></d-cite><d-cite key="Jaquier2018GeometryawareML"></d-cite><d-cite key="7829369"></d-cite><d-cite key="Calinon2019GaussiansOR"></d-cite><d-cite key="Silvrio2017LearningTP"></d-cite>. The marriage of quaternions and Riemannian geometry enables us to tackle complex problems with newfound precision and insight. May your explorations be filled with wonder and revelation.</p>]]></content><author><name>Akshay L Chandra</name></author><summary type="html"><![CDATA[Exploring the geometric effects of the quaternion sandwich product]]></summary></entry><entry><title type="html">Towards a 3D Rotation Operator with a Quaternion Sandwich</title><link href="https://akshaychandra.com/blog/2023/quat-rot-op1/" rel="alternate" type="text/html" title="Towards a 3D Rotation Operator with a Quaternion Sandwich" /><published>2023-10-16T00:00:00+00:00</published><updated>2023-10-16T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/quat-rot-op1</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/quat-rot-op1/"><![CDATA[<blockquote>
   <p><strong>Citation Note:</strong> I have borrowed this article’s content from Jack B. Kuipers’ seminal 1999 book <d-cite key="kuipers1999quaternions"></d-cite> on quaternions.</p>
 </blockquote>
 
@@ -220,14 +232,14 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
   <li>\(R_{\mathbf{q}}\) should associate with an angle<d-footnote>Also an axis of rotation but we look at that in my next article.</d-footnote> unique to \(\mathbf{q}\).</li>
 </ol>
 
-<p>By the end of this article, we will see that this checklist is indeed fulfilled with quaternions albeit with some upgrades to quaternions we already know.</p>
+<p>By the end of this article, we will see that this checklist is indeed fulfilled with quaternions albeit with some upgrades.</p>
 
 <h2 id="pure-quaternions">Pure Quaternions</h2>
 
 <p>How can quaternions which are in \(\mathbb{R}^4\) operate on vectors in \(\mathbb{R}^3\)? Thanks to the Scalar + Vector model we discussed in <d-cite key="quat-basics"></d-cite>, a vector can be interpreted as a <em>pure quaternion</em><d-footnote>One might argue that real numbers are just scalar parts of quaternions. And why shouldn't they?</d-footnote> i.e., \(\mathbf{v} = 0 + \vec{v}\). So \(Q_0\), the set of all pure quaternions, is a subset of \(Q\), the set of all quaternions. To that end, we can easily verify that:</p>
 <ul>
   <li>Quaternion addition between any two pure quaternions</li>
-  <li>Quaternion multiplication between two pure quaternions</li>
+  <li>Quaternion multiplication between any two pure quaternions</li>
   <li>Quaternion multiplication between a scalar and a pure quaternion</li>
 </ul>
 
@@ -278,7 +290,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 \[\mathbf{p} \star \mathbf{v} \star \mathbf{q} \quad \quad \mathbf{q} \star \mathbf{v} \star \mathbf{p}\]
 
-<p>Despite the uninteresting exercise, lets expand one the <em>triple</em> products, say \(\mathbf{p} \star \mathbf{v} \star \mathbf{q}\).</p>
+<p>Despite the uninteresting exercise, lets expand the <em>triple</em> products, say \(\mathbf{p} \star \mathbf{v} \star \mathbf{q}\).</p>
 
 \[\begin{aligned}
 \mathbf{p} \star \mathbf{v} \star \mathbf{q} &amp;= (\mathbf{p} \star \mathbf{v}) \star \mathbf{q} \\
@@ -298,7 +310,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 \[- q_0 (\vec{p}\cdot\vec{v}) - p_0(\vec{v} \cdot \vec{q}) + (\vec{p} \times \vec{q}) \cdot \vec{v}\]
 
-<p>Recall that if this <em>triple</em> product were to be inside \(R_{\mathbf{q}}\), it should output a pure quaternion. So we have to choose \(\mathbf{p}\) and \(\mathbf{q}\) such that the scalar part goes to \(0\) for all pure quaternions. Examining the cross product term, we see that \((\vec{p} \times \vec{q}) \cdot \vec{v}\) would go to \(0\) if \(\mathbf{p}\) and \(\mathbf{q}\) are parallel to each other i.e., if \(\mathbf{p} = k\mathbf{q}\) for non-zero \(k\) since we are dealing with non-zero vectors \(\vec{p}\) and \(\vec{q}\)<d-footnote>Note that this is a fair assumption to make. We have full control over the quaternions; however, not much on the vector.</d-footnote>. Substituting this back in the scalar part expression, we get</p>
+<p>Recall that if this <em>triple</em> product were to be inside \(R_{\mathbf{q}}\), it should output a pure quaternion. So we have to choose \(\mathbf{p}\) and \(\mathbf{q}\) such that the scalar part goes to \(0\) for all pure quaternions. Examining the cross product term, we see that \((\vec{p} \times \vec{q}) \cdot \vec{v}\) would go to \(0\) if \(\mathbf{p}\) and \(\mathbf{q}\) are parallel to each other i.e., if \(\mathbf{p} = k\mathbf{q}\) for non-zero \(k\) since we are dealing with non-zero vectors \(\vec{p}\) and \(\vec{q}\)<d-footnote>Note that this is a fair assumption to make. We have full control over the quaternions; however, not much on the vector to be rotated.</d-footnote>. Substituting this back in the scalar part expression, we get</p>
 
 \[\begin{aligned}
 &amp;\Rightarrow - q_0 (k\vec{q}\cdot\vec{v}) - p_0(\vec{v} \cdot \vec{q}) + (k\vec{q} \times \vec{q}) \cdot \vec{v} \\
@@ -340,7 +352,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 <h2 id="unit-quaternions">Unit Quaternions</h2>
 
-<p>Unit quaternions i.e., \(\Vert \mathbf{q} \Vert^2 = (\mathbf{q}^{\ast} \star \mathbf{q}) = (\mathbf{q} \star \mathbf{q}^{\ast}) = 1\) are simply quaternions whose norm is 1. What is worth noting about unit quaternions is that their quaternion multiplication preserves membership in the \(\mathbf{S}^3\) space<d-footnote>A sphere in 4-dimensional space where each point represents a quaternion with magnitude 1.</d-footnote> of unit quaternions. That is, the quaternion product of two unit quaternions \(\mathbf{p}\) and \(\mathbf{q}\) i.e., \(\mathbf{p} \star \mathbf{q}\) will also be a unit quaternion and hence will still belong to the unit-sphere in \(\mathbf{S}^3\). This convenient geometric property allows us to do many cool things such as non-Euclidean calculus<d-cite key="boumal2023intromanifolds"></d-cite> with quaternions, something that could be exploited to learn geometry-aware models, say, a dynamical system on robot’s trajectory of both positions and orientations<d-cite key="noemie2020thesis"></d-cite>&lt;/d-cite&gt;<d-cite key="Jaquier2018GeometryawareML"></d-cite><d-cite key="7829369"></d-cite>. More importantly to our journey, it should be clear that the rotation operator \(R_{\mathbf{q}}\) should include unit quaternions and not general quaternions.</p>
+<p>Unit quaternions i.e., \(\Vert \mathbf{q} \Vert^2 = (\mathbf{q}^{\ast} \star \mathbf{q}) = (\mathbf{q} \star \mathbf{q}^{\ast}) = 1\) are simply quaternions whose norm is 1. What is worth noting about unit quaternions is that their quaternion multiplication preserves membership in the \(\mathbf{S}^3\) space<d-footnote>A sphere in 4-dimensional space where each point represents a quaternion with magnitude 1.</d-footnote> of unit quaternions. That is, the quaternion product of two unit quaternions \(\mathbf{p}\) and \(\mathbf{q}\) i.e., \(\mathbf{p} \star \mathbf{q}\) will also be a unit quaternion and hence will still belong to the unit-sphere in \(\mathbf{S}^3\). This convenient geometric property allows us to do many cool things such as non-Euclidean calculus<d-cite key="boumal2023intromanifolds"></d-cite> with quaternions, something that could be exploited to learn geometry-aware models, say, a dynamical system on robot’s trajectory of both positions and orientations<d-cite key="noemie2020thesis"></d-cite><d-cite key="Jaquier2018GeometryawareML"></d-cite><d-cite key="7829369"></d-cite>. More importantly to our journey, it should be clear that the rotation operator \(R_{\mathbf{q}}\) should include unit quaternions and not general quaternions.</p>
 
 <p>Perhaps this is already obvious (from Eq. \((4)\) and Eq. \((5)\) of <d-cite key="quat-basics"></d-cite>), the quaternion sandwich product with unit quaternions wouldn’t change the magnitude of the pure quaternion \(\mathbf{v}\).</p>
 
@@ -349,7 +361,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 &amp;= \Vert \mathbf{v} \Vert^2
 \end{aligned}\]
 
-<p>In fact, even for higher-order multiplication with unit quaternions, we see that the norm of the factors is preserved. Say, we have \(n\) unit quaternions \(\{\mathbf{q}_1, \mathbf{q}_2, ..., \mathbf{q}_n\}\) and a general quaternion \(\mathbf{p}\). The squared norm of the product</p>
+<p>In fact, even for higher-order multiplication with unit quaternions, we see that the norm of the factors is preserved. Say, we have \(n\) unit quaternions \(\{\mathbf{q}_1, \mathbf{q}_2, ..., \mathbf{q}_n\}\) and a general quaternion \(\mathbf{p}\). The squared norm of their products in any order yields the same, as follows:</p>
 
 \[\begin{aligned}
 \Vert \mathbf{q}_1 \star ... \star \mathbf{p} \star ... \star \mathbf{q}_n \Vert^2 &amp;= \Vert \mathbf{p} \star \mathbf{q}_1 \star ... \star \mathbf{q}_n \Vert^2 \\
@@ -773,7 +785,7 @@ J &amp;:= \left[ \begin{matrix} 0 &amp; 1 \\ -1 &amp; 0 \end{matrix}\right], \; 
   <li>The source of non-commutativity of quaternion multiplication is now clear, i.e., \(\vec{p} \times \vec{q} = - \vec{q} \times \vec{p}\)</li>
   <li>Two non-zero quaternions can commute only when their vector parts are linearly dependent (parallel) i.e., \(\mathbf{p} \star \mathbf{q} = \mathbf{q} \star \mathbf{p} \Leftrightarrow \vec{p} \times \vec{q} = 0 \hspace{50cm}\)</li>
   <li>Only scalars commute with all quaternions,  i.e., \(c \star \mathbf{q} = cq_0 + c\vec{q} = c \mathbf{q} = \mathbf{q} \star c\).</li>
-  <li>Since quaternion multiplication is just a combination of scalar-vector, dot and cross products in \(\mathbb{R}^3\) (Euclidean space), it <em>must</em> have some geometric significance, it <em>must</em> describe something independent of the values of \(\mathbf{p}\) and \(\mathbf{q}\). I discuss this in detail in my next article <a href="../quaternions-to-rotations/">here</a>.</li>
+  <li>Since quaternion multiplication is just a combination of scalar-vector, dot and cross products in \(\mathbb{R}^3\) (Euclidean space), it <em>must</em> have some geometric significance, it <em>must</em> describe something independent of the values of \(\mathbf{p}\) and \(\mathbf{q}\). I discuss this in detail in <d-cite key="quat-rot-op2"></d-cite>.</li>
 </ul>
 
 <h3 id="complex-conjugate">Complex Conjugate</h3>
@@ -854,7 +866,7 @@ J &amp;:= \left[ \begin{matrix} 0 &amp; 1 \\ -1 &amp; 0 \end{matrix}\right], \; 
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>With these basics of quaternions and its algebra in check, I feel that one can now look at how quaternions can be used to represent 3D rotations. You can find the next article in the series exactly on this here<d-cite key="quat-rot-op1"></d-cite>.</p>]]></content><author><name>Akshay L Chandra</name></author><summary type="html"><![CDATA[A brief introduction to quaternions and their basic algebra]]></summary></entry><entry><title type="html">a distill-style blog post</title><link href="https://akshaychandra.com/blog/2023/distill/" rel="alternate" type="text/html" title="a distill-style blog post" /><published>2023-04-04T00:00:00+00:00</published><updated>2023-04-04T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/distill</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/distill/"><![CDATA[<h2 id="equations">Equations</h2>
+<p>In this article, we’ve delved into the seemingly peculiar realm of quaternion algebra. We started by introducing quaternions as a four-dimensional extension of complex numbers, consisting of a real part and three imaginary components. We looked into some commonly used quaternion models, and then explored Scalar + Vector model’s arithmetic operations and properties, including addition, scalar and quaternion multiplication, complex conjugate, norm and inverse and discussed the source of non-commutativity of their multiplication. In my next article <d-cite key="quat-rot-op1"></d-cite>, we’ll take this understanding a step further by exploring how quaternions can be <em>easily</em> extended to form a rotation operator in \(\mathbb{R}^3\).</p>]]></content><author><name>Akshay L Chandra</name></author><summary type="html"><![CDATA[A brief introduction to quaternions and their basic algebra]]></summary></entry><entry><title type="html">a distill-style blog post</title><link href="https://akshaychandra.com/blog/2023/distill/" rel="alternate" type="text/html" title="a distill-style blog post" /><published>2023-04-04T00:00:00+00:00</published><updated>2023-04-04T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/distill</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/distill/"><![CDATA[<h2 id="equations">Equations</h2>
 
 <p>This theme supports rendering beautiful math in inline and display modes using <a href="https://www.mathjax.org/">MathJax 3</a> engine.
 You just need to surround your math expression with <code class="language-plaintext highlighter-rouge">$$</code>, like <code class="language-plaintext highlighter-rouge">$$ E = mc^2 $$</code>.

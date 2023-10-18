@@ -231,14 +231,14 @@
   <li>\(R_{\mathbf{q}}\) should associate with an angle<d-footnote>Also an axis of rotation but we look at that in my next article.</d-footnote> unique to \(\mathbf{q}\).</li>
 </ol>
 
-<p>By the end of this article, we will see that this checklist is indeed fulfilled with quaternions albeit with some upgrades to quaternions we already know.</p>
+<p>By the end of this article, we will see that this checklist is indeed fulfilled with quaternions albeit with some upgrades.</p>
 
 <h2 id="pure-quaternions">Pure Quaternions</h2>
 
 <p>How can quaternions which are in \(\mathbb{R}^4\) operate on vectors in \(\mathbb{R}^3\)? Thanks to the Scalar + Vector model we discussed in <d-cite key="quat-basics"></d-cite>, a vector can be interpreted as a <em>pure quaternion</em><d-footnote>One might argue that real numbers are just scalar parts of quaternions. And why shouldn't they?</d-footnote> i.e., \(\mathbf{v} = 0 + \vec{v}\). So \(Q_0\), the set of all pure quaternions, is a subset of \(Q\), the set of all quaternions. To that end, we can easily verify that:</p>
 <ul>
   <li>Quaternion addition between any two pure quaternions</li>
-  <li>Quaternion multiplication between two pure quaternions</li>
+  <li>Quaternion multiplication between any two pure quaternions</li>
   <li>Quaternion multiplication between a scalar and a pure quaternion</li>
 </ul>
 
@@ -289,7 +289,7 @@
 
 \[\mathbf{p} \star \mathbf{v} \star \mathbf{q} \quad \quad \mathbf{q} \star \mathbf{v} \star \mathbf{p}\]
 
-<p>Despite the uninteresting exercise, lets expand one the <em>triple</em> products, say \(\mathbf{p} \star \mathbf{v} \star \mathbf{q}\).</p>
+<p>Despite the uninteresting exercise, lets expand the <em>triple</em> products, say \(\mathbf{p} \star \mathbf{v} \star \mathbf{q}\).</p>
 
 \[\begin{aligned}
 \mathbf{p} \star \mathbf{v} \star \mathbf{q} &amp;= (\mathbf{p} \star \mathbf{v}) \star \mathbf{q} \\
@@ -309,7 +309,7 @@
 
 \[- q_0 (\vec{p}\cdot\vec{v}) - p_0(\vec{v} \cdot \vec{q}) + (\vec{p} \times \vec{q}) \cdot \vec{v}\]
 
-<p>Recall that if this <em>triple</em> product were to be inside \(R_{\mathbf{q}}\), it should output a pure quaternion. So we have to choose \(\mathbf{p}\) and \(\mathbf{q}\) such that the scalar part goes to \(0\) for all pure quaternions. Examining the cross product term, we see that \((\vec{p} \times \vec{q}) \cdot \vec{v}\) would go to \(0\) if \(\mathbf{p}\) and \(\mathbf{q}\) are parallel to each other i.e., if \(\mathbf{p} = k\mathbf{q}\) for non-zero \(k\) since we are dealing with non-zero vectors \(\vec{p}\) and \(\vec{q}\)<d-footnote>Note that this is a fair assumption to make. We have full control over the quaternions; however, not much on the vector.</d-footnote>. Substituting this back in the scalar part expression, we get</p>
+<p>Recall that if this <em>triple</em> product were to be inside \(R_{\mathbf{q}}\), it should output a pure quaternion. So we have to choose \(\mathbf{p}\) and \(\mathbf{q}\) such that the scalar part goes to \(0\) for all pure quaternions. Examining the cross product term, we see that \((\vec{p} \times \vec{q}) \cdot \vec{v}\) would go to \(0\) if \(\mathbf{p}\) and \(\mathbf{q}\) are parallel to each other i.e., if \(\mathbf{p} = k\mathbf{q}\) for non-zero \(k\) since we are dealing with non-zero vectors \(\vec{p}\) and \(\vec{q}\)<d-footnote>Note that this is a fair assumption to make. We have full control over the quaternions; however, not much on the vector to be rotated.</d-footnote>. Substituting this back in the scalar part expression, we get</p>
 
 \[\begin{aligned}
 &amp;\Rightarrow - q_0 (k\vec{q}\cdot\vec{v}) - p_0(\vec{v} \cdot \vec{q}) + (k\vec{q} \times \vec{q}) \cdot \vec{v} \\
@@ -351,7 +351,7 @@
 
 <h2 id="unit-quaternions">Unit Quaternions</h2>
 
-<p>Unit quaternions i.e., \(\Vert \mathbf{q} \Vert^2 = (\mathbf{q}^{\ast} \star \mathbf{q}) = (\mathbf{q} \star \mathbf{q}^{\ast}) = 1\) are simply quaternions whose norm is 1. What is worth noting about unit quaternions is that their quaternion multiplication preserves membership in the \(\mathbf{S}^3\) space<d-footnote>A sphere in 4-dimensional space where each point represents a quaternion with magnitude 1.</d-footnote> of unit quaternions. That is, the quaternion product of two unit quaternions \(\mathbf{p}\) and \(\mathbf{q}\) i.e., \(\mathbf{p} \star \mathbf{q}\) will also be a unit quaternion and hence will still belong to the unit-sphere in \(\mathbf{S}^3\). This convenient geometric property allows us to do many cool things such as non-Euclidean calculus<d-cite key="boumal2023intromanifolds"></d-cite> with quaternions, something that could be exploited to learn geometry-aware models, say, a dynamical system on robot’s trajectory of both positions and orientations<d-cite key="noemie2020thesis"></d-cite>&lt;/d-cite&gt;<d-cite key="Jaquier2018GeometryawareML"></d-cite><d-cite key="7829369"></d-cite>. More importantly to our journey, it should be clear that the rotation operator \(R_{\mathbf{q}}\) should include unit quaternions and not general quaternions.</p>
+<p>Unit quaternions i.e., \(\Vert \mathbf{q} \Vert^2 = (\mathbf{q}^{\ast} \star \mathbf{q}) = (\mathbf{q} \star \mathbf{q}^{\ast}) = 1\) are simply quaternions whose norm is 1. What is worth noting about unit quaternions is that their quaternion multiplication preserves membership in the \(\mathbf{S}^3\) space<d-footnote>A sphere in 4-dimensional space where each point represents a quaternion with magnitude 1.</d-footnote> of unit quaternions. That is, the quaternion product of two unit quaternions \(\mathbf{p}\) and \(\mathbf{q}\) i.e., \(\mathbf{p} \star \mathbf{q}\) will also be a unit quaternion and hence will still belong to the unit-sphere in \(\mathbf{S}^3\). This convenient geometric property allows us to do many cool things such as non-Euclidean calculus<d-cite key="boumal2023intromanifolds"></d-cite> with quaternions, something that could be exploited to learn geometry-aware models, say, a dynamical system on robot’s trajectory of both positions and orientations<d-cite key="noemie2020thesis"></d-cite><d-cite key="Jaquier2018GeometryawareML"></d-cite><d-cite key="7829369"></d-cite>. More importantly to our journey, it should be clear that the rotation operator \(R_{\mathbf{q}}\) should include unit quaternions and not general quaternions.</p>
 
 <p>Perhaps this is already obvious (from Eq. \((4)\) and Eq. \((5)\) of <d-cite key="quat-basics"></d-cite>), the quaternion sandwich product with unit quaternions wouldn’t change the magnitude of the pure quaternion \(\mathbf{v}\).</p>
 
@@ -360,7 +360,7 @@
 &amp;= \Vert \mathbf{v} \Vert^2
 \end{aligned}\]
 
-<p>In fact, even for higher-order multiplication with unit quaternions, we see that the norm of the factors is preserved. Say, we have \(n\) unit quaternions \(\{\mathbf{q}_1, \mathbf{q}_2, ..., \mathbf{q}_n\}\) and a general quaternion \(\mathbf{p}\). The squared norm of the product</p>
+<p>In fact, even for higher-order multiplication with unit quaternions, we see that the norm of the factors is preserved. Say, we have \(n\) unit quaternions \(\{\mathbf{q}_1, \mathbf{q}_2, ..., \mathbf{q}_n\}\) and a general quaternion \(\mathbf{p}\). The squared norm of their products in any order yields the same, as follows:</p>
 
 \[\begin{aligned}
 \Vert \mathbf{q}_1 \star ... \star \mathbf{p} \star ... \star \mathbf{q}_n \Vert^2 &amp;= \Vert \mathbf{p} \star \mathbf{q}_1 \star ... \star \mathbf{q}_n \Vert^2 \\
