@@ -118,7 +118,7 @@ One could always look at the circle below to remember the multiplicative rules o
 | Quadrance and Norm| $$cc^{\ast} = a^2 + b^2, \quad \Vert c \Vert = \sqrt{cc^{\ast}}$$|
 | Inverse| $$c^{-1} = \frac{c^{\ast}}{cc^{\ast}}$$|
 
-Eventhough we haven't seen how two quaternions add and multiply in detail, the following table summarizes most of the blog post in a consice way.
+Even though we haven't seen how two quaternions add and multiply in detail, the following table summarizes most of theis article in a concise way.
 
 | -------------: |:-------------|
 | Quaternions $$\mathbb{H}$$| $$\mathbf{q} = q_0 + q_1i + q_2j + q_3k, \ q_n \in \mathbb{R}, \ i^2 = j^2 = k^2 = ijk = -1$$|
@@ -142,7 +142,7 @@ $$
 
 
 ## Quaternion Models
-There are more than one way to interpret quaternions. Some are more intuitive than others and we see three below. 
+There is more than one way to interpret quaternions. Some are more intuitive than others and we see three below. 
 
 ### Four-Dimensional Vectors
 A straightforward way of thinking about quaternions is to treat them as four-dimensional vectors. 
@@ -154,7 +154,7 @@ $$
 \end{aligned}
 $$
 
-To avoid operator overload with dot product, I introduce $$\star$$ as the quaternion multiplication operator. Now, the quaternion multiplication between $$\mathbf{p}$$ and $$\mathbf{q}$$ can be written in matrix form as follows <d-footnote>See the following subsection for a full derivation of quaternion multiplication.</d-footnote>
+To avoid operator overload with the dot product, I introduce $$\star$$ as the quaternion multiplication operator. Now, the quaternion multiplication between $$\mathbf{p}$$ and $$\mathbf{q}$$ can be written in matrix form as follows <d-footnote>See the following subsection for a full derivation of quaternion multiplication.</d-footnote>
 
 $$
 \begin{aligned}
@@ -192,7 +192,7 @@ $$
 As Prof. Schröcker says in his presentation<d-cite key="schroecker2022iros"></d-cite> - "When in doubt, think of matrix multiplication!".
 
 ### Scalar + Vector
-This is perhaps the most interesting model and from now on, we stick to this one. Recall from the comparisons with complex numbers, we define the real and imaginary parts of quaternion as follows:
+This is perhaps the most interesting model and from now on, we stick to this one. Recall from the comparisons with complex numbers, we define the real and imaginary parts of a quaternion as follows:
 
 $$
 \begin{aligned}
@@ -225,7 +225,7 @@ $$
 $$
 
 ### Multiplication
-Similar to addition, first let us write out the multiplication of two quaternions the naive way and see if we can transform it to the Scalar + Vector form.
+Similar to addition, first, let us write out the multiplication of two quaternions the naive way and see if we can transform it to the Scalar + Vector form.
 
 $$
 \begin{aligned}
@@ -273,7 +273,7 @@ $$
 \mathbf{q^{\ast}} = q_0 - q_1i - q_2j - q_3k = q_0 - \vec{q} \tag{2}
 $$
 
-From the definition it follows that:
+From the definition, it follows that:
 
 $$
 \begin{aligned}
@@ -329,7 +329,7 @@ $$
 \end{aligned}
 $$
 
-Deriving equation for the squared _norm_ of the quaternion product is easier with quadrance. 
+Deriving an equation for the squared _norm_ of the quaternion product is easier with quadrance. 
 
 $$
 \begin{aligned}
@@ -341,7 +341,7 @@ $$
 \end{aligned}
 $$
 
-This relationship extends to higher order quaternion multiplication as well. Given $$n$$ quaternions $$\{\mathbf{q}_1, \mathbf{q}_2, ... \mathbf{q}_n\}$$, one could easily derive the following
+This relationship extends to higher-order quaternion multiplication as well. Given $$n$$ quaternions $$\{\mathbf{q}_1, \mathbf{q}_2, ... \mathbf{q}_n\}$$, one could easily derive the following
 
 $$
 \begin{aligned}
@@ -360,4 +360,4 @@ $$\mathbf{q}^{-1} = \frac{\mathbf{q^{\ast}}}{\mathbf{q^{\ast}} \star \mathbf{q}}
 
 ## Conclusion
 
-In this article, we've delved into the seemingly peculiar realm of quaternion algebra. We started by introducing quaternions as a four-dimensional extension of complex numbers, consisting of a real part and three imaginary components. We looked into some commonly used quaternion models, and then explored Scalar + Vector model's arithmetic operations and properties, including addition, scalar and quaternion multiplication, complex conjugate, norm and inverse and discussed the source of non-commutativity of their multiplication. In my next article <d-cite key="quat-rot-op1"></d-cite>, we'll take this understanding a step further by exploring how quaternions can be _easily_ extended to form a rotation operator in $$\mathbb{R}^3$$. 
+In this article, we've delved into the seemingly peculiar realm of quaternion algebra. We started by introducing quaternions as a four-dimensional extension of complex numbers, consisting of a real part and three imaginary components. We looked into some commonly used quaternion models, and then explored the _Scalar + Vector_ model's arithmetic operations and properties, including addition, scalar and quaternion multiplication, complex conjugate, norm and inverse and discussed the source of non-commutativity of their multiplication. In my next article <d-cite key="quat-rot-op1"></d-cite>, we'll take this understanding a step further by exploring how quaternions can be _easily_ extended to form a rotation operator in $$\mathbb{R}^3$$. 
