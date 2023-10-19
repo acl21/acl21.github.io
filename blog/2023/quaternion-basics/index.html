@@ -335,7 +335,7 @@
   </tbody>
 </table>
 
-<p>Eventhough we haven’t seen how two quaternions add and multiply in detail, the following table summarizes most of the blog post in a consice way.</p>
+<p>Even though we haven’t seen how two quaternions add and multiply in detail, the following table summarizes most of theis article in a concise way.</p>
 
 <table>
   <tbody>
@@ -377,7 +377,7 @@
 \end{aligned}\]
 
 <h2 id="quaternion-models">Quaternion Models</h2>
-<p>There are more than one way to interpret quaternions. Some are more intuitive than others and we see three below.</p>
+<p>There is more than one way to interpret quaternions. Some are more intuitive than others and we see three below.</p>
 
 <h3 id="four-dimensional-vectors">Four-Dimensional Vectors</h3>
 <p>A straightforward way of thinking about quaternions is to treat them as four-dimensional vectors.</p>
@@ -387,7 +387,7 @@
 \mathbf{q} &amp; = q_0 + q_1i + q_2j + q_3k = (q_0, q_1, q_2, q_3)^{\top} 
 \end{aligned}\]
 
-<p>To avoid operator overload with dot product, I introduce \(\star\) as the quaternion multiplication operator. Now, the quaternion multiplication between \(\mathbf{p}\) and \(\mathbf{q}\) can be written in matrix form as follows <d-footnote>See the following subsection for a full derivation of quaternion multiplication.</d-footnote></p>
+<p>To avoid operator overload with the dot product, I introduce \(\star\) as the quaternion multiplication operator. Now, the quaternion multiplication between \(\mathbf{p}\) and \(\mathbf{q}\) can be written in matrix form as follows <d-footnote>See the following subsection for a full derivation of quaternion multiplication.</d-footnote></p>
 
 \[\begin{aligned}
 \mathbf{p} \star \mathbf{q} &amp;= \left[ \begin{matrix} p_0q_0 - p_1q_1 - p_2q_2 - p_3q_3 \\ p_0q_1 + p_1q_0 + p_2q_3 - p_3q_2 \\ p_0q_2 - p_1q_3 + p_2q_0 + p_3q_1 \\ p_0q_3 + p_1q_2 - p_2q_1 + p_3q_0 \end{matrix} \right] \\
@@ -416,7 +416,7 @@ J &amp;:= \left[ \begin{matrix} 0 &amp; 1 \\ -1 &amp; 0 \end{matrix}\right], \; 
 <p>As Prof. Schröcker says in his presentation<d-cite key="schroecker2022iros"></d-cite> - “When in doubt, think of matrix multiplication!”.</p>
 
 <h3 id="scalar--vector">Scalar + Vector</h3>
-<p>This is perhaps the most interesting model and from now on, we stick to this one. Recall from the comparisons with complex numbers, we define the real and imaginary parts of quaternion as follows:</p>
+<p>This is perhaps the most interesting model and from now on, we stick to this one. Recall from the comparisons with complex numbers, we define the real and imaginary parts of a quaternion as follows:</p>
 
 \[\begin{aligned}
 \text{Re}(\mathbf{q}) &amp; = \frac{1}{2}(\mathbf{q} + \mathbf{q}^{\ast}) = q_0 \quad \text{(Scalar Part)} \\
@@ -442,7 +442,7 @@ J &amp;:= \left[ \begin{matrix} 0 &amp; 1 \\ -1 &amp; 0 \end{matrix}\right], \; 
 \end{aligned}\]
 
 <h3 id="multiplication">Multiplication</h3>
-<p>Similar to addition, first let us write out the multiplication of two quaternions the naive way and see if we can transform it to the Scalar + Vector form.</p>
+<p>Similar to addition, first, let us write out the multiplication of two quaternions the naive way and see if we can transform it to the Scalar + Vector form.</p>
 
 \[\begin{aligned}
 \mathbf{p} \star \mathbf{q} &amp;= (p_0 + p_1i + p_2j + p_3k) (q_0 + q_1i + q_2j + q_3k) \\
@@ -486,7 +486,7 @@ J &amp;:= \left[ \begin{matrix} 0 &amp; 1 \\ -1 &amp; 0 \end{matrix}\right], \; 
 
 \[\mathbf{q^{\ast}} = q_0 - q_1i - q_2j - q_3k = q_0 - \vec{q} \tag{2}\]
 
-<p>From the definition it follows that:</p>
+<p>From the definition, it follows that:</p>
 
 \[\begin{aligned}
 (\mathbf{q^{\ast}})^{\ast} &amp; = q_0 - (-\vec{q}) = \mathbf{q} \\
@@ -533,7 +533,7 @@ J &amp;:= \left[ \begin{matrix} 0 &amp; 1 \\ -1 &amp; 0 \end{matrix}\right], \; 
 &amp;= q_0^2 +  (\vec{q} \cdot \vec{q})
 \end{aligned}\]
 
-<p>Deriving equation for the squared <em>norm</em> of the quaternion product is easier with quadrance.</p>
+<p>Deriving an equation for the squared <em>norm</em> of the quaternion product is easier with quadrance.</p>
 
 \[\begin{aligned}
 \Vert \mathbf{p} \star \mathbf{q} \Vert^2 &amp;= (\mathbf{p} \star \mathbf{q}) \star (\mathbf{p} \star \mathbf{q})^{\ast} \\
@@ -543,7 +543,7 @@ J &amp;:= \left[ \begin{matrix} 0 &amp; 1 \\ -1 &amp; 0 \end{matrix}\right], \; 
 &amp;= \Vert \mathbf{q} \Vert^2 \Vert \mathbf{p} \Vert^2  \hspace{12cm} \text{(4)}\\
 \end{aligned}\]
 
-<p>This relationship extends to higher order quaternion multiplication as well. Given \(n\) quaternions \(\{\mathbf{q}_1, \mathbf{q}_2, ... \mathbf{q}_n\}\), one could easily derive the following</p>
+<p>This relationship extends to higher-order quaternion multiplication as well. Given \(n\) quaternions \(\{\mathbf{q}_1, \mathbf{q}_2, ... \mathbf{q}_n\}\), one could easily derive the following</p>
 
 \[\begin{aligned}
 \Vert \mathbf{q}_1 \star \mathbf{q}_2 \star \mathbf{q}_3 \Vert^2 &amp;= \Vert \mathbf{q}_1 \Vert^2 \Vert \mathbf{q}_2 \Vert^2 \Vert \mathbf{q}_3 \Vert^2 \\
@@ -559,7 +559,7 @@ J &amp;:= \left[ \begin{matrix} 0 &amp; 1 \\ -1 &amp; 0 \end{matrix}\right], \; 
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>In this article, we’ve delved into the seemingly peculiar realm of quaternion algebra. We started by introducing quaternions as a four-dimensional extension of complex numbers, consisting of a real part and three imaginary components. We looked into some commonly used quaternion models, and then explored Scalar + Vector model’s arithmetic operations and properties, including addition, scalar and quaternion multiplication, complex conjugate, norm and inverse and discussed the source of non-commutativity of their multiplication. In my next article <d-cite key="quat-rot-op1"></d-cite>, we’ll take this understanding a step further by exploring how quaternions can be <em>easily</em> extended to form a rotation operator in \(\mathbb{R}^3\).</p>
+<p>In this article, we’ve delved into the seemingly peculiar realm of quaternion algebra. We started by introducing quaternions as a four-dimensional extension of complex numbers, consisting of a real part and three imaginary components. We looked into some commonly used quaternion models, and then explored the <em>Scalar + Vector</em> model’s arithmetic operations and properties, including addition, scalar and quaternion multiplication, complex conjugate, norm and inverse and discussed the source of non-commutativity of their multiplication. In my next article <d-cite key="quat-rot-op1"></d-cite>, we’ll take this understanding a step further by exploring how quaternions can be <em>easily</em> extended to form a rotation operator in \(\mathbb{R}^3\).</p>
 
       </d-article>
 

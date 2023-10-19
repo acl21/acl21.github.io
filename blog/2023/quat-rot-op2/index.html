@@ -191,7 +191,7 @@
 </blockquote>
 
 <blockquote>
-  <p>As an admirer of the book’s writing style, I submit that you are probably better off referring to Chapter 5 of the book. My motivation to write this regardless is twofold - to provide robotics practitioners a one-stop-shop entry point to quaternions and challenge/improve my understanding of them. I claim no expertise in this topic but found it so fascinating that I decided to write about it.</p>
+  <p>As an admirer of the book’s writing style, I submit that you are probably better off referring to Chapter 5 of the book. My motivation to write this regardless is twofold - to provide robotics practitioners with a one-stop-shop entry point to quaternions and challenge/improve my understanding of them. I claim no expertise in this topic but found it so fascinating that I decided to write about it.</p>
 </blockquote>
 
 <blockquote>
@@ -200,11 +200,11 @@
 
 <hr>
 
-<p>Earlier, we saw a great deal of evidence that quaternions indeed can represent \(\mathbb{R}^3\) rotations. With the checked list in mind, we can now safely define the quaternion rotation operator and apply some tests to understand its geometric effects on \(\mathbb{R}^3\) vectors. All quaternions you see in this article are to be assumed unit.</p>
+<p>Earlier, we saw a great deal of evidence that quaternions indeed can represent \(\mathbb{R}^3\) rotations. With the checked list in mind, we can now safely define the quaternion rotation operator and apply some tests to understand its geometric effects on \(\mathbb{R}^3\) vectors. All quaternions you see in this article are to be assumed units.</p>
 
 <h2 id="quaternion-rotation-operator-definition">Quaternion Rotation Operator: Definition</h2>
 
-<p>Let \(\mathbf{q}\) be a unit quaternion, and \(\vec{v}\) be a vector in \(\mathbb{R}^3\) (pure quaternion), we define two rotation operators as follows:</p>
+<p>Let \(\mathbf{q}\) be a unit quaternion, and \(\vec{v}\) be a vector in \(\mathbb{R}^3\) (pure quaternion); we define two rotation operators as follows:</p>
 
 \[\begin{aligned}
 R_{\mathbf{q}}(\vec{v}) &amp;= \mathbf{q} \star \vec{v} \star \mathbf{q}^{\ast} \\
@@ -220,7 +220,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 &amp;= (q_0^2-\Vert \vec{q} \Vert^2)\vec{v} + 2(\vec{q}\cdot \vec{v})\vec{q} + 2q_0(\vec{q} \times \vec{v})
 \end{aligned}\]
 
-<p>Without a formal proof, I claim that these operators indeed rotate \(\vec{v}\) in \(\mathbb{R}^3\). Through some carefully designed tests, I hope to convince you on the same by answering the following key questions about \(R_{\mathbf{q}}\):</p>
+<p>Without formal proof, I claim that these operators indeed rotate \(\vec{v}\) in \(\mathbb{R}^3\). Through some carefully designed tests, I hope to convince you on the same by answering the following key questions about \(R_{\mathbf{q}}\):</p>
 <ul>
   <li>What is the direction of rotation?</li>
   <li>What is the axis of rotation?</li>
@@ -232,7 +232,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 <h2 id="incremental-test">Incremental Test</h2>
 
-<p>For this test, let us make our lives easy and work with <em>simple</em> quaternions and <em>simple</em> vectors that are easy to visualize in our heads. Suppose that the unit quaternion \(\mathbf{q}\) in \(R_{\mathbf{q}}(\vec{v})\) has a basis vector</p>
+<p>For this test, let us make our lives easy and work with <em>simple</em> quaternions and <em>simple</em> vectors that are easy to visualise in our heads. Suppose that the unit quaternion \(\mathbf{q}\) in \(R_{\mathbf{q}}(\vec{v})\) has a basis vector</p>
 
 \[\vec{u} = 0i + 0j + 1k = k \quad (\text{or }\left[\begin{matrix} 0 \\ 0 \\ 1\end{matrix}\right])\]
 
@@ -240,7 +240,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 \[\mathbf{q} = \cos \theta + k \sin \theta\]
 
-<p>Assume that the associated angle \(\theta\) is a very small positive angle. This assumption is helpful when comparing the input vector with the operator’s output vector. We want to verify if \(R_{\mathbf{q}}(\vec{v})\) merely “tweaks” the input vector when the associated angle is a very small positive value. Conveniently, for very small positive angles, we can round things up nicely i.e., \(\cos \theta \approx 1\) and \(\sin \theta \approx \theta\) so the quaternion \(\mathbf{q}\) may be re-written as</p>
+<p>Assume that the associated angle \(\theta\) is a very small positive angle. This assumption is helpful when comparing the input vector with the operator’s output vector. We want to verify if \(R_{\mathbf{q}}(\vec{v})\) merely “tweaks” the input vector when the associated angle is a very small positive value. Conveniently, for very small positive angles, we can round things up nicely, i.e., \(\cos \theta \approx 1\) and \(\sin \theta \approx \theta\) so the quaternion \(\mathbf{q}\) may be re-written as</p>
 
 \[\mathbf{q} \approx 1 + k\theta\]
 
@@ -356,7 +356,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 <blockquote>
   <p><strong>Theorem 2:</strong> For any unit quaternion \(\mathbf{q} = q_0 + \vec{q} = \cos \theta + \vec{u} \sin \theta\) and for any vector \(\vec{v} \in \mathbb{R}^3\), the action of the operator \(R_{\mathbf{q}^{\ast}}(\vec{v}) = \mathbf{q}^{\ast} \star \vec{v} \star \mathbf{q}\) on \(\vec{v}\) may be interpreted geometrically</p>
   <ul>
-    <li>as a rotation of the cordinate frame with respect to the vector \(\vec{v}\) through an angle \(2\theta\) about \(\vec{q}\) or \(\vec{u}\) as the axis, or,</li>
+    <li>as a rotation of the coordinate frame with respect to the vector \(\vec{v}\) through an angle \(2\theta\) about \(\vec{q}\) or \(\vec{u}\) as the axis, or,</li>
     <li>an opposite rotation of the vector \(\vec{v}\) with respect to the coordinate frame through an angle \(2\theta\) about \(\vec{q}\) or \(\vec{u}\) as the axis.</li>
   </ul>
 </blockquote>
@@ -365,7 +365,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 <h2 id="quaternion-operator-sequences">Quaternion Operator Sequences</h2>
 
-<p>We often find ourselves <em>applying</em> a sequence of rotations to the robot in many applications. To that end, it helps to know that the quaternions operators elegantly handle rotation sequences.</p>
+<p>We often find ourselves <em>applying</em> a sequence of rotations to the robot in many applications. To that end, it helps to know that the quaternion operators elegantly handle rotation sequences.</p>
 
 <blockquote>
   <p><strong>Theorem 3:</strong> Suppose that \(\mathbf{p}\) and \(\mathbf{q}\) are unit quaternions which define the quaternion rotation operators \(R_{\mathbf{p}}(\vec{u}) = \mathbf{p} \star \vec{u} \star \mathbf{p}^{\ast}\) and \(R_{\mathbf{q}}(\vec{v}) = \mathbf{q} \star \vec{v} \star \mathbf{q}^{\ast}\). Then the quaternion product \(\mathbf{q} \star \mathbf{p}\) defines a quaternion rotation operator \(R_{\mathbf{q} \star \mathbf{p}}\) which represents a sequence of operators, \(R_{\mathbf{p}}\) followed by \(R_{\mathbf{q}}\). The axis and the angle of rotation are those represented by the quaternion product \(\mathbf{q} \star \mathbf{p}\).</p>
@@ -390,9 +390,9 @@ R_{\mathbf{q}}(R_{\mathbf{p}}(\vec{u})) &amp;= R_{\mathbf{q}}(\mathbf{p} \star \
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>This concludes my attempt to get robotics practitioners introduced to quaternions and their rotation operators. Perhaps now is a good time to watch Grant Sanderson a.k.a Mathematics YouTuber 3Blue1Brown’s videos on quaternions<d-cite key="3b1b"></d-cite>.</p>
+<p>This concludes my attempt to introduce robotics practitioners to quaternions and their rotation operators. Perhaps now is a good time to watch Grant Sanderson, a.k.a Mathematics YouTuber 3Blue1Brown’s videos on quaternions<d-cite key="3b1b"></d-cite>.</p>
 
-<p>As we conclude this journey, I urge you to venture further into the realm of quaternions as a Riemannian manifold. Riemannian manifolds are mathematical spaces that, like quaternions, possess both local and global geometrical properties. They extend our understanding of spaces beyond the familiar Euclidean world, allowing us to model curved surfaces. To that end, I want to emphasize that treating unit quaternions as a Riemannian manifold has huge implications for optimization, imitation learning and other robotics applications <d-cite key="boumal2023intromanifolds"></d-cite><d-cite key="noemie2020thesis"></d-cite><d-cite key="Jaquier2018GeometryawareML"></d-cite><d-cite key="7829369"></d-cite><d-cite key="Calinon2019GaussiansOR"></d-cite><d-cite key="Silvrio2017LearningTP"></d-cite>. It has been shown, through numerous research works, that the marriage of quaternions and Riemannian geometry enables us to tackle complex problems with newfound precision and insight.</p>
+<p>As we conclude this journey, I urge you to venture further into the realm of quaternions as a Riemannian manifold. Riemannian manifolds are mathematical spaces that, like quaternions, possess local and global geometrical properties. They extend our understanding of spaces beyond the familiar Euclidean world, allowing us to model curved surfaces. To that end, I want to emphasize that treating unit quaternions as a Riemannian manifold has huge implications for optimization, imitation learning and other robotics applications <d-cite key="boumal2023intromanifolds"></d-cite><d-cite key="noemie2020thesis"></d-cite><d-cite key="Jaquier2018GeometryawareML"></d-cite><d-cite key="7829369"></d-cite><d-cite key="Calinon2019GaussiansOR"></d-cite><d-cite key="Silvrio2017LearningTP"></d-cite>. Through numerous research works, it has been shown that the marriage of quaternions and Riemannian geometry enables us to tackle complex problems with newfound precision and insight.</p>
 
 <p>May your explorations be filled with wonder and revelation.</p>
 
