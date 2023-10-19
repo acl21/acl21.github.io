@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://akshaychandra.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://akshaychandra.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-18T17:37:34+00:00</updated><id>https://akshaychandra.com/feed.xml</id><title type="html">blank</title><subtitle></subtitle><entry><title type="html">Quaternion Rotation Operator</title><link href="https://akshaychandra.com/blog/2023/quat-rot-op2/" rel="alternate" type="text/html" title="Quaternion Rotation Operator" /><published>2023-10-17T00:00:00+00:00</published><updated>2023-10-17T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/quat-rot-op2</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/quat-rot-op2/"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://akshaychandra.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://akshaychandra.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-10-19T15:08:42+00:00</updated><id>https://akshaychandra.com/feed.xml</id><title type="html">blank</title><subtitle></subtitle><entry><title type="html">Quaternion Rotation Operator</title><link href="https://akshaychandra.com/blog/2023/quat-rot-op2/" rel="alternate" type="text/html" title="Quaternion Rotation Operator" /><published>2023-10-17T00:00:00+00:00</published><updated>2023-10-17T00:00:00+00:00</updated><id>https://akshaychandra.com/blog/2023/quat-rot-op2</id><content type="html" xml:base="https://akshaychandra.com/blog/2023/quat-rot-op2/"><![CDATA[<blockquote>
   <p><strong>Citation Note:</strong> I have borrowed this article’s content from Jack B. Kuipers’ seminal 1999 book <d-cite key="kuipers1999quaternions"></d-cite> on quaternions.</p>
 </blockquote>
 
@@ -157,7 +157,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
 
 <p>Comparing this with the \(\vec{w} = 1 + 2\theta j\) suggests that the difference between \(R_{\mathbf{q}}(\vec{v})\) and \(R_{\mathbf{q}^{\ast}}(\vec{v})\) is simply the direction of rotation. One must be careful here, however, as seen in section <em>Polar Form</em> of <d-cite key="quat-rot-op1"></d-cite>, \(\theta\) has to restrict to the domain \((-\pi, \pi]\). So \(\theta\) can be both negative and positive, which makes it very difficult to differentiate between these two operators. Basically, \(R_{\mathbf{q}}(\vec{v})\) can do what \(R_{\mathbf{q}^{\ast}}(\vec{v})\) does with an appropriate choice of \(\theta\) i.e., replace \(\theta\) by \(-\theta\) in \(\mathbf{q}\) and you go from \(R_{\mathbf{q}}(\vec{v})\) to \(R_{\mathbf{q}^{\ast}}(\vec{v})\). In a nutshell, rotation perspective, personal preference, and even library conventions often decide the use of one operator over the other in a given application. It is important to note that both are mathematically equivalent and can represent the same rotations.</p>
 
-<h2 id="summary">Summary</h2>
+<h2 id="quaternion-rotation-operator-theorems">Quaternion Rotation Operator: Theorems</h2>
 
 <p>I present to you, without formal proof, the two theorems that summarise the two quaternion rotation operators \(R_{\mathbf{q}}(\vec{v})\) and \(R_{\mathbf{q}^{\ast}}(\vec{v})\).</p>
 
@@ -183,7 +183,7 @@ R_{\mathbf{q}^{\ast}}(\vec{v}) &amp;= \mathbf{q}^{\ast} \star \vec{v} \star \mat
   <p><strong>Theorem 4:</strong> Suppose that \(\mathbf{p}\) and \(\mathbf{q}\) are unit quaternions which define the quaternion rotation operators \(R_{\mathbf{p}}(\vec{u}) = \mathbf{p}^{\ast} \star \vec{u} \star \mathbf{p}\) and \(R_{\mathbf{q}}(\vec{v}) = \mathbf{q}^{\ast} \star \vec{v} \star \mathbf{q}\). Then the quaternion product \(\mathbf{p} \star \mathbf{q}\) defines a quaternion rotation operator \(R_{\mathbf{p} \star \mathbf{q}}\) which represents a sequence of operators, \(R_{\mathbf{p}}\) followed by \(R_{\mathbf{q}}\). The axis and the angle of rotation are those represented by the quaternion product \(\mathbf{p} \star \mathbf{q}\).</p>
 </blockquote>
 
-<p>Note that in both of these theorems the sequence of operators is \(R_{\mathbf{p}}\) followed by \(R_{\mathbf{q}}\). I leave you with something to ponder on your next coffee break.</p>
+<p>Note that in Theorem 3 and Theorem 4, the sequence of operators is the same i.e., \(R_{\mathbf{p}}\) followed by \(R_{\mathbf{q}}\). I leave you with something to ponder on your next coffee break.</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
