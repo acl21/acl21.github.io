@@ -3,7 +3,7 @@ layout: distill
 title: "Quaternions: Basic Algebra"
 description: A brief introduction to quaternions and their basic algebra 
 giscus_comments: true
-date: 2023-10-07
+date: 2023-09-23
 
 
 authors:
@@ -12,7 +12,7 @@ authors:
     affiliations:
       name: University of Freiburg, Germany
 
-bibliography: 2023-10-07-quaternions.bib
+bibliography: 2023-10-21-quaternions.bib
 
 # Optionally, you can add a table of contents to your post.
 # NOTES:
