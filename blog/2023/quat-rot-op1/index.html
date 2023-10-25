@@ -73,7 +73,7 @@
     <script async type="text/json">{
       "title": "Towards a 3D Rotation Operator with a Quaternion Sandwich",
       "description": "All the nuts and bolts needed to go from quaternions to a quaternion rotation operator",
-      "published": "October 16, 2023",
+      "published": "October 14, 2023",
       "authors": [
         {
           "author": "Akshay L Chandra",
@@ -349,7 +349,7 @@
 
 <h2 id="unit-quaternions">Unit Quaternions</h2>
 
-<p>Unit quaternions i.e., \(\Vert \mathbf{q} \Vert^2 = (\mathbf{q}^{\ast} \star \mathbf{q}) = (\mathbf{q} \star \mathbf{q}^{\ast}) = 1\) are simply quaternions whose norm is 1. What is worth noting about unit quaternions is that their quaternion multiplication preserves membership in the \(\mathbf{S}^3\) space<d-footnote>A sphere in 4-dimensional space where each point represents a quaternion with magnitude 1.</d-footnote> of unit quaternions. That is, the quaternion product of two unit quaternions \(\mathbf{p}\) and \(\mathbf{q}\) i.e., \(\mathbf{p} \star \mathbf{q}\) will also be a unit quaternion and hence will still belong to the unit-sphere in \(\mathbf{S}^3\). This convenient geometric property allows us to do many cool things such as non-Euclidean calculus<d-cite key="boumal2023intromanifolds"></d-cite> with quaternions, something that could be exploited to learn geometry-aware models, say, a dynamical system on robot’s trajectory of both positions and orientations<d-cite key="noemie2020thesis"></d-cite><d-cite key="Jaquier2018GeometryawareML"></d-cite><d-cite key="7829369"></d-cite>. More importantly to our journey, it should be clear that the rotation operator \(R_{\mathbf{q}}\) should include unit quaternions and not general quaternions.</p>
+<p>Unit quaternions i.e., \(\Vert \mathbf{q} \Vert^2 = (\mathbf{q}^{\ast} \star \mathbf{q}) = (\mathbf{q} \star \mathbf{q}^{\ast}) = 1\) are simply quaternions whose norm is 1. What is worth noting about unit quaternions is that their quaternion multiplication preserves membership in the \(\mathbf{S}^3\) space<d-footnote>A sphere in 4-dimensional space where each point represents a quaternion with magnitude 1.</d-footnote> of unit quaternions. That is, the quaternion product of two unit quaternions \(\mathbf{p}\) and \(\mathbf{q}\) i.e., \(\mathbf{p} \star \mathbf{q}\) will also be a unit quaternion and hence will still belong to the unit-sphere in \(\mathbf{S}^3\). This convenient geometric property allows us to do many cool things such as non-Euclidean calculus<d-cite key="boumal2023intromanifolds"></d-cite> with quaternions, something that could be exploited to learn geometry-aware models, say, a dynamical system on robot’s trajectory of both positions and orientations<d-cite key="7829369"></d-cite><d-cite key="noemie2020thesis"></d-cite><d-cite key="Jaquier2018GeometryawareML"></d-cite>. More importantly to our journey, it should be clear that the rotation operator \(R_{\mathbf{q}}\) should include unit quaternions and not general quaternions.</p>
 
 <p>Perhaps this is already obvious (from Eq. \((4)\) and Eq. \((5)\) of <d-cite key="quat-basics"></d-cite>), the quaternion sandwich product with unit quaternions wouldn’t change the magnitude of the pure quaternion \(\mathbf{v}\).</p>
 
@@ -511,7 +511,7 @@ z_1z_2 &amp;= r_1(\cos \theta_1 + i \sin \theta_1) . r_2(\cos \theta_2 + i \sin 
         <d-citation-list></d-citation-list>
       </d-appendix>
 
-      <d-bibliography src="/assets/bibliography/2023-10-17-quaternions.bib"></d-bibliography><div id="giscus_thread" style="max-width: 800px; margin: 0 auto;">
+      <d-bibliography src="/assets/bibliography/2023-10-07-quaternions.bib"></d-bibliography><div id="giscus_thread" style="max-width: 800px; margin: 0 auto;">
 <script>
     let giscusTheme = localStorage.getItem("theme");
     let giscusAttributes = {
