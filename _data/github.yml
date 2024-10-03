@@ -1,0 +1,16 @@
+repo_description_lines_max: 2
+
+github_users:
+  - acl21
+
+github_repos:
+  - acl21/wcsac
+  - acl21/deep-active-learning-pytorch
+  - acl21/image_bbox_slicer
+  - acl21/batch-gmr
+
+github_repos_archived:
+  - acl21/Mouse_Cursor_Control_Handsfree
+  - acl21/Selfie_Filters_OpenCV
+  - acl21/Alphabet_Recognition_Gestures
+  - acl21/Webcam_Paint_OpenCV
