@@ -2,96 +2,85 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
+      value: Akshay L Chandra
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
+    - title: Master of Science (Computer Science)
+      institution: University of Freiburg, Freiburg, Germany
+      year: 2021-Now
+
+    - title: Post-Graduate Diploma (Applied Statistics)
+      institution: Indira Gandhi National Open University, Delhi, India
+      year: 2017-2018
+
+    - title: Bachelor of Technology (Computer Science and Engineering)
+      institution: Jawaharlal Nehru Technological University, Hyderabad, India
+      year: 2013-2017
 
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Student Research Assistant
+      institution: Autonomous Intelligent Systems Lab, University of Freiburg
+      year: 2022 - Now
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - Working towards making Robot Manipulation more physics intuitive with Reinforcement Learning, supervised by Iman Nematollahi and Prof. Dr. Wolfram Burgard at the Autonomous Intelligent Systems (AIS) Lab.
+    - title: Research Assistant
+      institution: Indian Institute of Technology, Hyderabad, India
+      year: 2018-2021
       description:
-        - Description 1.
-        - Description 2.
+      - I spent almost 3 years assisting Prof. Dr Vineeth N Balasubramanian's research at Lab1055. I also collaborated actively with Prof. Dr Wei Guo from the International Field Phenomics Research Laboratory to work on Plant Phenomic problems. 
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
+      - "During my time at IITH, I was fortunate enough to publish four peer-reviewed research articles in the area of “Machine Learning with Limited Labeled Data” with a few more still to come. I was also fortunate to have co-authored a chapter in a soon-to-be-published book “Plant Omics: Advances in Big Data Biology”. I feel extremely lucky to have had an opportunity to learn from the brilliant members of the lab on how cutting edge computer science research is done."
 
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
+    - title: Associate Software Engineer
+      institution: GGK Technologies, Hyderabad, India.
+      year: 2017-2018
+      description: 
+      - While in training, I spent most of the days learning, understanding, implementing and pondering over various concepts of Linear Algebra, Calculus (Optimization) and Machine Learning. Completed two POCs - "Reservation Cancellation Prediction" and "Fashion Clothes Recommendation System". Won Trainee-Of-The-Month award in July 2017 amongst 28 other trainees.
 
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
+      - As a core member of the AI team, my responsibilities included helping clients in health care, retail, e-commerce industries optimize their existing processes by building useful prediction models, capturing customer/patient behaviour patterns, identifying correlation and causation, maintaining data quality for smooth visualization and modeling. Exclusively worked on building a Computer Vision application that detects product pickups in a retail store from just the CCTV footage. 
 
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+      - Won Star-Of-The-Month award in August 2018 for successfully incorporating a custom Object Detection model in the above mentioned Computer Vision application.
 
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 1921
-      items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
-      items:
-        - Max Planck Medal
+    - title: Software Engineer Intern
+      institution: Polycom Inc., Hyderabad, India
+      year: 2016
+      description: 
+      - Worked on their Android platform. Enhanced existing code for the 'Jaguar' version update of their operating system. Completed a Speech Recognition POC in Android, with the help of Google's Speech API.
 
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
-      items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
+# - title: Open Source Projects
+#   type: time_table
+#   contents:
+#     - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
+#       year: 2015-now
+#       description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+# - title: Honors and Awards
+#   type: time_table
+#   contents:
+#     - year: 1921
+#       items:
+#         - Nobel Prize in Physics
+#         - Matteucci Medal
+#     - year: 2029
+#       items:
+#         - Max Planck Medal
 
-- title: Other Interests
-  type: list
-  contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+# - title: Academic Interests
+#   type: nested_list
+#   contents:
+#     - title: Topic 1.
+#       items:
+#         - Description 1.
+#         - Description 2.
+#     - title: Topic 2.
+#       items:
+#         - Description 1.
+#         - Description 2.
+
+# - title: Other Interests
+#   type: list
+#   contents:
+#     - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
