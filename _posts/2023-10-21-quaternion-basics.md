@@ -86,7 +86,7 @@ $$
 i^2 = j^2 = k^2 = ijk = -1
 $$
 
-{% include figure.liquid loading="eager" path="assets/img/blog/William_Rowan_Hamilton_Plaque.jpg" max-width="240" max-height="190" class="img-fluid rounded z-depth-1"  caption="Source: Wikipedia" zoomable=true %}
+{% include figure.liquid loading="eager" path="assets/img/blog/William_Rowan_Hamilton_Plaque.jpg" class="img-fluid rounded z-depth-1"  caption="Source: Wikipedia" zoomable=true %}
 
 If mathematics and its history interests you, I refer you to this YouTube video by "Kathy Loves Physics and History"<d-cite key="kathy-quat-history"></d-cite>. In a subsequent video, she explains how the discovery of quaternions (with Maxwell's equations) ultimately led to Vector Analysis<d-cite key="kathy-quat-history2"></d-cite>.
 
@@ -106,7 +106,7 @@ where the following rules are imposed:
 
 One could always look at the circle below to remember the multiplicative rules of $$i, j, k$$. Products following the below order get a plus sign, otherwise a minus sign, $$e.g., ij = k$$ and $$ji = -k$$.
 
-{% include figure.liquid loading="eager" path="assets/img/blog/ijk.jpg" width="100" height="100" class="img-fluid rounded z-depth-1"  caption="Source: Keith Conrad" zoomable=true %}
+{% include figure.liquid loading="eager" path="assets/img/blog/ijk.jpg" class="img-fluid rounded z-depth-1"  caption="Source: Keith Conrad" zoomable=true %}
 
 ### Quick Comparison with Complex Numbers
 
