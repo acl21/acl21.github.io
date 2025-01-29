@@ -31,26 +31,25 @@
       institution: Indian Institute of Technology, Hyderabad, India
       year: 2018-2021
       description:
-      - I spent almost 3 years assisting Prof. Dr Vineeth N Balasubramanian's research at Lab1055. I also collaborated actively with Prof. Dr Wei Guo from the International Field Phenomics Research Laboratory to work on Plant Phenomic problems. 
+        - I spent almost 3 years assisting Prof. Dr Vineeth N Balasubramanian's research at Lab1055. I also collaborated actively with Prof. Dr Wei Guo from the International Field Phenomics Research Laboratory to work on Plant Phenomic problems.
 
-      - "During my time at IITH, I was fortunate enough to publish four peer-reviewed research articles in the area of “Machine Learning with Limited Labeled Data” with a few more still to come. I was also fortunate to have co-authored a chapter in a soon-to-be-published book “Plant Omics: Advances in Big Data Biology”. I feel extremely lucky to have had an opportunity to learn from the brilliant members of the lab on how cutting edge computer science research is done."
+        - "During my time at IITH, I was fortunate enough to publish four peer-reviewed research articles in the area of “Machine Learning with Limited Labeled Data” with a few more still to come. I was also fortunate to have co-authored a chapter in a soon-to-be-published book “Plant Omics: Advances in Big Data Biology”. I feel extremely lucky to have had an opportunity to learn from the brilliant members of the lab on how cutting edge computer science research is done."
 
     - title: Associate Software Engineer
       institution: GGK Technologies, Hyderabad, India.
       year: 2017-2018
-      description: 
-      - While in training, I spent most of the days learning, understanding, implementing and pondering over various concepts of Linear Algebra, Calculus (Optimization) and Machine Learning. Completed two POCs - "Reservation Cancellation Prediction" and "Fashion Clothes Recommendation System". Won Trainee-Of-The-Month award in July 2017 amongst 28 other trainees.
+      description:
+        - While in training, I spent most of the days learning, understanding, implementing and pondering over various concepts of Linear Algebra, Calculus (Optimization) and Machine Learning. Completed two POCs - "Reservation Cancellation Prediction" and "Fashion Clothes Recommendation System". Won Trainee-Of-The-Month award in July 2017 amongst 28 other trainees.
 
-      - As a core member of the AI team, my responsibilities included helping clients in health care, retail, e-commerce industries optimize their existing processes by building useful prediction models, capturing customer/patient behaviour patterns, identifying correlation and causation, maintaining data quality for smooth visualization and modeling. Exclusively worked on building a Computer Vision application that detects product pickups in a retail store from just the CCTV footage. 
+        - As a core member of the AI team, my responsibilities included helping clients in health care, retail, e-commerce industries optimize their existing processes by building useful prediction models, capturing customer/patient behaviour patterns, identifying correlation and causation, maintaining data quality for smooth visualization and modeling. Exclusively worked on building a Computer Vision application that detects product pickups in a retail store from just the CCTV footage.
 
-      - Won Star-Of-The-Month award in August 2018 for successfully incorporating a custom Object Detection model in the above mentioned Computer Vision application.
+        - Won Star-Of-The-Month award in August 2018 for successfully incorporating a custom Object Detection model in the above mentioned Computer Vision application.
 
     - title: Software Engineer Intern
       institution: Polycom Inc., Hyderabad, India
       year: 2016
-      description: 
-      - Worked on their Android platform. Enhanced existing code for the 'Jaguar' version update of their operating system. Completed a Speech Recognition POC in Android, with the help of Google's Speech API.
-
+      description:
+        - Worked on their Android platform. Enhanced existing code for the 'Jaguar' version update of their operating system. Completed a Speech Recognition POC in Android, with the help of Google's Speech API.
 # - title: Open Source Projects
 #   type: time_table
 #   contents:

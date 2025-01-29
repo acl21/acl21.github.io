@@ -2,7 +2,7 @@
 layout: page
 permalink: /github/
 title: GitHub
-description: 
+description:
 nav: true
 nav_order: 2
 ---
