@@ -9,24 +9,32 @@
   contents:
     - title: Master of Science (Computer Science)
       institution: University of Freiburg, Freiburg, Germany
-      year: 2021-Now
+      year: 2025
 
     - title: Post-Graduate Diploma (Applied Statistics)
       institution: Indira Gandhi National Open University, Delhi, India
-      year: 2017-2018
+      year: 2018
 
     - title: Bachelor of Technology (Computer Science and Engineering)
       institution: Jawaharlal Nehru Technological University, Hyderabad, India
-      year: 2013-2017
+      year: 2017
 
 - title: Experience
   type: time_table
   contents:
-    - title: Student Research Assistant
-      institution: Autonomous Intelligent Systems Lab, University of Freiburg
-      year: 2022 - Now
+
+    - title: Research Assistant
+      institution: Robot Learning Lab, University of Freiburg
+      year: 2025 - Now
       description:
-        - Working towards making Robot Manipulation more physics intuitive with Reinforcement Learning, supervised by Iman Nematollahi and Prof. Dr. Wolfram Burgard at the Autonomous Intelligent Systems (AIS) Lab.
+        - I am currently working on using world models to sample-efficiently fine-tune diffusion policies for real-world robot manipulation tasks. My work is supervised by Dr. Iman Nematollahi and Prof. Dr. Abhinav Valada.
+
+    - title: Student Research Assistant
+      institution: Robot Learning Lab, University of Freiburg
+      year: 2022 - 2024
+      description:
+        - I worked on robot manipulation problems at the Robot Learning Lab. I spent most of my days in the lab trying to better define, learn, sequence, and refine robot “skills”, supervised by Dr. Iman Nematollahi and Dr. Tim Welschehold.
+
     - title: Research Assistant
       institution: Indian Institute of Technology, Hyderabad, India
       year: 2018-2021
