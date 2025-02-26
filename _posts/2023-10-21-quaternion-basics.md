@@ -1,6 +1,6 @@
 ---
 layout: distill
-title: "Quaternions: Basic Algebra"
+title: "[1/3] Quaternions: Basic Algebra"
 description: A brief introduction to quaternions and their basic algebra
 giscus_comments: true
 date: 2023-09-23
