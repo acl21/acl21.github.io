@@ -6,4 +6,4 @@ nav: false
 collection: books
 ---
 
-> 
+>

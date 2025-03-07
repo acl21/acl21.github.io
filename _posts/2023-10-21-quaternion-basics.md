@@ -42,10 +42,10 @@ toc:
 
 > **Citation Note:** For this article, I have borrowed many things, sometimes "as is", from:
 
-- Prof. Jack B. Kuipers' seminal 1999 book <d-cite key="kuipers1999quaternions"></d-cite>
-- Prof. Hans-Peter Schröcker's talk<d-cite key="schroecker2022iros"></d-cite> at IROS 2022
-- Prof. Andrew Hanson's book on quaternions<d-cite key="visquat"></d-cite>
-- Section I of Keith Conrad's notes<d-cite key="conrad-quat-algebras"></d-cite>.
+> - Prof. Jack B. Kuipers' seminal 1999 book <d-cite key="kuipers1999quaternions"></d-cite>
+> - Prof. Hans-Peter Schröcker's talk<d-cite key="schroecker2022iros"></d-cite> at IROS 2022
+> - Prof. Andrew Hanson's book on quaternions<d-cite key="visquat"></d-cite>
+> - Section I of Keith Conrad's notes<d-cite key="conrad-quat-algebras"></d-cite>.
 
 > This article merely reproduces their work, perhaps put together concisely in one place. My motivation to write this is twofold - to provide robotics practitioners a one-stop-shop entry point to quaternions and challenge/improve my understanding of them. I claim no expertise in this topic but found it so fascinating that I decided to write about it.
 
