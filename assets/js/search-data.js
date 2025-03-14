@@ -78,7 +78,7 @@ ninja.data = [{
       section: "Posts",
       handler: () => {
         
-          window.open("https://medium.com/towards-data-science/learning-parameters-part-5-65a2f3583f7d?source=rss-202534492f47------2", "_blank");
+          window.open("https://medium.com/data-science/learning-parameters-part-5-65a2f3583f7d?source=rss-202534492f47------2", "_blank");
         
       },
     },{id: "post-learning-parameters-part-4-tips-for-adjusting-learning-rate-line-search",
@@ -89,7 +89,7 @@ ninja.data = [{
       section: "Posts",
       handler: () => {
         
-          window.open("https://medium.com/towards-data-science/learning-parameters-part-4-6a18d1d3000b?source=rss-202534492f47------2", "_blank");
+          window.open("https://medium.com/data-science/learning-parameters-part-4-6a18d1d3000b?source=rss-202534492f47------2", "_blank");
         
       },
     },{id: "post-learning-parameters-part-3-stochastic-amp-mini-batch-gradient-descent",
@@ -100,7 +100,7 @@ ninja.data = [{
       section: "Posts",
       handler: () => {
         
-          window.open("https://medium.com/towards-data-science/learning-parameters-part-3-ee8558f65dd7?source=rss-202534492f47------2", "_blank");
+          window.open("https://medium.com/data-science/learning-parameters-part-3-ee8558f65dd7?source=rss-202534492f47------2", "_blank");
         
       },
     },{id: "post-learning-parameters-part-2-momentum-based-and-nesterov-accelerated-gradient-descent",
@@ -111,7 +111,7 @@ ninja.data = [{
       section: "Posts",
       handler: () => {
         
-          window.open("https://medium.com/towards-data-science/learning-parameters-part-2-a190bef2d12?source=rss-202534492f47------2", "_blank");
+          window.open("https://medium.com/data-science/learning-parameters-part-2-a190bef2d12?source=rss-202534492f47------2", "_blank");
         
       },
     },{id: "post-learning-parameters-part-1-gradient-descent",
@@ -122,7 +122,7 @@ ninja.data = [{
       section: "Posts",
       handler: () => {
         
-          window.open("https://medium.com/towards-data-science/learning-parameters-part-1-eb3e8bb9ffbb?source=rss-202534492f47------2", "_blank");
+          window.open("https://medium.com/data-science/learning-parameters-part-1-eb3e8bb9ffbb?source=rss-202534492f47------2", "_blank");
         
       },
     },{id: "post-learning-parameters-part-0-basic-stuff",
@@ -133,7 +133,7 @@ ninja.data = [{
       section: "Posts",
       handler: () => {
         
-          window.open("https://medium.com/towards-data-science/learning-parameters-part-0-5cfffd647bdc?source=rss-202534492f47------2", "_blank");
+          window.open("https://medium.com/data-science/learning-parameters-part-0-5cfffd647bdc?source=rss-202534492f47------2", "_blank");
         
       },
     },{id: "post-mouse-cursor-control-using-facial-movements-an-hci-application",
@@ -144,7 +144,7 @@ ninja.data = [{
       section: "Posts",
       handler: () => {
         
-          window.open("https://medium.com/towards-data-science/mouse-control-facial-movements-hci-app-c16b0494a971?source=rss-202534492f47------2", "_blank");
+          window.open("https://medium.com/data-science/mouse-control-facial-movements-hci-app-c16b0494a971?source=rss-202534492f47------2", "_blank");
         
       },
     },{id: "post-perceptron-learning-algorithm-a-graphical-explanation-of-why-it-works",
@@ -155,7 +155,7 @@ ninja.data = [{
       section: "Posts",
       handler: () => {
         
-          window.open("https://medium.com/towards-data-science/perceptron-learning-algorithm-d5db0deab975?source=rss-202534492f47------2", "_blank");
+          window.open("https://medium.com/data-science/perceptron-learning-algorithm-d5db0deab975?source=rss-202534492f47------2", "_blank");
         
       },
     },{id: "post-perceptron-the-artificial-neuron-an-essential-upgrade-to-the-mcculloch-pitts-neuron",
@@ -166,7 +166,7 @@ ninja.data = [{
       section: "Posts",
       handler: () => {
         
-          window.open("https://medium.com/towards-data-science/perceptron-the-artificial-neuron-4d8c70d5cc8d?source=rss-202534492f47------2", "_blank");
+          window.open("https://medium.com/data-science/perceptron-the-artificial-neuron-4d8c70d5cc8d?source=rss-202534492f47------2", "_blank");
         
       },
     },{id: "post-mcculloch-pitts-neuron-mankind-s-first-mathematical-model-of-a-biological-neuron",
@@ -177,7 +177,7 @@ ninja.data = [{
       section: "Posts",
       handler: () => {
         
-          window.open("https://medium.com/towards-data-science/mcculloch-pitts-model-5fdf65ac5dd1?source=rss-202534492f47------2", "_blank");
+          window.open("https://medium.com/data-science/mcculloch-pitts-model-5fdf65ac5dd1?source=rss-202534492f47------2", "_blank");
         
       },
     },{
