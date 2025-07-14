@@ -5,9 +5,10 @@
   abbr={Master's Thesis},
   author = {Chandra, Akshay L and Nematollahi, Iman and Huang, Chenguang and Welschehold, Tim and Valada, Abhinav},
   title = {Fine-Tuning Diffusion Policies with World Models},
-  journal = {Master's Thesis, Robot Learning Lab},
+  journal = {Master's Thesis, Robot Learning Lab [Coursework; Not Peer-Reviewed]},
   volume = {2025},
   year = {2025},
+  month = {February},
   abstract = {In the behaviour-cloning paradigm, diffusion-based policies (DPs) have recently emerged as a preferred choice for continuous control and robot learning tasks. Much of the adoption is attributed to their efficacy in modelling high-dimensional and multimodal action distributions while showing immense training stability. However, DPs have been limited mainly to the scale and quality of the expert data they fit. To that end, recent works have shown that policy gradient (PG) methods from reinforcement learning (RL) can be helpful in fine-tuning DPs to improve them beyond expert data, with online interactions and sparse task-completion rewards. Specifically, by treating the denoising process as a separate Markov Decision Process (MDP), previous works have applied PG methods to fine-tune DPs. However, RL fine-tuning with millions of environmental interactions for real robots can often be unsafe and unrealistic. We introduce Diffusion Policy Policy Optimisation in World-Models, DPOW, a sample-efficient, real-robot-friendly algorithmic framework for improving DPs offline with learnt dynamics models, i.e. world models. Through experimental investigation, we find that DPOW can fine-tune and improve policies with just offline interactions. We demonstrate stable training and robustness to task difficulty across a range of simulated continuous control manipulation tasks in CALVIN.},
 }
 
@@ -22,19 +23,21 @@
   code = {https://github.com/nematoli/lumos},
   website = {http://lumos.cs.uni-freiburg.de/},
   abstract = {We introduce LUMOS, a language-conditioned multi-task imitation learning framework for robotics. LUMOS learns skills by practicing them over many long-horizon rollouts in the latent space of a learned world model and transfers these skills zero-shot to a real robot. By learning on-policy in the latent space of the learned world model, our algorithm mitigates policy-induced distribution shift which most offline imitation learning methods suffer from. LUMOS learns from unstructured play data with fewer than 1% hindsight language annotations but is steerable with language commands at test time. We achieve this coherent long-horizon performance by combining latent planning with both image- and language-based hindsight goal relabeling during training, and by optimizing an intrinsic reward defined in the latent space of the world model over multiple time steps, effectively reducing covariate shift. In experiments on the difficult long-horizon CALVIN benchmark, LUMOS outperforms prior learning-based methods with comparable approaches on chained multi-task evaluations. To the best of our knowledge, we are the first to learn a languageconditioned continuous visuomotor control for a real-world robot within an offline world model.},
+  preview = {icra25.gif},
 }
 
 @article{masters-project,
   abbr={Master's Project},
   author = {Chandra, Akshay L and Nematollahi, Iman and Welschehold, Tim},
   title = {SAC-N-GMM: Robot Skill Refining and Sequencing for Long-Horizon Manipulation Tasks},
-  journal = {Master's Project, Robot Learning Lab},
+  journal = {Master's Project, Robot Learning Lab [Coursework; Not Peer-Reviewed]},
   volume = {2024},
   year = {2024},
   month = {February},
   pdf = {https://akshaychandra.com/assets/pdf/masterproject-report.pdf},
   code = {https://github.com/acl21/sac_n_gmm},
   abstract = {Despite access to expert data, most long-horizon imitation-learning (IL) agents suffer from distribution shifts, compounding errors, and expert dependency. Several previous works show that refining IL agents in the world with reinforcement learning (RL) alleviates some of these problem by making the agents more robust to noisy perception and stochasticity in dynamics with much helpful real-world exposure. SAC-GMM does this efficiently by first learning a task from demonstrations with a classical robotics technique (e.g., Gaussian Mixture Model) and then refines it with a deep RL (Soft Actor-Critic) agent with sparse task-completion rewards. One could further dampen the side effects of long-horizon IL agents by breaking down complex tasks into short-horizon skills. This simplifies the learning goal into a hierarchy of agents, i.e. high-level planning agent (skill sequencer) and low-level control agent (skill executor). To this end, we propose the Soft Actor-Critic-N -Gaussian Mixture Model (SAC-N-GMM), a novel hybrid RL approach that learns to simultaneously refine and sequence a repertoire of low-level skills to perform numerous combinations of long-horizon tasks. Our approach extends SAC-GMM (1) by learning N lowlevel robot skills with Riemannian Manifold GMMs that learn both robot positions and orientations (2) by learning a single RL agent to refine and sequence multiple manifold-aware GMM skills. Extensive evaluations in the CALVIN simulation environment demonstrate that our approach leverages high-dimensional sensory data, minimal expert demonstrations, minimal physical interactions, and sparse task-completion rewards efficiently to achieve superior long-horizon task performance compared to baselines. Code is available at https://github.com/acl21/sac_n_gmm},
+  preview = {sac-n-gmm.gif},
 }
 
 
@@ -51,6 +54,7 @@
   code = {https://github.com/ShivanganaRawat/ALPO_Segmentation},
   html = {https://spj.science.org/doi/abs/10.34133/2022/9795275},
   abstract = {Training deep learning models typically requires a huge amount of labeled data which is expensive to acquire, especially in dense prediction tasks such as semantic segmentation. Moreover, plant phenotyping datasets pose additional challenges of heavy occlusion and varied lighting conditions which makes annotations more time-consuming to obtain. Active learning helps in reducing the annotation cost by selecting samples for labeling which are most informative to the model, thus improving model performance with fewer annotations. Active learning for semantic segmentation has been well studied on datasets such as PASCAL VOC and Cityscapes. However, its effectiveness on plant datasets has not received much importance. To bridge this gap, we empirically study and benchmark the effectiveness of four uncertainty-based active learning strategies on three natural plant organ segmentation datasets. We also study their behaviour in response to variations in training configurations in terms of augmentations used, the scale of training images, active learning batch sizes, and train-validation set splits.},
+  preview = {plantphenomics22.png},
 }
 
 @article{pmlr-v148-chandra21a,
@@ -70,6 +74,7 @@
   html = {https://proceedings.mlr.press/v148/chandra21a.html},
   abstract = {Active Learning (AL) techniques aim to minimize the training data required to train a model for a given task. Pool-based AL techniques start with a small initial labeled pool and then iteratively pick batches of the most informative samples for labeling. Generally, the initial pool is sampled randomly and labeled to seed the AL iterations. While recent studies have focused on evaluating the robustness of various query functions in AL, little to no attention has been given to the design of the initial labeled pool for deep active learning. Given the recent successes of learning representations in self-supervised/unsupervised ways, we study if an intelligently sampled initial labeled pool can improve deep AL performance. We investigate the effect of intelligently sampled initial labeled pools, including the use of self-supervised and unsupervised strategies, on deep AL methods. The setup, hypotheses, methodology, and implementation details were evaluated by peer review before experiments were conducted. Experimental results could not conclusively prove that intelligently sampled initial pools are better for AL than random initial pools in the long run, although a Variational Autoencoder-based initial pool sampling strategy showed interesting trends that merit deeper investigation.},
   dimensions = {true},
+  preview = {pmlr21.png},
 }
 
 
@@ -87,6 +92,7 @@
   url={https://doi.org/10.1186/s13007-020-00575-8},
   arxiv={1910.01789},
   html={https://plantmethods.biomedcentral.com/articles/10.1186/s13007-020-00575-8},
+  preview={plantmethods20.png}
 }
 
 
@@ -100,6 +106,7 @@
   month={August},
   code={https://github.com/lab1055/easy-rfp},
   video={https://www.youtube.com/watch?v=oAGbpVgPE6U},
+  preview={cvppp20.png},
 }
 
 @article{Desai2019AnAS,
@@ -112,4 +119,5 @@
   month={August},
   arxiv={1908.02454},
   poster={bmvc19-poster.pdf},
+  preview={bmvc19.png}
 }
