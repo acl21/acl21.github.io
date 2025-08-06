@@ -22,7 +22,7 @@ Hi! I am a **PhD Student** at the [Robot Learning Lab](https://rl.uni-freiburg.d
 
 Recently, I completed **M.Sc. Computer Science** at the [University of Freiburg](http://www.informatik.uni-freiburg.de/studies/furtherinformation/concentrationCTS?set_language=en). At the [Robot Learning Lab](https://rl.uni-freiburg.de/), I worked almost two years as a **Student Research Assistant** on several robot manipulation problems, supervised by [Dr. Iman Nematollahi](https://www.imanema.com/) and [Dr. Tim Welschehold](https://rl.uni-freiburg.de/people/welschehold):
 
-- For Master's Thesis. I fine-tuned diffusion-based policies inside world models to learn robot behaviours entirely offline [[Paper](), [Code]()].
+- For Master's Thesis, I fine-tuned diffusion-based policies inside world models to learn robot behaviours entirely offline. This work + a few months of upgrades / improvements has led to our paper DiWA (see project [here](https://diwa.cs.uni-freiburg.de/) for details). 
 - For Master's Project, I fine-tuned geometry-aware (Riemannian manifold) motion models with model-free RL to stitch up to seven robot skills.
   [[Report](https://akshaychandra.com/assets/pdf/masterproject-report.pdf), [Code](https://github.com/acl21/sac_n_gmm)].
 

@@ -1,15 +1,14 @@
----
----
-
-@article{Master's Thesis,
-  abbr={Master's Thesis},
-  author = {Chandra, Akshay L and Nematollahi, Iman and Huang, Chenguang and Welschehold, Tim and Valada, Abhinav},
-  title = {Fine-Tuning Diffusion Policies with World Models},
-  journal = {Master's Thesis, Robot Learning Lab [Coursework; Not Peer-Reviewed]},
-  volume = {2025},
+@article{CoRL,
+  abbr={CoRL},
+  author = {Chandra, Akshay L and Nematollahi, Iman and Huang, Chenguang and Welschehold, Tim and Burgard, Wolfram and Valada, Abhinav},
+  title = {DiWA: Diffusion Policy Adaptation with World Models},
+  journal = {Conference on Robot Learning (CoRL)},
   year = {2025},
-  month = {February},
-  abstract = {In the behaviour-cloning paradigm, diffusion-based policies (DPs) have recently emerged as a preferred choice for continuous control and robot learning tasks. Much of the adoption is attributed to their efficacy in modelling high-dimensional and multimodal action distributions while showing immense training stability. However, DPs have been limited mainly to the scale and quality of the expert data they fit. To that end, recent works have shown that policy gradient (PG) methods from reinforcement learning (RL) can be helpful in fine-tuning DPs to improve them beyond expert data, with online interactions and sparse task-completion rewards. Specifically, by treating the denoising process as a separate Markov Decision Process (MDP), previous works have applied PG methods to fine-tune DPs. However, RL fine-tuning with millions of environmental interactions for real robots can often be unsafe and unrealistic. We introduce Diffusion Policy Policy Optimisation in World-Models, DPOW, a sample-efficient, real-robot-friendly algorithmic framework for improving DPs offline with learnt dynamics models, i.e. world models. Through experimental investigation, we find that DPOW can fine-tune and improve policies with just offline interactions. We demonstrate stable training and robustness to task difficulty across a range of simulated continuous control manipulation tasks in CALVIN.},
+  arxiv = {2508.03645},
+  code = {https://github.com/acl21/diwa},
+  website = {http://diwa.cs.uni-freiburg.de/},
+  abstract = {Fine-tuning diffusion policies with reinforcement learning (RL) presents significant challenges. The long denoising sequence for each action prediction impedes effective reward propagation. Moreover, standard RL methods require millions of real-world interactions, posing a major bottleneck for practical fine-tuning. Although prior work frames the denoising process in diffusion policies as a Markov Decision Process to enable RL-based updates, its strong dependence on environment interaction remains highly inefficient. To bridge this gap, we introduce DiWA, a novel framework that leverages a world model for fine-tuning diffusion-based robotic skills entirely offline with reinforcement learning. Unlike model-free approaches that require millions of environment interactions to fine-tune a repertoire of robot skills, DiWA achieves effective adaptation using a world model trained once on a few hundred thousand offline play interactions. This results in dramatically improved sample efficiency, making the approach significantly more practical and safer for real-world robot learning. On the challenging CALVIN benchmark, DiWA improves performance across eight tasks using only offline adaptation, while requiring orders of magnitude fewer physical interactions than model-free baselines. To our knowledge, this is the first demonstration of fine-tuning diffusion policies for real-world robotic skills using an offline world model.},
+  preview = {corl25.gif},
 }
 
 @article{ICRA,
@@ -39,7 +38,6 @@
   abstract = {Despite access to expert data, most long-horizon imitation-learning (IL) agents suffer from distribution shifts, compounding errors, and expert dependency. Several previous works show that refining IL agents in the world with reinforcement learning (RL) alleviates some of these problem by making the agents more robust to noisy perception and stochasticity in dynamics with much helpful real-world exposure. SAC-GMM does this efficiently by first learning a task from demonstrations with a classical robotics technique (e.g., Gaussian Mixture Model) and then refines it with a deep RL (Soft Actor-Critic) agent with sparse task-completion rewards. One could further dampen the side effects of long-horizon IL agents by breaking down complex tasks into short-horizon skills. This simplifies the learning goal into a hierarchy of agents, i.e. high-level planning agent (skill sequencer) and low-level control agent (skill executor). To this end, we propose the Soft Actor-Critic-N -Gaussian Mixture Model (SAC-N-GMM), a novel hybrid RL approach that learns to simultaneously refine and sequence a repertoire of low-level skills to perform numerous combinations of long-horizon tasks. Our approach extends SAC-GMM (1) by learning N lowlevel robot skills with Riemannian Manifold GMMs that learn both robot positions and orientations (2) by learning a single RL agent to refine and sequence multiple manifold-aware GMM skills. Extensive evaluations in the CALVIN simulation environment demonstrate that our approach leverages high-dimensional sensory data, minimal expert demonstrations, minimal physical interactions, and sparse task-completion rewards efficiently to achieve superior long-horizon task performance compared to baselines. Code is available at https://github.com/acl21/sac_n_gmm},
   preview = {sac-n-gmm.gif},
 }
-
 
 @article{doi:10.34133/2022/9795275,
   abbr={Plant Phenomics},
@@ -77,7 +75,6 @@
   preview = {pmlr21.png},
 }
 
-
 @article{Chandra2020AL,
   abbr={Plant Methods},
   title={Active Learning with Point Supervision for Cost-Effective Panicle Detection in Cereal Crops},
@@ -94,7 +91,6 @@
   html={https://plantmethods.biomedcentral.com/articles/10.1186/s13007-020-00575-8},
   preview={plantmethods20.png}
 }
-
 
 @article{Chandra2020Easy,
   abbr={CVPPP/ECCV Demos},
