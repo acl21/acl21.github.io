@@ -37,7 +37,7 @@ nav_order: 2
 
 {% if site.data.github.github_repos %}
 
-## Active GitHub Repositories
+## Selected GitHub Repositories
 
 <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
   {% for repo in site.data.github.github_repos %}
