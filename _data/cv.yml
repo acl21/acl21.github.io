@@ -6,7 +6,7 @@
     - name: Job Title
       value: Doctoral Candidate, Robot Learning Lab, University of Freiburg
     - name: Email
-      value: "lastname [at] cs [dot] uni-freiburg [dot] de"
+      value: "lastname [at] cs [dot] uni [hyphen] freiburg [dot] de"
 
 - title: Education
   type: time_table
