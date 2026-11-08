@@ -45,16 +45,3 @@ nav_order: 2
   {% endfor %}
 </div>
 {% endif %}
-
----
-
-{% if site.data.github.github_repos_archived %}
-
-## Archived GitHub Repositories
-
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% for repo in site.data.github.github_repos_archived %}
-    {% include repository/repo.liquid repository=repo %}
-  {% endfor %}
-</div>
-{% endif %}
