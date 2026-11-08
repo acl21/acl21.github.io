@@ -1,7 +1,19 @@
-<div id="giscus_thread" style="max-width: {{ site.max_width }}; margin: 0 auto;">
+<div
+  id="giscus_thread"
+  data-giscus-light-theme="{{ site.giscus.light_theme | default: 'light' }}"
+  data-giscus-dark-theme="{{ site.giscus.dark_theme | default: 'dark' }}"
+  {% if page.layout == 'post' %}
+    style="max-width: {{ site.max_width }}; margin: 0 auto;"
+  {% endif %}
+>
+  {% if page.layout == 'post' %}
+    <br>
+  {% endif %}
   {% if site.giscus.repo %}
     <script>
-      let giscusTheme = determineComputedTheme();
+      let giscusThread = document.getElementById('giscus_thread');
+      let giscusTheme =
+        determineComputedTheme() === 'dark' ? giscusThread.dataset.giscusDarkTheme : giscusThread.dataset.giscusLightTheme;
       let giscusAttributes = {
         src: 'https://giscus.app/client.js',
         'data-repo': '{{ site.giscus.repo }}',

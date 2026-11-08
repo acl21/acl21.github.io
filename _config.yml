@@ -109,7 +109,9 @@ giscus:
   strict: 1 # use strict identification mode
   reactions_enabled: 1 # enable (1) or disable (0) emoji reactions
   input_position: bottom # whether to display input form below (bottom) or above (top) the comments
-  theme: preferred_color_scheme # name of the color scheme (preferred works well with al-folio light/dark mode)
+  theme: preferred_color_scheme # legacy single theme; light_theme and dark_theme are what the toggle uses
+  light_theme: light # giscus theme while the site is in light mode
+  dark_theme: dark # giscus theme while the site is in dark mode
   emit_metadata: 0
   lang: en
 
@@ -356,7 +358,7 @@ imagemagick:
     - ".tiff"
     - ".gif"
   output_formats:
-    webp: "-quality 85"
+    webp: "-auto-orient -quality 85"
 
 # Lazy loading images
 #   If you enable lazy loading, all images will add the loading="lazy" attribute.

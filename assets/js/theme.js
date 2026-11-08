@@ -107,9 +107,15 @@ let setGiscusTheme = (theme) => {
     iframe.contentWindow.postMessage({ giscus: message }, "https://giscus.app");
   }
 
+  const thread = document.getElementById("giscus_thread");
+  const giscusTheme =
+    theme === "dark"
+      ? thread?.dataset.giscusDarkTheme || "dark"
+      : thread?.dataset.giscusLightTheme || "light";
+
   sendMessage({
     setConfig: {
-      theme: theme,
+      theme: giscusTheme,
     },
   });
 };
