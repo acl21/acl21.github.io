@@ -4,7 +4,7 @@
     - name: Full Name
       value: Akshay L Chandra
     - name: Job Title
-      value: Doctoral Candidate, Robot Learning Lab, University of Freiburg
+      value: PhD Student, Robot Learning Lab, University of Freiburg
     - name: Email
       value: "lastname [at] cs [dot] uni [hyphen] freiburg [dot] de"
 
@@ -26,7 +26,7 @@
 - title: Experience
   type: time_table
   contents:
-    - title: Doctoral Candidate (PhD Student)
+    - title: PhD Student
       institution: Robot Learning Lab, University of Freiburg
       year: 2025 - Now
       description:
