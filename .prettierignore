@@ -7,6 +7,8 @@ assets/js/search/*.js
 assets/plotly/demo.html
 lighthouse_results/**
 _posts/2015-10-20-math.md
+# Bold lines wrap math with underscores; Prettier rewrites those as emphasis.
+_posts/2023-10-21-quat-rot-op1.md
 _sass/font-awesome/*.scss
 _sass/tabler-icons/*.scss
 _scripts/search.liquid.js
