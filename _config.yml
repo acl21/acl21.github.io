@@ -6,13 +6,13 @@ title: blank # the website title (if blank, full name will be used instead)
 first_name: Akshay
 middle_name: L
 last_name: Chandra
-contact_note: You can reach me at "research [at] domain [dot] com".
+contact_note: You can reach me at "my lastname [at] cs [dot] uni [hyphen] freiburg [dot] de".
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+  Akshay L Chandra is a PhD student at the University of Freiburg (Robot Learning Lab) researching world models for robot control. He works on diffusion policies, vision-language-action models, and learning from human and robot data.”
 footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
+  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>, <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme and vibe coding.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: akshay, chandra, lagandula, uni-freiburg, freiburg, iith, robot learning, reinforcement learning, computer vision, machine learning, deep learning, active learning # add your own keywords or leave empty
+keywords: akshay, chandra, lagandula, world models, robot learning lab, PhD student, uni-freiburg, freiburg, iith, robot learning, diffusion policies,latent action inference, and vision-language-action models, reinforcement learning, computer vision, machine learning, deep learning, active learning # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: favicon-32x32.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
@@ -354,12 +354,12 @@ imagemagick:
     - 1400
   input_directories:
     - assets/img/
+  # Serve animated GIFs directly to avoid decoding every frame during the build.
   input_formats:
     - ".jpg"
     - ".jpeg"
     - ".png"
     - ".tiff"
-    - ".gif"
   output_formats:
     webp: "-auto-orient -quality 85"
 

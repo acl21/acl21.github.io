@@ -3,23 +3,33 @@
 ---
 @charset "utf-8";
 
-// Dimensions
-$max-content-width: {{ site.max_width }};
+@use "variables";
+@use "themes";
+@use "layout" with (
+  $max-content-width: {{ site.max_width }}
+);
+@use "base";
+@use "distill";
+@use "cv";
+@use "tabs";
+@use "typograms";
 
-@import
-  "variables",
-  "themes",
-  "layout",
-  "base",
-  "distill",
-  "cv",
-  "tabs",
-  "typograms",
-  "font-awesome/fontawesome",
-  "font-awesome/brands",
-  "font-awesome/solid",
-  "font-awesome/regular",
-  "tabler-icons/tabler-icons.scss",
-  "tabler-icons/tabler-icons-filled.scss",
-  "tabler-icons/tabler-icons-outline.scss"
-;
+@use "font-awesome/fontawesome" with (
+  $fa-font-path: variables.$fa-font-path
+);
+@use "font-awesome/brands";
+@use "font-awesome/solid";
+@use "font-awesome/regular";
+
+@use "tabler-icons/tabler-icons" as tabler with (
+  $ti-font-path: variables.$ti-font-path
+);
+// Keep all three font files under the same family, as in the original bundle.
+@use "tabler-icons/tabler-icons-filled" with (
+  $ti-font-path: variables.$ti-font-path,
+  $ti-font-family: tabler.$ti-font-family
+);
+@use "tabler-icons/tabler-icons-outline" with (
+  $ti-font-path: variables.$ti-font-path,
+  $ti-font-family: tabler.$ti-font-family
+);

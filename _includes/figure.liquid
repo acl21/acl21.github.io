@@ -1,6 +1,5 @@
-{% assign img_path = include.path | remove: '.jpg' | remove: '.jpeg' | remove: '.png' | remove: '.tiff' | remove: '.gif' %}
 {% assign parts = include.path | split: '.' %}
-{% assign ext = parts.last %}
+{% assign ext = parts.last | prepend: '.' %}
 
 <figure
   {% if include.slot %}
@@ -13,16 +12,14 @@
       See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
       https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
     -->
-    {% if site.imagemagick.enabled %}
+    {% if site.imagemagick.enabled and site.imagemagick.input_formats contains ext %}
       {% unless include.avoid_scaling %}
+        {% assign stem_length = include.path.size | minus: ext.size %}
+        {% assign img_path = include.path | slice: 0, stem_length %}
         <source
           class="responsive-img-srcset"
-          {% if ext == 'gif' or ext == 'jpeg' or ext == 'jpg' or ext == 'png' or ext == 'tiff' %}
-            srcset="{% for i in site.imagemagick.widths %}{{ img_path | relative_url }}-{{ i }}.webp {{ i }}w,{% endfor %}"
-            type="image/webp"
-          {% else %}
-            srcset="{{ include.path | relative_url }}"
-          {% endif %}
+          srcset="{% for i in site.imagemagick.widths %}{{ img_path | relative_url }}-{{ i }}.webp {{ i }}w,{% endfor %}"
+          type="image/webp"
           {% if include.sizes %}
             sizes="{{ include.sizes }}"
           {% else %}

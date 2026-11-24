@@ -1,3 +1,27 @@
+@article{Preprint,
+  abbr={Preprint},
+  author={Chandra, Akshay L and Nematollahi, Iman and Zhao, Lingyue and Kulikova, Daria and Schoellig, Angela P. and Despinoy, Fabien and Valada, Abhinav},
+  title={DiWALI: Diffusion Policy Learning in World Models via Latent Action Inference from Human and Robot Play}, 
+  journal = {Preprint},
+  year = {2026},
+  arxiv = {2611.24836},
+  website = {http://diwali.cs.uni-freiburg.de/},
+  abstract = {Learning robot manipulation is constrained by the availability of action-labeled robot data, for both imitation and world models. Humans can demonstrate skills in seconds, but their demonstrations lack the required robot actions. We introduce DiWALI, a framework that learns and improves diffusion policies within a world model trained on human and robot play. DiWALI infers latent actions from consecutive frames using an inverse dynamics model, enabling world model training without action labels, and grounds them in robot commands through a decoder trained separately on robot play. Skill policies are trained over latent actions from action-free human demonstrations and improved with reinforcement learning in imagination. On the CALVIN benchmark, DiWALI policies trained solely from human demonstrations substantially outperform baselines trained with robot demonstrations. Incorporating human play into the world model training also yields stronger policies after fine-tuning than using the same amount of robot play alone. Experiments on a physical robot show that skills learned primarily from human demonstrations are further improved in imagination with a world model trained on human and robot play. Together, these results demonstrate that human experience can support both manipulation skill acquisition and subsequent policy improvement, reducing reliance on action-labeled robot data.},
+  preview = {diwali.gif},
+}
+
+@article{Preprint,
+  abbr={Preprint},
+  author={Bahey Tharwat and Iman Nematollahi and Marvin Alles and Xingyuan Zhang and Akshay L Chandra and Abhinav Valada},
+  title={Dream to Remember: Continual Steering of Generalist Robot Policies with World Models}, 
+  journal = {Preprint},
+  year = {2026},
+  arxiv = {2610.13816},
+  website = {http://d2r.cs.uni-freiburg.de/},
+  abstract = {Generalist robot policies are trained with imitation learning and are bounded by the quality and coverage of their demonstrations. Reinforcement learning can improve and extend them, either by fine-tuning the policy weights or by training a small module to steer the input noise of a frozen generative policy. When tasks arrive sequentially, both approaches suffer from catastrophic forgetting. Fine-tuning on a task degrades prior tasks, and steering only shifts forgetting to the shared steering module. We propose Dream to Remember (D2R), which continually steers a frozen generalist policy toward new tasks, while retaining its earlier skills. As the steering module learns a new task, a frozen pretrained world model rehearses prior tasks through imagined rollouts, anchoring the module to its earlier behavior without a replay buffer or new data. When the world model is faithful enough, D2R learns the new task entirely in imagination. Otherwise, it learns the task in the environment while using the world model only to rehearse prior tasks. On CALVIN, D2R improves eight tasks in sequence entirely in imagination, raising average success from 63.7% to 74.8%, while LoRA fine-tuning on the same sequence drops it to 11.7%. With a frozen off-the-shelf generalist policy and world model, pi_0 and A2World, D2R learns unseen LIBERO-90 tasks in the environment while keeping pi_0's performance on the LIBERO suites it was fine-tuned on, even though the world model is not accurate enough for policy optimization. Finally, on a real Franka robot, D2R improves three tasks in sequence entirely in imagination while retaining the earlier improvements.},
+  preview = {d2r.gif},
+}
+
 @article{CoRL,
   abbr={CoRL},
   author = {Chandra, Akshay L and Nematollahi, Iman and Huang, Chenguang and Welschehold, Tim and Burgard, Wolfram and Valada, Abhinav},

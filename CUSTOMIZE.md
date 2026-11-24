@@ -67,17 +67,17 @@ Note that `posts` is also a collection, but it is a default collection created a
 
 ## Creating new projects
 
-You can create new projects by adding new Markdown files in the [\_projects]() directory. The easiest way to do this is to copy an existing project and modify it.
+You can create new projects by adding new Markdown files in the `_projects/` directory. Create the directory first if it is missing.
 
 ## Adding some news
 
-You can add news in the about page by adding new Markdown files in the [\_news]() directory. There are currently two types of news: inline news and news with a link. News with a link take you to a new page while inline news are displayed directly in the about page. The easiest way to create yours is to copy an existing news and modify it.
+You can add news in the about page by adding new Markdown files in the `_news/` directory. Create the directory first if it is missing. There are currently two types of news: inline news and news with a link. News with a link take you to a new page while inline news are displayed directly in the about page. The easiest way to create yours is to copy an existing news and modify it.
 
 ## Adding Collections
 
 This Jekyll theme implements [collections](https://jekyllrb.com/docs/collections/) to let you break up your work into categories. The theme comes with three default collections: `news`, `projects`, and `books`. Items from the `news` collection are automatically displayed on the home page, while items from the `projects` collection are displayed on a responsive grid on projects page and items from the `books` collection are displayed on its own `bookshelf` page inside `submenus`.
 
-You can easily create your own collections, apps, short stories, courses, or whatever your creative work is. To do this, edit the collections in the [\_config.yml](_config.yml) file, create a corresponding folder, and create a landing page for your collection, similar to [\_pages/projects.md]().
+You can easily create your own collections, apps, short stories, courses, or whatever your creative work is. To do this, edit the collections in the [\_config.yml](_config.yml) file, create a corresponding folder, and create a landing page for your collection, using an existing page such as [\_pages/books.md](_pages/books.md) as a starting point.
 
 If you wish to create a collection with support for categories and tags, like the blog posts, you just need to add this collection to the `jekyll-archives` section of your [\_config.yml](_config.yml) file. You can check how this is done with the `books` collection. For more information about customizing the archives section or creating your own archives page, check the [jekyll-archives-v2 documentation](https://george-gca.github.io/jekyll-archives-v2/).
 
@@ -181,8 +181,8 @@ To remove the blog, you have to:
 
 - delete [\_posts](_posts/) directory
 - delete blog page [\_pages/blog.md](_pages/blog.md)
-- remove reference to blog page in our [\_pages/dropdown.md](_pages/dropdown.md)
-- remove the `latest_posts` part in [\_pages/about.md](_pages/about.md)
+- remove reference to blog page in your optional `_pages/dropdown.md` menu, if present
+- remove the `latest_posts` part in [\_pages/home.md](_pages/home.md)
 - remove the `Blog` section in the [\_config.yml](_config.yml) file and the related parts, like the `jekyll-archives`
 
 You can also:
@@ -198,18 +198,18 @@ You can also:
 
 To remove the news section, you can:
 
-- delete the [\_news](_news/) directory
-- delete the file [\_includes/news.liquid](_includes/news.liquid) and the references to it in the [\_pages/about.md](_pages/about.md)
-- remove the `announcements` part in [\_pages/about.md](_pages/about.md)
+- delete the `_news/` directory, if present
+- delete the file [\_includes/news.liquid](_includes/news.liquid) and the references to it in the [\_pages/home.md](_pages/home.md)
+- remove the `announcements` part in [\_pages/home.md](_pages/home.md)
 - remove the news part in the `Collections` section in the [\_config.yml](_config.yml) file
 
 ### Removing the projects page
 
 To remove the projects, you can:
 
-- delete the [\_projects](_projects/) directory
-- delete the projects page [\_pages/projects.md](_pages/projects.md)
-- remove reference to projects page in our [\_pages/dropdown.md](_pages/dropdown.md)
+- delete the `_projects/` directory, if present
+- delete the projects page `_pages/projects.md`, if present
+- remove reference to projects page in your optional `_pages/dropdown.md` menu, if present
 - remove projects part in the `Collections` section in the [\_config.yml](_config.yml) file
 
 You can also:
@@ -222,8 +222,8 @@ You can also:
 To remove the publications, you can:
 
 - delete the [\_bibliography](_bibliography/) directory
-- delete the publications page [\_pages/publications.md](_pages/publications.md)
-- remove reference to publications page in our [\_pages/dropdown.md](_pages/dropdown.md)
+- delete the publications page [\_pages/research.md](_pages/research.md)
+- remove reference to publications page in your optional `_pages/dropdown.md` menu, if present
 - remove `Jekyll Scholar` section in the [\_config.yml](_config.yml) file
 
 You can also:
@@ -241,12 +241,12 @@ You can also:
 
 To remove the repositories, you can:
 
-- delete the repositories page [\_pages/repositories.md](_pages/repositories.md)
+- delete the repositories page [\_pages/github.md](_pages/github.md)
 - delete [\_includes/repository/](_includes/repository/) directory
 
 ## Adding Token for Lighthouse Badger
 
-To add secrets for [lighthouse-badger](https://github.com/alshedivat/al-folio/actions/workflows/lighthouse-badger.yml), create a [personal access token (PAT)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token) and add it as a [secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-encrypted-secrets-for-a-repository) named `LIGHTHOUSE_BADGER_TOKEN` to your repository. The [lighthouse-badger documentation](https://github.com/MyActionWay/lighthouse-badger-workflows#lighthouse-badger-easyyml) specifies using an environment variable, but using it as a secret is more secure and appropriate for a PAT.
+To add secrets for [lighthouse-badger](.github/workflows/lighthouse-badger.yml), create a [personal access token (PAT)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token) and add it as a [secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-encrypted-secrets-for-a-repository) named `LIGHTHOUSE_BADGER_TOKEN` to your repository. The [lighthouse-badger documentation](https://github.com/MyActionWay/lighthouse-badger-workflows#lighthouse-badger-easyyml) specifies using an environment variable, but using it as a secret is more secure and appropriate for a PAT.
 
 Also In case you face the error: "Input required and not supplied: token" in the Lighthouse Badger action, this solution resolves it.
 
